@@ -1,0 +1,617 @@
+1,7d0
+< //
+< //  GLES2Render.cpp
+< //  Helios
+< //
+< //  Created by James Hurley on 9/19/11.
+< //
+10,13c3,4
+< #include <Render/GLES2/GLES2Render.h>
+< #include <algorithm>
+< #include <boost/bind.hpp>
+< #include <world/SceneManager.h>
+---
+> #include <Render/GL32/GL32Render.h>
+> #include <World/SceneManager.h>
+14a6
+> #include <Render/RenderCommand.h>
+40,51d31
+< #define eglCheckFramebufferStatus( )\
+< {\
+< switch ( glCheckFramebufferStatus( GL_FRAMEBUFFER ) )\
+< {\
+< case GL_FRAMEBUFFER_COMPLETE: printf("Framebuffer COMPLETE\n"); break;\
+< case GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT:         printf( "\n%s\n\n", "GL_FRAMEBUFFER_INCOMPLETE_ATTACHMENT"         ); assert( 0 ); break;\
+< case GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT: printf( "\n%s\n\n", "GL_FRAMEBUFFER_INCOMPLETE_MISSING_ATTACHMENT" ); assert( 0 ); break;\
+< case GL_FRAMEBUFFER_UNSUPPORTED:                   printf( "\n%s\n\n", "GL_FRAMEBUFFER_UNSUPPORTED"                   ); assert( 0 ); break;\
+< default:                                                                                                                              break;\
+< }\
+< }
+< 
+54d33
+< #define eglCheckFramebufferStatus()
+57,59d35
+< 
+< #define FBO_WIDTH  1024
+< #define FBO_HEIGHT 1024
+62,65c38
+<     namespace gles2
+<     {
+<         
+<     
+---
+>     namespace gl32 {
+70a44
+> 
+90c64
+<     GLES2Render::GLES2Render()
+---
+>     GL32Render::GL32Render()
+94c68
+<     GLES2Render::~GLES2Render()
+---
+>     GL32Render::~GL32Render()
+102c76
+<     GLES2Render::Prepare(int fboWidth, int fboHeight)
+---
+>     GL32Render::Prepare( int fboWidth, int fboHeight )
+104c78
+<         
+---
+>         eglGetError();
+112c86
+<         
+---
+>             
+118,119c92,94
+<           //  attribs[e::kVertexAttribNoExtrude] = e::kVertexAttribPositionNoExtrude;
+<         
+---
+>             attribs[e::kVertexAttribNoBones] = e::kVertexAttribPositionNoBones;
+>          //   attribs[e::kVertexAttribNoExtrude] = e::kVertexAttribPositionNoExtrude;
+>             
+126c101
+<         
+---
+>             
+132,154c107,108
+<         }
+<         /** Shadow Maps **/
+<         if( mOptions & RenderOptions_ShadowMaps ) {
+<             GenerateFBO(e::kRenderStageShadows, fboWidth, fboHeight);
+<             std::string b_folder = SceneManager::Inst().GetResourceFolder();
+<             std::string v = b_folder + "/ShadowMap.vsh";
+<             std::string f = b_folder + "/ShadowMap.fsh";
+<             std::map<std::string, int> attribs;
+<             std::map<std::string, int> uniforms;
+<             
+<             attribs[e::kVertexAttribPosition] = e::kVertexAttribPositionPosition;
+<             //attribs[e::kVertexAttribNormal] = e::kVertexAttribPositionNormal;
+<             //attribs[e::kVertexAttribDiffuseColor]  = e::kVertexAttribPositionDiffuseColor;
+<             attribs[e::kVertexAttribTexCoord] = e::kVertexAttribPositionTexCoord;
+<             attribs[e::kVertexAttribBoneId] = e::kVertexAttribPositionBoneId;
+<             
+<             uniforms[e::kVertexUniformTexMat] = 0;
+<             uniforms[e::kVertexUniformModelView] = 0;
+<             uniforms[e::kVertexUniformProjection] = 0;
+<             //uniforms[e::kVertexUniformNormalMat] = 0;
+<            // uniforms[e::kVertexUniformLightPos] = 0;
+<             uniforms[e::kFragmentUniformSampler0] = 0;
+<             uniforms[e::kVertexUniformJoints] = 0;
+---
+>             glEnable(GL_DEPTH_CLAMP);
+>             GLint p;
+156d109
+<             mShadowMapProgram = LoadShader(v, f, attribs, uniforms);
+158,161c111,112
+<         
+<         std::string ext = std::string((const char *)glGetString(GL_EXTENSIONS));
+<         
+<        
+---
+>         //D_PRINT("Loaded shaders.");
+>         //std::string ext = std::string((const char *)glGetString(GL_EXTENSIONS));
+164,165c115,116
+<             glEnable(GL_BLEND);            
+<             glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+---
+>             glEnable(GL_BLEND);
+>             glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA); 
+167c118
+<         glEnable(GL_DEPTH_TEST);
+---
+>         
+170c121
+<         
+---
+>         glEnable(GL_DEPTH_TEST);
+173,175c124,126
+<       
+<         GLint maxFUniforms=0, maxVUniforms, maxVaryings, maxAttribs;
+<         glGetIntegerv(GL_MAX_VARYING_VECTORS, &maxVaryings);
+---
+>         
+>       /*  GLint maxFUniforms=0, maxVUniforms, maxVaryings, maxAttribs;
+>         glGetIntegerv(GL_MAX_VARYING_COMPONENTS, &maxVaryings);
+179,180c130,131
+<         D_PRINT("Implementation info: \n\tmaxFUniforms: %d VUniforms: %d\n\tmaxVaryings: %d\n\tmaxAttribs: %d", maxFUniforms, maxVUniforms, maxVaryings, maxAttribs);
+<         D_PRINT("Available Extensions: \n\t%s", glGetString(GL_EXTENSIONS)); 
+---
+>         D_PRINT("Implementation info: \n\tmaxFUniforms: %d VUniforms: %d\n\tmaxVaryings: %d\n\tmaxAttribs: %d", maxFUniforms, maxVUniforms, maxVaryings, maxAttribs);*/
+>        // D_PRINT("Available Extensions: \n\t%s", glGetString(GL_EXTENSIONS)); 
+182c133,134
+<         glClearColor(0.f,0.f,0.f,0.f);
+---
+>         glClearColor(.3f,.5f,.7f,1.f);
+>         eglGetError();
+185c137
+<     GLES2Render::GenerateDefaultIBO()
+---
+>     GL32Render::GenerateDefaultIBO()
+192a145
+>         eglGetError();
+197c150
+<     GLES2Render::GenerateDefaultVBO()
+---
+>     GL32Render::GenerateDefaultVBO()
+206c159
+<             v [0] = Vertex( { glm::vec4(-0.5f,-0.5f,0.f,1.f),minS,maxT ,0 ,0, 0, 0,0,0} );
+---
+>             v [0] = Vertex( { glm::vec4(0.f,0.f,0.f,1.f),minS,maxT } );
+208,209c161,164
+<             v [1] = Vertex( { glm::vec4(0.5f,-0.5f,0.f,1.f), maxS,maxT ,0 ,0, 0, 0,0,0 } );
+<             v [2] = Vertex( { glm::vec4(-0.5f,0.5f,0.f,1.f), minS,minT ,0 ,0, 0, 0,0,0} );
+---
+>             v [1] = Vertex( { glm::vec4(1.f,0.f,0.f,1.f), maxS,maxT } );
+>             v [2] = Vertex( { glm::vec4(0.f,1.f,0.f,1.f), minS,minT} );
+>             
+>             v [3] = Vertex( { glm::vec4(1.f,1.f,0.f,1.f), maxS,minT } );
+211,212d165
+<             v [3] = Vertex( { glm::vec4(0.5f,0.5f,0.f,1.f), maxS,minT ,0 ,0, 0, 0,0,0 } );
+< 
+215a169
+>         eglGetError();
+220c174
+<     GLES2Render::ClearViewport(float r , float g, float b , float a )
+---
+>     GL32Render::ClearViewport(float r, float g, float b, float a)
+222c176
+<         glClearColor(r,g,b,a);
+---
+>         
+227c181
+<     GLES2Render::GenerateVBO(void* data, size_t stride, size_t length) 
+---
+>     GL32Render::GenerateVBO(void* data, size_t stride, size_t length) 
+229a184
+>         eglGetError();
+237c192
+<     GLES2Render::GenerateVAO(std::vector<VAOObj> data, unsigned vbo )
+---
+>     GL32Render::GenerateVAO(std::vector<VAOObj> data, unsigned vbo )
+240,242c195,199
+<         glGenVertexArraysOES(1, &vao);
+<         glBindVertexArrayOES(vao);
+< 
+---
+>         eglGetError();
+>         glGenVertexArrays(1, &vao);
+>         eglGetError();
+>         glBindVertexArray(vao);
+>         eglGetError();
+249c206,207
+<                 glVertexAttribPointer((*it).name, (*it).size, (*it).datatype, ((*it).normalize ? GL_TRUE : GL_FALSE), (*it).stride, BUFFER_OFFSET((*it).offset));
+---
+>                 glVertexAttribPointer((*it).name, (GLsizei)(*it).size, (*it).datatype, ((*it).normalize ? GL_TRUE : GL_FALSE), (GLsizei)(*it).stride, BUFFER_OFFSET((*it).offset));
+>                 eglGetError();
+254,255c212,213
+<         glBindVertexArrayOES(0);
+<         
+---
+>         glBindVertexArray(0);
+>         eglGetError();
+259c217
+<     GLES2Render::GenerateIBO(unsigned* indices, size_t size)
+---
+>     GL32Render::GenerateIBO(unsigned* indices, size_t size)
+265c223
+<     GLES2Render::GenerateIBO(unsigned short* indices, size_t size)
+---
+>     GL32Render::GenerateIBO(unsigned short* indices, size_t size)
+275c233
+<     GLES2Render::BindVBO ( unsigned int vbo ) 
+---
+>     GL32Render::BindVBO ( unsigned int vbo ) 
+281c239
+<     GLES2Render::BindVAO ( unsigned int vao ) 
+---
+>     GL32Render::BindVAO ( unsigned int vao ) 
+283c241
+<         glBindVertexArrayOES ( vao ) ;
+---
+>         glBindVertexArray ( vao ) ;
+287c245
+<     GLES2Render::DeleteVBO ( unsigned int vbo )
+---
+>     GL32Render::DeleteVBO ( unsigned int vbo )
+293c251
+<     GLES2Render::DeleteVAO ( unsigned int vao ) 
+---
+>     GL32Render::DeleteVAO ( unsigned int vao ) 
+295c253
+<         glDeleteVertexArraysOES(1, &vao);
+---
+>         glDeleteVertexArrays(1, &vao);
+299c257
+<     GLES2Render::PushRenderCommand ( std::vector<RenderCommand> const & r) 
+---
+>     GL32Render::PushRenderCommand ( std::vector<RenderCommand> const & r) 
+302,304c260
+<             // Skip this command if it has no geometry associated with it
+<             if((*it).iboSize == 0) 
+<                 continue;
+---
+>             
+316c272
+<     GLES2Render::SetUniforms(std::vector<UniformData_ptr>& uniformdata, Shader& currentShader, Shader& targetShader, int clear)
+---
+>     GL32Render::SetUniforms(std::vector<UniformData_ptr>& uniformdata, Shader& currentShader, Shader& targetShader, int clear)
+332c288
+<                     glUniform1fv(name, ud.count, ud.GetData<GLfloat>());
+---
+>                     glUniform1fv(name, (GLsizei)ud.count, ud.GetData<GLfloat>());
+338c294
+<                     glUniform1iv(name, ud.count, ud.GetData<GLint>());
+---
+>                     glUniform1iv(name,(GLsizei)ud.count, ud.GetData<GLint>());
+344c300
+<                     glUniform3fv(name, ud.count, ud.GetData<GLfloat>());
+---
+>                     glUniform3fv(name, (GLsizei)ud.count, ud.GetData<GLfloat>());
+350c306
+<                     glUniform4fv(name, ud.count, ud.GetData<GLfloat>());
+---
+>                     glUniform4fv(name, (GLsizei)ud.count, ud.GetData<GLfloat>());
+356c312
+<                     glUniformMatrix3fv(name,ud.count,GL_FALSE,ud.GetData<GLfloat>());
+---
+>                     glUniformMatrix3fv(name,(GLsizei)ud.count,GL_FALSE,ud.GetData<GLfloat>());
+362c318
+<                     glUniformMatrix4fv(name,ud.count,GL_FALSE, ud.GetData<GLfloat>());
+---
+>                     glUniformMatrix4fv(name,(GLsizei)ud.count,GL_FALSE, ud.GetData<GLfloat>());
+366d321
+< 
+369,387c324
+< 
+<     }
+<     void
+<     GLES2Render::RenderShadowMaps(std::vector<RenderGroup>& gVec)
+<     {
+<         glBindFramebuffer(GL_FRAMEBUFFER, mFBO[e::kRenderStageShadows].name);
+<        // glClearColor(0.f,0.f,0.f,1.f);
+<         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+<         glDisable(GL_DEPTH_TEST);
+<         glViewport(mCurrentViewport.x, mCurrentViewport.y, mCurrentViewport.w,mCurrentViewport.h);
+<         glScissor(mCurrentViewport.x, mCurrentViewport.y, mCurrentViewport.w,mCurrentViewport.h);
+<         mCurrentShader = mShadowMapProgram;
+<         glUseProgram(mCurrentShader);
+<         RenderStage(e::kRenderStageShadows, gVec);
+<         glActiveTexture(GL_TEXTURE1);
+<         glEnable(GL_DEPTH_TEST);
+<         glBindTexture(GL_TEXTURE_2D, mFBO[e::kRenderStageShadows].colorBufferTex);
+<         glActiveTexture(GL_TEXTURE0);
+<         glBindFramebuffer(GL_FRAMEBUFFER, mDefaultFBO);
+---
+>         
+390c327
+<     GLES2Render::RenderStencilShadows(std::vector<RenderGroup>& gVec)
+---
+>     GL32Render::RenderShadows(std::vector<RenderGroup>& gVec)
+396c333
+< 
+---
+>         
+401c338
+<        
+---
+>         
+409a347
+>         glDisable(GL_CULL_FACE);
+411,412c349,350
+<         glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_DECR_WRAP, GL_KEEP);
+<         glStencilOpSeparate(GL_BACK , GL_KEEP, GL_INCR_WRAP, GL_KEEP);
+---
+>         glStencilOpSeparate(GL_FRONT, GL_KEEP,GL_DECR_WRAP, GL_KEEP);
+>         glStencilOpSeparate(GL_BACK, GL_KEEP, GL_INCR_WRAP, GL_KEEP);
+415a354,360
+>         glEnable(GL_CULL_FACE);
+>         
+>         glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
+>         glCullFace(GL_BACK);
+>         
+>         
+>         
+417c362
+<   
+---
+>         
+427c372
+<         RenderStage(e::kRenderStageDiffuse,gVec);  
+---
+>         RenderStage(e::kRenderStageGeometry,gVec);  
+431a377
+> 
+434c380
+<     GLES2Render::RenderStage(e::RenderStage stage,  std::vector<RenderGroup>& gVec)
+---
+>     GL32Render::RenderStage(e::RenderStage stage,  std::vector<RenderGroup>& gVec)
+449a396,397
+>         
+>         
+452,453d399
+<             std::sort((*it).commands.begin(), (*it).commands.end());
+<             
+467c413
+<                 glBindVertexArrayOES(vao);
+---
+>                 BindVAO(vao);
+481c427
+<                 
+---
+>                     
+491,501c437,447
+<              //TODO: Replace with light component.
+<              /*{
+<                 int lp = currentShader.GetUniform(e::kVertexUniformLightPos);
+<                
+<                 
+<                 if(lp > -1)
+<                     glUniform4f(lp, 35.f ,40.f,35.0f,1.f);
+<             
+<                 
+<                 eglGetError();
+<             }*/
+---
+>             // TODO: Replace with light component.
+>              {
+>              int lp = currentShader.GetUniform(e::kVertexUniformLightPos);
+>              
+>              
+>              if(lp > -1)
+>              glUniform4f(lp, 65.f ,80.f,65.0f,1.f);
+>              
+>              
+>              eglGetError();
+>              }
+505d450
+<                 if((stage == e::kRenderStageShadows && (*jt).state.shadowmap) || stage != e::kRenderStageShadows) {
+507,509c452
+<                     SetUniforms((*jt).uniforms,currentShader,targetShader);
+<                     eglGetError();
+<                     glDrawElements(GL_TRIANGLES, (*jt).iboSize , GL_UNSIGNED_SHORT, (void*)((*jt).iboOffset*sizeof(short)));
+---
+>                 SetUniforms((*jt).uniforms,currentShader,targetShader);
+511c454
+<                     eglGetError();
+---
+>                 glDrawElements(GL_TRIANGLES, (*jt).iboSize , GL_UNSIGNED_SHORT, (void*)((*jt).iboOffset*sizeof(short)));
+513c456
+<                 }
+---
+>                 eglGetError();
+517c460
+< 
+---
+>         
+521c464
+<     GLES2Render::Render() 
+---
+>     GL32Render::Render() 
+536,537c479,480
+<         if ( mOptions & RenderOptions_ShadowMaps )
+<             RenderShadowMaps(gVec);
+---
+>         if(mOptions & RenderOptions_StenciledShadowVolumes) 
+>             RenderShadows(gVec);
+539,543c482
+<         if( mOptions & RenderOptions_StenciledShadowVolumes) 
+<             RenderStencilShadows(gVec);
+<         
+<         else {
+<          
+---
+>         else 
+545c484
+<         }
+---
+>         
+549c488
+<     GLES2Render::ClearRenderStack() 
+---
+>     GL32Render::ClearRenderStack() 
+552c491
+< 
+---
+>         
+555c494
+<     GLES2Render::SetViewport(int x, int y, int w, int h) 
+---
+>     GL32Render::SetViewport(int x, int y, int w, int h) 
+567c506,512
+<     GLES2Render::LoadShader(std::string & vertex_file, std::string & fragment_file, std::map<std::string, int>& attribs, std::map<std::string, int>& uniforms, std::string defines)
+---
+>     GL32Render::LoadShader(std::string & vertex_file, std::string & fragment_file, std::map<std::string, int>& attribs, std::map<std::string, int>& uniforms, std::string defines)
+>     { 
+>         std::string s="";
+>         return LoadShader(vertex_file,s,fragment_file,attribs,uniforms);
+>     }
+>     unsigned 
+>     GL32Render::LoadShader(std::string &vertex_file, std::string &geometry_file, std::string &fragment_file, std::map<std::string, int>& attribs, std::map<std::string, int>& uniforms, std::string defines)
+569,573c514,516
+<         if(mShaderManager.ShaderLoaded(vertex_file + fragment_file + defines, uniforms)) {
+<             mShaderManager.RetainShader( mShaderManager.GetShader(vertex_file + fragment_file + defines));
+<             return mShaderManager.GetShader(vertex_file + fragment_file + defines).name;
+<         }
+<         D_PRINT("Generating New Shader for %s", vertex_file.c_str());
+---
+>         if(mShaderManager.ShaderLoaded(vertex_file + fragment_file, uniforms))
+>             return mShaderManager.GetShader(vertex_file + fragment_file).name;
+>         
+577c520
+<        // D_PRINT("%s: %s", vertex_file.c_str(), vs.c_str());
+---
+>         // D_PRINT("%s: %s", vertex_file.c_str(), vs.c_str());
+582c525
+<         const char * cstr [] = { defines.c_str(), vs.c_str() };
+---
+>         const char * cstr = vs.c_str();
+584c527
+<         glShaderSource(vshad, 2, cstr, NULL);
+---
+>         glShaderSource(vshad, 1, &cstr, NULL);
+588c531
+<         cstr[1] = fs.c_str();
+---
+>         cstr = fs.c_str();
+590c533
+<         glShaderSource(fshad, 2, cstr, NULL);
+---
+>         glShaderSource(fshad, 1, &cstr, NULL);
+609c552
+< 
+---
+>             
+611c554
+< 
+---
+>             
+613c556
+<         
+---
+>         glBindFragDataLocation(prog,0,e::kFragmentOut.c_str());
+622c565
+< 
+---
+>         
+630c573
+<            
+---
+>             
+640c583
+<         s.filename = vertex_file + fragment_file + defines;
+---
+>         s.filename = vertex_file + fragment_file;
+647c590
+<         return prog;                
+---
+>         return prog;  
+650c593
+<     GLES2Render::DeleteShader(unsigned int shader)
+---
+>     GL32Render::DeleteShader(unsigned int shader)
+652,655c595,597
+<         if(mShaderManager.RemoveShader(mShaderManager.GetShader(shader)))
+<         {   
+<             //glDeleteShader(shader);
+<         }
+---
+>         mShaderManager.RemoveShader(mShaderManager.GetShader(shader));
+>         glDeleteShader(shader);
+>         eglGetError();
+659c601
+<     GLES2Render::GenerateFBO(e::RenderStage r, size_t w, size_t h)
+---
+>     GL32Render::GenerateFBO(e::RenderStage r, size_t w, size_t h)
+662,663c604,605
+<        
+<         GLuint tex;
+---
+>         
+>         GLuint tex[3];
+668c610
+<         glGenTextures(1, &tex);
+---
+>         glGenTextures(3, tex);
+671c613
+<         glBindTexture(GL_TEXTURE_2D, tex);
+---
+>         glBindTexture(GL_TEXTURE_2D, tex[0]);
+677c619
+<         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w,h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+---
+>         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mCurrentViewport.w, mCurrentViewport.h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+679,685c621,622
+<         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, tex, 0);
+<         
+<         glBindRenderbuffer(GL_RENDERBUFFER, rbo);
+<         glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT16, w, h);
+<         glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, rbo);
+<         
+<         /*glBindTexture(GL_TEXTURE_2D, tex[1]);
+---
+>         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, tex[0], 0);
+>         glBindTexture(GL_TEXTURE_2D, tex[1]);
+693,699c630,636
+<        */
+<        /* glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+<         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+<         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+<         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+<         glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, mCurrentViewport.w, mCurrentViewport.h, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, NULL);
+<         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_TEXTURE_2D, tex[2], 0);*/
+---
+>         
+>         /* glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+>          glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+>          glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+>          glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+>          glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, mCurrentViewport.w, mCurrentViewport.h, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, NULL);
+>          glFramebufferTexture2D(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_TEXTURE_2D, tex[2], 0);*/
+703,705c640,642
+<         f.colorBufferTex = tex;
+<         //f.depthBufferTex = tex[1];
+<         //f.stencilBufferTex = tex[2];
+---
+>         f.colorBufferTex = tex[0];
+>         f.depthBufferTex = tex[1];
+>         f.stencilBufferTex = tex[2];
+709d645
+<         eglCheckFramebufferStatus();
+711c647,648
+<        // return fbo;
+---
+>         eglGetError();
+>         // return fbo;
+714c651,666
+<     GLES2Render::SetRenderStage(e::RenderStage stage, std::vector<UniformData> parameters)
+---
+>     GL32Render::SetUniform(int shader_name, UniformData_ptr ud)
+>     {
+>         for(auto it = mUniforms.begin() ; it != mUniforms.end() ; ++it)
+>         {
+>             if((*it).uniform->name == ud->name) {
+>                 (*it).uniform = ud;
+>                 return;
+>             }
+>         }
+>         UniformPair up ;
+>         up.shader_id = shader_name;
+>         up.uniform = ud;
+>         mUniforms.push_back(up);
+>     }
+>     void
+>     GL32Render::SetRenderStage(e::RenderStage stage, std::vector<UniformData> parameters)
+720c672
+<         GenerateFBO(stage,FBO_WIDTH,FBO_HEIGHT);
+---
+>         //GenerateFBO(stage,FBO_WIDTH,FBO_HEIGHT);
+723,724c675,677
+<     }
+< }
+\ No newline at end of file
+---
+>     };
+>     
+> };
+\ No newline at end of file
