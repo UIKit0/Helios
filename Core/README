@@ -16,10 +16,3 @@ of the same type, instead of processing being done one entity at a time.  This s
 Additionally, it is the goal of this project to be able to dynamically create entities of a variety of types with XML, JSON, or Script information.
 
 
-
-COMPONENTS TODO:
-===============
-
-- SceneEventIn, SceneEventOut :: Gets events from scene, promotes entity's events to scene
-- LayerEventIn, LayerEventOut :: Gets events from layer, promotes entity's events to layer
-- CameraComponent :: Entity controls the camera (should be marked active/inactive for multiple CameraComponent entities)
