@@ -12,9 +12,7 @@
 #include <iostream>
 #include <stdio.h>
 
-#define ui64_max 0xFFFFFFFFFFFFFFFF
-#define ui32_max 0xFFFFFFFF
-#define ui16_max 0xFFFF
+#include <limits.h>
 
 #define USE_QUATERNIONS 0
 
