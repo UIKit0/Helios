@@ -40,7 +40,7 @@ int main()
         CFStringGetCString( str, path, FILENAME_MAX, kCFStringEncodingASCII );
         CFRelease(str);
         
-        helios::SceneManager::Inst().Setup(render,std::string(path));
+        helios::SceneManager::Inst().Setup(render,std::string(path) + "/Contents/Resources");
         
     }
     while ( running )

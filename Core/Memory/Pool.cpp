@@ -53,7 +53,7 @@ namespace helios
     {
         mMutex.lock();
         
-        size = ( size + 31 ) & ~31;   // Align to 32-bytes.
+        size = ( size + 15 ) & ~15;   // Align to 16-bytes.
         
         if(block[type] == NULL) 
             allocate_pool(type,size); // Allocate a new pool if there isn't one for this component type
