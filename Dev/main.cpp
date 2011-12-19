@@ -4,6 +4,9 @@
 #include <string>
 #include <CoreFoundation/CoreFoundation.h>
 #include <stdint.h>
+
+#include "Scene/BasicScene.h"
+
 int main()
 {
     GLint running = GL_TRUE;
@@ -43,6 +46,10 @@ int main()
         helios::SceneManager::Inst().Setup(render,std::string(path) + "/Contents/Resources");
         
     }
+    
+    helios::SceneManager::Inst().RegisterScene("BasicScene", new helios_dev::BasicScene() );
+    helios::SceneManager::Inst().SwitchScene("BasicScene");
+    
     while ( running )
     {
         uint64_t t (glfwGetTime() * 1.0e6);

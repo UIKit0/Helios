@@ -1,6 +1,6 @@
 include ../Makefile.inc
 
-SRC = main.cpp
+SRC = main.cpp ./Scene/BasicScene.cpp ./Layer/BasicLayer.cpp
 FLAGS = $(INCLUDES) -stdlib=libc++ -std=c++0x $(DEBUG) -framework OpenGL -framework Cocoa  -DDEBUG -lHelios -L.. -lSOIL -L$(LIBDIR)/SOIL/src
 OUT = helios_dev
 all: dev
