@@ -6,6 +6,16 @@ namespace helios_dev
 {
     class BasicLayer : public helios::BaseLayer
     {
+        
+    private:
+        void LoadMS3D(std::string &file,
+                             std::vector<helios::Vertex>& vertices, 
+                             std::vector<unsigned short>& indices, 
+                             std::vector<helios::s::MaterialGroup>& materials,
+                             std::vector<helios::s::Joint>& joints);
+        
+        void quaternionFromEuler(glm::quat& q, float roll, float pitch, float yaw);
+        
     public:
         
         BasicLayer(helios::IScene& owner);
