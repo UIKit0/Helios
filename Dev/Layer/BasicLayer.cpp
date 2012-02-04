@@ -27,7 +27,7 @@ namespace helios_dev
         std::string file =  b_folder + "/ninja.ms3d";
 
         LoadMS3D(file, verts, ind, mats, joints);
-        
+
         std::map<std::string, int> attribs;
         std::map<std::string, int> uniforms;
 
@@ -50,6 +50,10 @@ namespace helios_dev
 
         mCurrentShader = mRender->LoadShader(vert,frag,attribs,uniforms);
 
+        for ( auto iter = uniforms.begin();
+              iter != uniforms.end(); ++iter )
+              std::cout << iter->first << '\t' << iter->second << '\n';
+              
         int vbo = mRender->GenerateVBO(&verts[0], sizeof(helios::Vertex), sizeof(helios::Vertex) * verts.size());
         int ibo = mRender->GenerateIBO(&ind[0], ind.size());
 
@@ -62,25 +66,26 @@ namespace helios_dev
         vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribDiffuseColor], helios::VAOObj::R_UBYTE, 4, sizeof(helios::Vertex), 24, 1}));
 
         int vao = mRender->GenerateVAO(vaoobj, vbo);
-        {
+       {
             BasicEntity* e = new BasicEntity(this, glm::vec3(0.f,0.f,0.f), vao, vbo, ibo, uniforms[helios::e::kVertexUniformModelView],
-            uniforms[helios::e::kVertexUniformProjection],
-            uniforms[helios::e::kVertexUniformNormalMat], mCurrentShader);
-            
+                uniforms[helios::e::kVertexUniformProjection],
+                uniforms[helios::e::kVertexUniformNormalMat], mCurrentShader);
+
             helios::RenderableComponent* rc = (helios::RenderableComponent*)e->GetComponent(helios::e::kComponentRenderable)[0];
             helios::SkeletonComponent * sc = (helios::SkeletonComponent*)e->GetComponent(helios::e::kComponentSkeleton)[0];
-            
+
             for( auto it = mats.begin() ; it != mats.end() ; ++it)
             {
                 (*it).ibo = ibo;
 
                 rc->AddMaterialGroup((*it));
             }
-            
+
             for ( auto it = joints.begin() ; it != joints.end() ; ++it)
             {
                 sc->AddJoint((*it));
             }
+            D_PRINT("Joint uniform %d", uniforms[helios::e::kVertexUniformJoints]);
             sc->SetUniformLocation(uniforms[helios::e::kVertexUniformJoints]);
             sc->SetDefaultAnimation(2,16, 30.f);
             mEntities.push_back(e);
@@ -89,7 +94,7 @@ namespace helios_dev
             CameraEntity * e = new CameraEntity(this,glm::vec3(0.,0.,0.),  glm::vec3(0.,10.,15.), glm::vec3(0.,-.25,-1.), glm::vec3(0.,1.,0.));
             mEntities.push_back(e);
         }
-        
+
     }
 
     void
@@ -102,12 +107,20 @@ namespace helios_dev
         BasicLayer::Render(uint64_t t)
     {
         mRender->ClearViewport();
-             
+
         BaseLayer::Render(t);
     }
 
+    void
+        BasicLayer::SetViewport( int x, int y, int w, int h, int dpi ) 
+    {
+        BaseLayer::SetViewport(x, y, w, h);
+        float aspect_w = (float)w/(float)h;
+        mP = glm::infinitePerspective (45.f, aspect_w, 0.1f);
+    }
+
     void 
-    BasicLayer::quaternionFromEuler(glm::quat& q, float roll, float pitch, float yaw)
+        BasicLayer::quaternionFromEuler(glm::quat& q, float roll, float pitch, float yaw)
     {
         float cr = cosf(roll / 2.f);
         float sr = sinf(roll / 2.f);

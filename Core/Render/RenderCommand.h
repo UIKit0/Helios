@@ -40,7 +40,12 @@ namespace helios
         int name;
         
         union {
-            uint32_t ptr[16];
+            #ifdef _LP64
+                uint64_t ptr[8];
+            #else
+                // needs to be changed for windows which is IL32P64
+                uint32_t ptr[16];
+            #endif
             float data[16];
         };
         size_t size;

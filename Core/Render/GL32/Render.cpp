@@ -277,7 +277,6 @@ namespace helios
         {
             UniformData ud = (*(*jt));
             int name = ud.name;
-            
             if( currentShader.name != targetShader.name )
             {
                 name = currentShader.GetRemappedUniform(targetShader, name);

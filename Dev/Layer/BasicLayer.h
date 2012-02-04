@@ -23,6 +23,7 @@ namespace helios_dev
         
         void onActive(uint64_t t);
         void onDeactive();
+        void SetViewport( int x, int y, int w, int h, int dpi = 72 ) ;
         void Render(uint64_t t);
     };
 };
