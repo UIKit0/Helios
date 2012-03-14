@@ -1,13 +1,14 @@
-Helios Development
+Copyright (c) 2011-2012, James Hurley
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
 ------------------
 
-I have no real license for this, I probably should.  I will make it MIT since I'm not really pro-GPL, but that will mean updating my files with the license at some point.  I will kick that can down the road later.
 
-
-Right now this project relies on BOOT 1.46 or higher, GLM 0.9.2.3 or higher, and SOIL for image loading.  I really don't like SOIL, so I will be getting rid of it.  I plan on writing my own math library down the road, so I may ditch GLM as well.  BOOST is being used for some features [such as smart pointers] that can be replaced as C++11 support gets better, but will stay in for ptrees.
-
-Currently this project uses a single thread, but moving to multi-threaded shouldn't be too painful.
-
-The goal of this project is my own education.  I'm intending for it to be an entity-component pattern based engine, and I'm hoping to learn a great deal about game engine architecture and rendering techniques.  I've already put several months of work into this, and will continue on it probably for at least another year before it will have many of the features I want.
-
-Feel free to follow or fork or point out how bad I suck.
+This is a hobby project that has very slow development; ie. When I have time to look at it.
