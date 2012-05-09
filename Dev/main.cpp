@@ -18,27 +18,30 @@ void GLFWCALL mouseButtonCallback(int b, int a)
 {
     printf("Mousebutton: %d\n",b);
 }
-typedef KeyEvent boost::shared_ptr<helios::HEvent<helios::KeyEvent> >;
+
 void GLFWCALL keyCallback(int k, int a)
 {
+    typedef boost::shared_ptr<helios::HEvent<helios::KeyEvent> > KeyEvent_t;
+    
     helios::KeyEvent ke;
+    
     ke.keyCode=k;
     printf("Keycode: %d\n", k);
     if(k > GLFW_KEY_SPECIAL+30 && k < GLFW_KEY_SPECIAL+37)
     {
         ke.mask = uint16_t(1 << (k - (GLFW_KEY_SPECIAL+31))) << 16;
-        KeyEvent p(new helios::HEvent<helios::KeyEvent> (helios::e::kEventTargetKeyboard, helios::e::kEventKeyModifierChanged, ke ) );
+        KeyEvent_t p(new helios::HEvent<helios::KeyEvent> (helios::e::kEventTargetKeyboard, helios::e::kEventKeyModifierChanged, ke ) );
         helios::SceneManager::Inst().PushEvent( p );
     
     }
     else if ( a == GLFW_PRESS )
     {
-        KeyEvent p(new helios::HEvent<helios::KeyEvent>  ( helios::e::kEventTargetKeyboard, helios::e::kEventKeyDown, ke ));
+        KeyEvent_t p(new helios::HEvent<helios::KeyEvent>  ( helios::e::kEventTargetKeyboard, helios::e::kEventKeyDown, ke ));
         helios::SceneManager::Inst().PushEvent( p ); 
         
     } else {
         
-        KeyEvent p(new helios::HEvent<helios::KeyEvent>  ( helios::e::kEventTargetKeyboard, helios::e::kEventKeyUp, ke ));
+        KeyEvent_t p(new helios::HEvent<helios::KeyEvent>  ( helios::e::kEventTargetKeyboard, helios::e::kEventKeyUp, ke ));
         helios::SceneManager::Inst().PushEvent( p );
         
     }
