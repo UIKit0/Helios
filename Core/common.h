@@ -46,89 +46,94 @@ namespace helios
 {
     namespace e
     {
-        std::string const kComponentBase       = "com.helios.component.Base";
-        std::string const kComponentRenderable = "com.helios.component.Renderable";
-        std::string const kComponentPosition   = "com.helios.component.Position";
-        std::string const kComponentScriptable = "com.helios.component.Scriptable";
-        std::string const kComponentTouchable  = "com.helios.component.Touchable";
-        std::string const kComponentPhysics    = "com.helios.component.Physics";
-        std::string const kComponentSkeleton   = "com.helios.component.Skeleton";
-        std::string const kComponentNetwork    = "com.helios.component.Network";
-        std::string const kComponentCamera     = "com.helios.component.Camera";
-        std::string const kComponentRespondsToKeyboard = "com.helios.component.Keyboard";
-        std::string const kComponentTextureAnimation = "com.helios.component.TextureAnimation";
+        extern std::string const kComponentBase       ;
+        extern std::string const kComponentRenderable ;
+        extern std::string const kComponentPosition   ;
+        extern std::string const kComponentScriptable ;
+        extern std::string const kComponentTouchable  ;
+        extern std::string const kComponentPhysics    ;
+        extern std::string const kComponentSkeleton   ;
+        extern std::string const kComponentNetwork    ;
+        extern std::string const kComponentCamera     ;
+        extern std::string const kComponentRespondsToKeyboard;
+        extern std::string const kComponentTextureAnimation;
         
-        std::string const kLayerBase           = "com.helios.layer.Base";        
+        extern std::string const kLayerBase           ;        
         
-        std::string const kEventTargetTouch    = "com.helios.eventtarget.Touch";
-        std::string const kEventTargetTouchHit = "com.helios.eventtarget.TouchHit";
-        std::string const kEventTargetTime     = "com.helios.eventtarget.Time";
-        std::string const kEventTargetBase     = "com.helios.eventtarget.Base";
-        std::string const kEventTargetRender   = "com.helios.eventtarget.Render";
-        std::string const kEventTargetMatrix   = "com.helios.eventtarget.Matrix";
-        std::string const kEventTargetPosition = "com.helios.eventtarget.Position";
-        std::string const kEventTargetUniformData = "com.helios.eventtarget.UniformData";
-        std::string const kEventTargetKeyboard = "com.helios.eventtarget.Keyboard";
-        std::string const kEventTargetAnimation= "com.helios.eventtarget.Animation";
-        std::string const kEventTargetTexture  = "com.helios.eventtarget.Texture";
+        extern std::string const kEventTargetTouch    ;
+        extern std::string const kEventTargetTouchHit ;
+        extern std::string const kEventTargetTime     ;
+        extern std::string const kEventTargetBase     ;
+        extern std::string const kEventTargetRender   ;
+        extern std::string const kEventTargetMatrix   ;
+        extern std::string const kEventTargetPosition ;
+        extern std::string const kEventTargetUniformData ;
+        extern std::string const kEventTargetKeyboard  ;
+        extern std::string const kEventTargetMouse     ;
+        extern std::string const kEventTargetAnimation ;
+        extern std::string const kEventTargetTexture   ;
         
-        std::string const kEventTextureMatrix  = "com.helios.event.TextureMatrix";
-        std::string const kEventTextureMix     = "com.helios.event.TextureMix";
-        std::string const kEventAnimationStart = "com.helios.event.AnimationStart";
-        std::string const kEventAnimationEnd   = "com.helios.event.AnimationEnd";
+        extern std::string const kEventTextureMatrix  ;
+        extern std::string const kEventTextureMix     ;
+        extern std::string const kEventAnimationStart ;
+        extern std::string const kEventAnimationEnd   ;
         
-        std::string const kEventKeyDown        = "com.helios.event.KeyDown";
-        std::string const kEventKeyUp          = "com.helios.event.KeyUp";
-        std::string const kEventKeyModifierChanged = "com.helios.event.KeyModifierChanged";
+        extern std::string const kEventKeyDown        ;
+        extern std::string const kEventKeyUp          ;
+        extern std::string const kEventKeyModifierChanged ;
         
-        std::string const kEventTouchBegin     = "com.helios.event.TouchBegin";
-        std::string const kEventTouchEnd       = "com.helios.event.TouchEnd";
-        std::string const kEventTouchMoved     = "com.helios.event.TouchMoved";
-        std::string const kEventTouchCancelled = "com.helios.event.TouchCancelled";
+        extern std::string const kEventMousePos       ;
+        extern std::string const kEventMouseButtonDown;
+        extern std::string const kEventMouseButtonUp  ;
         
-        std::string const kEventBase           = "com.helios.event.Base";
-        std::string const kEventRenderCommand  = "com.helios.event.RenderCommand";
-        std::string const kEventMatrix         = "com.helios.event.Matrix";
-        std::string const kEventUniformData       = "com.helios.event.UniformData";
+        extern std::string const kEventTouchBegin     ;
+        extern std::string const kEventTouchEnd       ;
+        extern std::string const kEventTouchMoved     ;
+        extern std::string const kEventTouchCancelled ;
         
-        std::string const kEventMatrixModelView     = "com.helios.event.MatrixModelView";
-        std::string const kEventMatrixProjection    = "com.helios.event.MatrixProjection";
-        std::string const kEventMatrixCamera        = "com.helios.event.MatrixCamera";
+        extern std::string const kEventBase           ;
+        extern std::string const kEventRenderCommand  ;
+        extern std::string const kEventMatrix         ;
+        extern std::string const kEventUniformData    ;
         
-        std::string const kEventPositionMatrix = "com.helios.event.MatrixPosition";
-        std::string const kEventTime           = "com.helios.event.Time";
+        extern std::string const kEventMatrixModelView;
+        extern std::string const kEventMatrixProjection;
+        extern std::string const kEventMatrixCamera ;
         
-        std::string const kSceneBase           = "com.helios.scene.Base";
+        extern std::string const kEventPositionMatrix;
+        extern std::string const kEventTime           ;
+        
+        extern std::string const kSceneBase           ;
         
         
-        std::string const kVertexUniformModelView  = "UNIFORM_MV";
-        std::string const kVertexUniformProjection = "UNIFORM_P";
-        std::string const kVertexUniformNormalMat  = "UNIFORM_NM";
-        std::string const kVertexUniformTexMat     = "UNIFORM_TEXMAT";
-        std::string const kVertexUniformJoints     = "UNIFORM_JOINTS";
-        std::string const kVertexUniformLightPos   = "UNIFORM_LIGHTPOS";
+        extern std::string const kVertexUniformModelView  ;
+        extern std::string const kVertexUniformProjection ;
+        extern std::string const kVertexUniformNormalMat  ;
+        extern std::string const kVertexUniformTexMat     ;
+        extern std::string const kVertexUniformJoints     ;
+        extern std::string const kVertexUniformLightPos   ;
         
-        std::string const kFragmentUniformSampler0 = "UNIFORM_SAMPLER0";
-        std::string const kFragmentUniformSampler1 = "UNIFORM_SAMPLER1";
-        std::string const kFragmentUniformSampler2 = "UNIFORM_SAMPLER2";
-        std::string const kFragmentUniformSampler3 = "UNIFORM_SAMPLER3";
-        std::string const kFragmentUniformSampler4 = "UNIFORM_SAMPLER4";
-        std::string const kFragmentUniformSampler5 = "UNIFORM_SAMPLER5";
-        std::string const kFragmentUniformSampler6 = "UNIFORM_SAMPLER6";
-        std::string const kFragmentUniformSampler7 = "UNIFORM_SAMPLER7";
-        std::string const kFragmentUniformShadowmap0 = "UNIFORM_SHADOWMAP0";
+        extern std::string const kFragmentUniformSampler0 ;
+        extern std::string const kFragmentUniformSampler1 ;
+        extern std::string const kFragmentUniformSampler2 ;
+        extern std::string const kFragmentUniformSampler3 ;
+        extern std::string const kFragmentUniformSampler4 ;
+        extern std::string const kFragmentUniformSampler5 ;
+        extern std::string const kFragmentUniformSampler6 ;
+        extern std::string const kFragmentUniformSampler7 ;
+        extern std::string const kFragmentUniformShadowmap0;
         
-        std::string const kFragmentUniformTimeSinceStart = "UNIFORM_TIME_SINCE_START";
+        extern std::string const kFragmentUniformTimeSinceStart ;
         
-        std::string const kVertexAttribPosition    = "ATTR_POS";
-        std::string const kVertexAttribNormal      = "ATTR_NORM";
-        std::string const kVertexAttribDiffuseColor= "ATTR_DIFFUSE";
-        std::string const kVertexAttribTexCoord    = "ATTR_TEX";
-        std::string const kVertexAttribBoneId      = "ATTR_BONEID";
-        std::string const kVertexAttribNoExtrude   = "ATTR_NO_EXTRUDE";
-        std::string const kVertexAttribNoBones     = "ATTR_NO_BONES"; 
+        extern std::string const kVertexAttribPosition    ;
+        extern std::string const kVertexAttribNormal      ;
+        extern std::string const kVertexAttribDiffuseColor;
+        extern std::string const kVertexAttribTexCoord    ;
+        extern std::string const kVertexAttribBoneId      ;
+        extern std::string const kVertexAttribNoExtrude   ;
+        extern std::string const kVertexAttribNoBones     ;
         // For use with OpenGL 3.2+
-        std::string const kFragmentOut             = "OUT_FRAG";
+        extern std::string const kFragmentOut             ;
         
         enum AttribPositions
         {

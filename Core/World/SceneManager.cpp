@@ -55,6 +55,11 @@ namespace helios
         
     }
     void
+    SceneManager::PushEvent(IEvent_ptr e)
+    {
+        mCurrentScene->PushEvent(e);
+    }
+    void
     SceneManager::onScreenTouchBegan(HEvent<Touches>& e)
     {
        

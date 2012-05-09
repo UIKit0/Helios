@@ -79,6 +79,10 @@ namespace helios
         IScene*              GetScene(std::string name) { return mScenes[name]; };
         
        // ILayer*              CurrentLayer() { return mCurrentLayer; } ;
+       
+       // TODO: Replace keyboard/touch events with PushEvent
+        void                 PushEvent(IEvent_ptr e);
+        
         void                 onScreenTouchBegan(helios::HEvent<helios::Touches>& e);
         void                 onScreenTouchMoved(helios::HEvent<helios::Touches>& e);
         void                 onScreenTouchEnded(helios::HEvent<helios::Touches>& e);

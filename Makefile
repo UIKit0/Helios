@@ -11,8 +11,12 @@ all: dir helios archive
 dir: 
 	-mkdir objects
 	
-helios: components memory render scene world
+helios: common components memory render scene world
 
+common: ./Core/common.o
+	$(CXX) $(CXXFLAGS) ./Core/common.cpp
+	cp ./Core/*.o objects
+	
 components: 
 	$(MAKE) -C $(COMPONENTS_DIR)
 	cp $(COMPONENTS_DIR)/*.o objects
@@ -41,3 +45,5 @@ clean:
 	$(MAKE) -C $(RENDER_DIR) clean
 	-rm objects/*.o
 	-rm libHelios.a
+	-rm *.o
+	

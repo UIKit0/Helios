@@ -135,6 +135,7 @@ namespace helios_dev
         q.z = (cr * cp * sy - sr * sp * cy);
     }
 
+// TODO: Create wrapper class to do this work.
     void
         BasicLayer::LoadMS3D(std::string &file,
         std::vector<helios::Vertex>& vertices, 
@@ -307,78 +308,4 @@ namespace helios_dev
 
 
     }
-      /*   std::map<std::string, int> attribs;
-      std::map<std::string, int> uniforms;
-
-attribs[helios::e::kVertexAttribPosition] = helios::e::kVertexAttribPositionPosition;
-attribs[helios::e::kVertexAttribNormal] = helios::e::kVertexAttribPositionNormal;
-attribs[helios::e::kVertexAttribDiffuseColor]  = helios::e::kVertexAttribPositionDiffuseColor;
-attribs[helios::e::kVertexAttribTexCoord] = helios::e::kVertexAttribPositionTexCoord;
-attribs[helios::e::kVertexAttribBoneId] = helios::e::kVertexAttribPositionBoneId;
-// attribs[helios::e::kVertexAttribNoExtrude] = helios::e::kVertexAttribPositionNoExtrude;
-attribs[helios::e::kVertexAttribNoBones]   = helios::e::kVertexAttribPositionNoBones;
-
-uniforms[helios::e::kVertexUniformModelView] = 0;
-uniforms[helios::e::kVertexUniformProjection] = 0;
-uniforms[helios::e::kVertexUniformNormalMat] = 0;
-uniforms[helios::e::kVertexUniformLightPos] = 0;
-uniforms[helios::e::kFragmentUniformSampler0] = 0;
-#if (USE_QUATERNIONS==1)
-uniforms["jointRot"] = 0;
-uniforms["jointTrans"] = 0;
-#else
-uniforms[helios::e::kVertexUniformJoints] = 0;
-
-#endif
-std::string vertex = b_folder + "/Diffuse.vsh";
-std::string fragment = b_folder + "/Diffuse.fsh";
-mCurrentShader = mRender->LoadShader(vertex,fragment,attribs,uniforms);
-
-{
-std::vector<helios::UniformData> ud;
-
-helios::UniformData u ( helios::UniformData::kUTVec3, uniforms[helios::e::kVertexUniformLightPos]);
-glm::vec4 up = mP * mMV * glm::vec4(0.f,1.f,1.f,1.f);
-u.SetData<glm::vec4>(up);
-ud.push_back(u);
-
-//   mRender->SetUniforms(ud);
-}
-
-
-*/
-
-         /* int vbo = mRender->GenerateVBO(&vertices[0], sizeof(helios::Vertex), sizeof(helios::Vertex) * vertices.size());
-         int ibo = mRender->GenerateIBO(&indices[0], indices.size());
-
-
-std::vector<helios::VAOObj> vaoobj;
-vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribPosition], helios::VAOObj::R_FLOAT, 4, sizeof(helios::Vertex), 0, 0 }));
-vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribNormal], helios::VAOObj::R_UBYTE, 3, sizeof(helios::Vertex), offsetof(helios::Vertex,n[0]), 1 }));
-vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribTexCoord], helios::VAOObj::R_USHORT, 2, sizeof(helios::Vertex), 16, 1}));
-vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribBoneId], helios::VAOObj::R_SHORT, 1, sizeof(helios::Vertex), 20, 0 }));
-//vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribNoExtrude], helios::VAOObj::R_UBYTE, 1, sizeof(helios::Vertex), 22, 0 }));
-vaoobj.push_back(helios::VAOObj({ attribs[helios::e::kVertexAttribNoBones], helios::VAOObj::R_UBYTE, 1, sizeof(helios::Vertex), offsetof(helios::Vertex, noBones), 0}));
-vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribDiffuseColor], helios::VAOObj::R_UBYTE, 4, sizeof(helios::Vertex), 24, 1}));
-
-int vao = mRender->GenerateVAO(vaoobj, vbo);
-TestEntity* te = new TestEntity(this, glm::vec3(0.f,0.f,0.f), vao, vbo, ibo, uniforms[helios::e::kVertexUniformModelView],
-uniforms[helios::e::kVertexUniformProjection],
-uniforms[helios::e::kVertexUniformNormalMat], mCurrentShader);
-mEntities.push_back(te);
-
-helios::RenderableComponent* rc = (helios::RenderableComponent*)te->GetComponent(helios::e::kComponentRenderable)[0];
-helios::SkeletonComponent * sc = (helios::SkeletonComponent*)te->GetComponent(helios::e::kComponentSkeleton)[0];
-
-for( auto it = materials.begin() ; it < materials.end() ; ++it)
-{
-(*it).ibo = ibo;
-
-rc->AddMaterialGroup((*it));
-} 
-sc->SetUniformLocation(uniforms[helios::e::kVertexUniformJoints]);
-sc->SetDefaultAnimation(2,16, 30.f);
-
-*/
-//sc->AddJoint((*it));
 }
