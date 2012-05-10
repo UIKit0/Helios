@@ -56,6 +56,7 @@ namespace helios
         extern std::string const kComponentNetwork    ;
         extern std::string const kComponentCamera     ;
         extern std::string const kComponentRespondsToKeyboard;
+        extern std::string const kComponentRespondsToMouse;
         extern std::string const kComponentTextureAnimation;
         
         extern std::string const kLayerBase           ;        

@@ -17,6 +17,7 @@
 #include <Component/SkeletonComponent.h>
 #include <Component/CameraComponent.h>
 #include <Component/RespondsToKeyboardComponent.h>
+#include <Component/RespondsToMouseComponent.h>
 #include <Component/TextureAnimationComponent.h>
 
 #endif

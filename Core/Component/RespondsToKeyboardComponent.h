@@ -3,13 +3,17 @@
 #define Helios_RespondsToKeyboardComponent_h
 
 #include <Component/BaseComponent.h>
-
+#include <Event/Touch.h>
 namespace helios
 {
     class RespondsToKeyboardComponent : public BaseComponent
     {
     private:
-        
+        std::vector<int> mCurrentKeys;
+        union {
+            modifier_flags_t mFlags;    
+            int16_t          mModifiers;
+        };
         std::map<uint32_t, uint32_t> mRemapTable;
         
     public:
@@ -20,6 +24,9 @@ namespace helios
         void Update(uint64_t) ;
         void Process();
         void DispatchEvents();
+        IEvent_ptr operator()() { 
+            
+        }
         
         void* operator new (size_t size, ILayer& layer)
         {

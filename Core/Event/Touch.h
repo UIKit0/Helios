@@ -60,21 +60,22 @@ namespace helios
         };
     };
     
+    typedef struct
+    {
+        uint16_t lshift_down: 1;
+        uint16_t rshift_down: 1;
+        uint16_t lctrl_down:  1;
+        uint16_t rctrl_down:  1;
+        uint16_t lalt_down:   1;
+        uint16_t ralt_down:   1;
+        uint16_t lcmd_down:   1;
+        uint16_t rcmd_down:   1;
+    } modifier_flags_t;
     struct KeyEvent
     {
         union {
             struct {
-                struct
-                {
-                    uint16_t lshift_down: 1;
-                    uint16_t rshift_down: 1;
-                    uint16_t lctrl_down:  1;
-                    uint16_t rctrl_down:  1;
-                    uint16_t lalt_down:   1;
-                    uint16_t ralt_down:   1;
-                    uint16_t lcmd_down:   1;
-                    uint16_t rcmd_down:   1;
-                } flags;
+                modifier_flags_t flags;
                 uint16_t keyCode;   
             };
             uint32_t mask;

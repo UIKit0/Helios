@@ -27,11 +27,6 @@ namespace helios
         virtual size_t UnRegisterLayer(std::string,ILayer*) = 0;
         virtual std::map<std::string,ILayer*> & GetLayers() = 0;
         
-        virtual void onScreenTouchBegan(HEvent<Touches>&) = 0;
-        virtual void onScreenTouchMoved(HEvent<Touches>&) = 0;
-        virtual void onScreenTouchEnded(HEvent<Touches>&) = 0;
-        virtual void onScreenTouchCanceled() = 0;
-        
         virtual void onActive(uint64_t) = 0;
         virtual void onDeactive() = 0;
         
@@ -44,12 +39,6 @@ namespace helios
         
         virtual void SetRenderer(IRender* renderer) = 0;
         virtual void SetViewport(short x, short y, short w, short h, int dpi) = 0;
-        
-        virtual void NetworkRecv(IEvent_ptr e) = 0;
-        virtual void NetworkSend(IEvent_ptr e) = 0;
-        virtual void onKeyDown(helios::HEvent<helios::KeyEvent>& k) = 0;
-        virtual void onKeyUp(helios::HEvent<helios::KeyEvent>& k) = 0;
-        virtual void onKeyModifierChanged(helios::HEvent<helios::KeyEvent>& k) = 0;
         
         virtual void PushEvent(IEvent_ptr e) = 0;
         virtual std::vector<IEvent_ptr> & GetEvents( std::string const & target) = 0;

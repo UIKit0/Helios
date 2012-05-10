@@ -1,6 +1,6 @@
 //
 //  BaseScene.h
-//  Qt3
+//  Helios
 //
 //  Created by James Hurley on 9/22/11.
 //
@@ -9,7 +9,6 @@
 #define Helios_BaseScene_h
 #include <Scene/IScene.h>
 #include <Layer/ILayer.h>
-//#include <Event/TouchEvent.h>
 #include <Render/IRender.h>
 #include <Event/Events.h>
 
@@ -33,6 +32,11 @@ namespace helios
         
         virtual void PushEvent(IEvent_ptr e) 
         {
+            for ( auto it = mLayers.begin() ; it != mLayers.end() ; ++ it) 
+            {
+                if((*it).second->IsActive())
+                    (*it).second->PushEvent(e);
+            }
             mEvents[e->GetTarget()].push_back(e);
         };
         virtual std::vector<IEvent_ptr> & GetEvents( std::string const & target) 
@@ -54,57 +58,6 @@ namespace helios
         { 
             return mLayers; 
         } ;
-        // ---------------------------------------------------------------------
-        virtual void onScreenTouchBegan(HEvent<Touches>& e) 
-        {
-            for ( auto it = mLayers.begin() ; it != mLayers.end() ; ++ it) 
-            {
-                if((*it).second->IsActive())
-                    (*it).second->onScreenTouchBegan(e);
-            }
-        };
-        // ---------------------------------------------------------------------
-        virtual void onScreenTouchMoved(HEvent<Touches>& e)  
-        {
-            for ( auto it = mLayers.begin() ; it != mLayers.end() ; ++ it) 
-            {
-                if((*it).second->IsActive())
-                    (*it).second->onScreenTouchMoved(e);
-            }
-        };
-        // ---------------------------------------------------------------------
-        virtual void onScreenTouchEnded(HEvent<Touches>& e)  
-        {
-            for ( auto it = mLayers.begin() ; it != mLayers.end() ; ++ it) 
-            {
-                if((*it).second->IsActive())
-                    (*it).second->onScreenTouchEnded(e);
-            }
-        };
-        // ---------------------------------------------------------------------
-        virtual void onScreenTouchCanceled() 
-        {
-            for ( auto it = mLayers.begin() ; it != mLayers.end() ; ++ it) 
-            {
-                if((*it).second->IsActive())
-                    (*it).second->onScreenTouchCanceled();
-            }
-        };
-        // ---------------------------------------------------------------------
-        virtual void onKeyDown(helios::HEvent<helios::KeyEvent>& k)
-        {
-            
-        };
-        // ---------------------------------------------------------------------
-        virtual void onKeyUp(helios::HEvent<helios::KeyEvent>& k)
-        {
-            
-        };
-        // ---------------------------------------------------------------------
-        virtual void onKeyModifierChanged(helios::HEvent<helios::KeyEvent>& k)
-        {
-            
-        };
         // ---------------------------------------------------------------------
         
         virtual void onActive(uint64_t time)
@@ -191,18 +144,7 @@ namespace helios
             mRenderer = renderer;
         };
         // ---------------------------------------------------------------------
-        virtual void NetworkRecv(IEvent_ptr e) 
-        {
-            for( auto it = mLayers.begin() ; it != mLayers.end() ; ++it )
-            {
-                if((*it).second->IsActive())
-                    (*it).second->NetworkRecv(e);
-            }
-        };
-        virtual void NetworkSend(IEvent_ptr e)
-        {
-            
-        };
+
     };
 };
 

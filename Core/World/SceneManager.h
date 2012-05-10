@@ -78,27 +78,13 @@ namespace helios
         IScene*              CurrentScene() { return mCurrentScene; } ;
         IScene*              GetScene(std::string name) { return mScenes[name]; };
         
-       // ILayer*              CurrentLayer() { return mCurrentLayer; } ;
-       
-       // TODO: Replace keyboard/touch events with PushEvent
         void                 PushEvent(IEvent_ptr e);
-        
-        void                 onScreenTouchBegan(helios::HEvent<helios::Touches>& e);
-        void                 onScreenTouchMoved(helios::HEvent<helios::Touches>& e);
-        void                 onScreenTouchEnded(helios::HEvent<helios::Touches>& e);
-        void                 onScreenTouchCancelled();
-        void                 onKeyDown(helios::HEvent<helios::KeyEvent>& k);
-        void                 onKeyUp(helios::HEvent<helios::KeyEvent>& k);
-        void                 onKeyModifierChanged(helios::HEvent<helios::KeyEvent>& k);
         
         void                 Render(uint64_t time);
         void                 FireUpdates(uint64_t time);
         void                 Process();
         void                 DispatchEvents();
         void                 UpdateLayer();
-        
-        void                 NetworkRecv(IEvent_ptr e);
-        void                 NetworkSend(IEvent_ptr e);
         
         void                 SetResourceFolder(std::string folder) { mResourceFolder = folder; };
         std::string const &  GetResourceFolder() const { return mResourceFolder; } ;

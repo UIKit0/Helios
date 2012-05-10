@@ -4,19 +4,33 @@
 #include <string>
 #include <CoreFoundation/CoreFoundation.h>
 #include <stdint.h>
-
+#include <utility>
 #include "Scene/BasicScene.h"
 
 #define W 684
 #define H 384
 
-void GLFWCALL mousePosCallback(int x, int y)
-{
-    printf("Mousepos: %d, %d\n",x,y);
-}
 void GLFWCALL mouseButtonCallback(int b, int a)
 {
+    typedef boost::shared_ptr<helios::HEvent<char> > MouseEvent_t;
     printf("Mousebutton: %d\n",b);
+    
+    if( a == GLFW_PRESS )
+    {
+        char m(b);
+        
+        MouseEvent_t p(new helios::HEvent<char>(helios::e::kEventTargetMouse, helios::e::kEventMouseButtonUp, m));
+        helios::SceneManager::Inst().PushEvent(p);
+    } 
+    else 
+    {
+        char m(b);
+        
+        MouseEvent_t p(new helios::HEvent<char>(helios::e::kEventTargetMouse, helios::e::kEventMouseButtonDown, m));
+        helios::SceneManager::Inst().PushEvent(p);
+        
+    }
+    
 }
 
 void GLFWCALL keyCallback(int k, int a)
@@ -26,22 +40,26 @@ void GLFWCALL keyCallback(int k, int a)
     helios::KeyEvent ke;
     
     ke.keyCode=k;
-    printf("Keycode: %d\n", k);
+    
     if(k > GLFW_KEY_SPECIAL+30 && k < GLFW_KEY_SPECIAL+37)
     {
-        ke.mask = uint16_t(1 << (k - (GLFW_KEY_SPECIAL+31))) << 16;
-        KeyEvent_t p(new helios::HEvent<helios::KeyEvent> (helios::e::kEventTargetKeyboard, helios::e::kEventKeyModifierChanged, ke ) );
+        
+        ke.mask = uint16_t( 1 << (k - (GLFW_KEY_SPECIAL+31) ) ) << 16;
+        KeyEvent_t p(new helios::HEvent<helios::KeyEvent>  ( helios::e::kEventTargetKeyboard, helios::e::kEventKeyModifierChanged, ke ) );
         helios::SceneManager::Inst().PushEvent( p );
     
     }
     else if ( a == GLFW_PRESS )
     {
-        KeyEvent_t p(new helios::HEvent<helios::KeyEvent>  ( helios::e::kEventTargetKeyboard, helios::e::kEventKeyDown, ke ));
+        
+        KeyEvent_t p(new helios::HEvent<helios::KeyEvent>  ( helios::e::kEventTargetKeyboard, helios::e::kEventKeyDown, ke ) );
         helios::SceneManager::Inst().PushEvent( p ); 
         
-    } else {
+    } 
+    else 
+    {
         
-        KeyEvent_t p(new helios::HEvent<helios::KeyEvent>  ( helios::e::kEventTargetKeyboard, helios::e::kEventKeyUp, ke ));
+        KeyEvent_t p(new helios::HEvent<helios::KeyEvent>  ( helios::e::kEventTargetKeyboard, helios::e::kEventKeyUp, ke ) );
         helios::SceneManager::Inst().PushEvent( p );
         
     }
@@ -72,7 +90,7 @@ int main()
     render->SetOptions(opt);
     glfwSetKeyCallback(keyCallback);
     glfwSetMouseButtonCallback(mouseButtonCallback);
-    glfwSetMousePosCallback(mousePosCallback);
+    //glfwSetMousePosCallback(mousePosCallback);
     
     {
         CFBundleRef mainBundle = CFBundleGetMainBundle();
@@ -100,6 +118,14 @@ int main()
         helios::SceneManager::Inst().Process();
         helios::SceneManager::Inst().Render(t);
         glfwSwapBuffers();
+        {
+            int x, y;
+            glfwGetMousePos(&x,&y);
+            std::pair<int,int> m(x,y);
+            boost::shared_ptr<helios::HEvent<std::pair<int,int> > > p(new helios::HEvent<std::pair<int,int> >(helios::e::kEventTargetMouse, helios::e::kEventMousePos, m));
+            helios::SceneManager::Inst().PushEvent(p);
+            
+        }
         running = !glfwGetKey( GLFW_KEY_ESC ) && glfwGetWindowParam(GLFW_OPENED);
     }
     

@@ -13,6 +13,7 @@ namespace helios
         extern std::string const kComponentNetwork    = "com.helios.component.Network";
         extern std::string const kComponentCamera     = "com.helios.component.Camera";
         extern std::string const kComponentRespondsToKeyboard = "com.helios.component.Keyboard";
+        extern std::string const kComponentRespondsToMouse = "com.helios.component.Mouse";
         extern std::string const kComponentTextureAnimation = "com.helios.component.TextureAnimation";
         
         extern std::string const kLayerBase           = "com.helios.layer.Base";        

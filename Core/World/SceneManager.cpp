@@ -60,44 +60,6 @@ namespace helios
         mCurrentScene->PushEvent(e);
     }
     void
-    SceneManager::onScreenTouchBegan(HEvent<Touches>& e)
-    {
-       
-        mCurrentScene->onScreenTouchBegan(e);
-    }
-    void                 
-    SceneManager::onScreenTouchMoved(HEvent<Touches>& e)
-    {
-        mCurrentScene->onScreenTouchMoved(e);
-    }
-    void                 
-    SceneManager::onScreenTouchEnded(HEvent<Touches>& e)
-    {
-        
-        mCurrentScene->onScreenTouchEnded(e);
-    }
-    void                 
-    SceneManager::onScreenTouchCancelled()
-    {
-       
-        mCurrentScene->onScreenTouchCanceled();
-    }
-    void                 
-    SceneManager::onKeyDown(helios::HEvent<helios::KeyEvent>& k)
-    {
-        
-    }
-    void                 
-    SceneManager::onKeyUp(helios::HEvent<helios::KeyEvent>& k)
-    {
-        
-    }
-    void                 
-    SceneManager::onKeyModifierChanged(helios::HEvent<helios::KeyEvent>& k)
-    {
-        
-    }
-    void
     SceneManager::SwitchScene(std::string name)
     {
         
@@ -160,14 +122,4 @@ namespace helios
         mCurrentScene->UpdateLayer();
     }
     
-    void                 
-    SceneManager::NetworkRecv(IEvent_ptr e)
-    {
-        mCurrentScene->NetworkRecv(e);
-    }
-    void                 
-    SceneManager::NetworkSend(IEvent_ptr e)
-    {
-        
-    }
 }

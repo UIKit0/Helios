@@ -109,46 +109,7 @@ namespace helios
             w = mScreen.w;
             h = mScreen.h;            
         };
-        // ---------------------------------------------------------------------
-        
-        virtual void onScreenTouchBegan(HEvent<Touches>& e)
-        {
-            
-           // mCurrentTouchEvent = e;
-            mEvents[e::kEventTargetTouch].push_back( boost::shared_ptr<HEvent<Touches> > ( new HEvent<Touches>(e)));
-        };
-        virtual void onScreenTouchMoved(HEvent<Touches>& e)
-        {
-            onScreenTouchBegan(e);
-        };
-        virtual void onScreenTouchEnded(HEvent<Touches>& e)
-        {
-            onScreenTouchBegan(e);
-        };
-        virtual void onScreenTouchCanceled()
-        {
-            
-            Touches touches;
-            HEvent<Touches> e(e::kEventTargetTouch, e::kEventTouchCancelled, touches);
-            onScreenTouchBegan(e);
-        };
-        // ---------------------------------------------------------------------
-        
-        virtual void onKeyDown(helios::HEvent<helios::KeyEvent>& k)
-        {
-            boost::shared_ptr<HEvent<helios::KeyEvent> > p( new helios::HEvent<helios::KeyEvent>(k) );
-            mEvents[e::kEventTargetKeyboard].push_back(p);
-        };
-        virtual void onKeyUp(helios::HEvent<helios::KeyEvent>& k)
-        {
-            boost::shared_ptr<HEvent<helios::KeyEvent> > p( new helios::HEvent<helios::KeyEvent>(k) );
-            mEvents[e::kEventTargetKeyboard].push_back(p);
-        };
-        virtual void onKeyModifierChanged(helios::HEvent<helios::KeyEvent>& k) 
-        {
-            boost::shared_ptr<HEvent<helios::KeyEvent> > p( new helios::HEvent<helios::KeyEvent>(k) );
-            mEvents[e::kEventTargetKeyboard].push_back(p);
-        };
+
         // ---------------------------------------------------------------------
         
         virtual void onActive(uint64_t time) 
@@ -355,16 +316,7 @@ namespace helios
         
         virtual std::map<std::string, int>& Uniforms() { return mUniforms[mCurrentShader]; };
         // ---------------------------------------------------------------------
-        
-        virtual void NetworkRecv(IEvent_ptr e) 
-        {
-            
-        };
-        virtual void NetworkSend(IEvent_ptr e) {
-            mOwner.NetworkSend(e);
-        };
-        // ---------------------------------------------------------------------
-        
+                
         virtual void PushEvent(IEvent_ptr e) 
         {
             mEvents[e->GetTarget()].push_back(e);

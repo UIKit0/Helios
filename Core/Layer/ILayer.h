@@ -32,15 +32,6 @@ namespace helios
         virtual void SetViewport ( int x, int y, int w, int h, int dpi = 72 ) = 0 ;
         virtual void GetViewport ( int& x, int& y, int &w, int &h) = 0;
         
-        
-        virtual void onScreenTouchBegan(HEvent<Touches>&) = 0;
-        virtual void onScreenTouchMoved(HEvent<Touches>&) = 0;
-        virtual void onScreenTouchEnded(HEvent<Touches>&) = 0;
-        virtual void onScreenTouchCanceled() = 0;
-        virtual void onKeyDown(helios::HEvent<helios::KeyEvent>& k) = 0;
-        virtual void onKeyUp(helios::HEvent<helios::KeyEvent>& k) = 0;
-        virtual void onKeyModifierChanged(helios::HEvent<helios::KeyEvent>& k) = 0;
-        
         virtual void onActive(uint64_t time) = 0;
         virtual void onDeactive() = 0;
         
@@ -66,9 +57,6 @@ namespace helios
         virtual unsigned GetCurrentVAO() = 0;
         
         virtual std::map<std::string, int>& Uniforms() = 0;
-        
-        virtual void NetworkRecv(IEvent_ptr e) = 0;
-        virtual void NetworkSend(IEvent_ptr e) = 0;
         
         virtual void PushEvent(IEvent_ptr e) = 0;
         virtual std::vector<IEvent_ptr> & GetEvents( std::string const & target) = 0;
