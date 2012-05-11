@@ -66,12 +66,28 @@ namespace helios
     void 
     PositionComponent::Update(uint64_t time) 
     { 
-        //mOwner.GetEvents(e::kEventTargetTime);
         mLastTime = mCurrentTime;
         
         if(mCurrentTime==0) mLastTime = time;
         
         mCurrentTime = time;
+        {
+            auto e = mOwner.GetEvents(e::kEventTargetAction);
+        
+            for ( auto it = e.begin() ; it != e.end() ; ++it )
+            {
+                if((*it)->GetName() == e::kActionMove) {
+                    glm::vec3 v = HEvent<glm::vec3>::GetData((*it));
+                    // TODO: save movement vector for Process pass
+                }
+                else if((*it)->GetName() == e::kActionRotate) {
+                    glm::quat q = HEvent<glm::quat>::GetData((*it));
+                    // TODO: save rotation quat for Process pass.
+                }
+            }
+        }
+        
+        
     }
     void 
     PositionComponent::MoveTo(glm::vec3 pos, float speed)

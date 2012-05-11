@@ -20,7 +20,6 @@ namespace helios
             if((*it)->GetName() == e::kEventMousePos)
             {
                 auto k = HEvent<std::pair<int, int> >::GetData((*it));
-                D_PRINT("-> Got pos: %d,%d\n",k.first,k.second);
             }
         }
         

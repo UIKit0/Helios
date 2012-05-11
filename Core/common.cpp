@@ -30,6 +30,7 @@ namespace helios
         extern std::string const kEventTargetMouse    = "com.helios.eventtarget.Mouse";
         extern std::string const kEventTargetAnimation= "com.helios.eventtarget.Animation";
         extern std::string const kEventTargetTexture  = "com.helios.eventtarget.Texture";
+        extern std::string const kEventTargetAction   = "com.helios.eventtarget.Action";
         
         extern std::string const kEventTextureMatrix  = "com.helios.event.TextureMatrix";
         extern std::string const kEventTextureMix     = "com.helios.event.TextureMix";
@@ -52,7 +53,7 @@ namespace helios
         extern std::string const kEventBase           = "com.helios.event.Base";
         extern std::string const kEventRenderCommand  = "com.helios.event.RenderCommand";
         extern std::string const kEventMatrix         = "com.helios.event.Matrix";
-        extern std::string const kEventUniformData       = "com.helios.event.UniformData";
+        extern std::string const kEventUniformData    = "com.helios.event.UniformData";
         
         extern std::string const kEventMatrixModelView     = "com.helios.event.MatrixModelView";
         extern std::string const kEventMatrixProjection    = "com.helios.event.MatrixProjection";
@@ -62,6 +63,9 @@ namespace helios
         extern std::string const kEventTime           = "com.helios.event.Time";
         
         extern std::string const kSceneBase           = "com.helios.scene.Base";
+        
+        extern std::string const kActionMove          = "com.helios.action.Move";   // i.e. vec3 describing movement direction
+        extern std::string const kActionRotate        = "com.helios.action.Rotate"; // i.e. quaternion describing rotation
         
         
         extern std::string const kVertexUniformModelView  = "UNIFORM_MV";

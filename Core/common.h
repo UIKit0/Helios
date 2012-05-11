@@ -73,6 +73,7 @@ namespace helios
         extern std::string const kEventTargetMouse     ;
         extern std::string const kEventTargetAnimation ;
         extern std::string const kEventTargetTexture   ;
+        extern std::string const kEventTargetAction    ;
         
         extern std::string const kEventTextureMatrix  ;
         extern std::string const kEventTextureMix     ;
@@ -105,6 +106,9 @@ namespace helios
         extern std::string const kEventTime           ;
         
         extern std::string const kSceneBase           ;
+        
+        extern std::string const kActionMove          ;   
+        extern std::string const kActionRotate        ;   
         
         
         extern std::string const kVertexUniformModelView  ;
