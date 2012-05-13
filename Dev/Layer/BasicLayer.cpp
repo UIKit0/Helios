@@ -91,7 +91,7 @@ namespace helios_dev
             mEntities.push_back(e);
         }
         {
-            CameraEntity * e = new CameraEntity(this,glm::vec3(0.,0.,0.),  glm::vec3(0.,10.,15.), glm::vec3(0.,-.25,-1.), glm::vec3(0.,1.,0.));
+            CameraEntity * e = new CameraEntity(this,glm::vec3(0.,5.,-15.),  glm::vec3(0.,0.,5.), glm::vec3(0.,0.,1.), glm::vec3(0.,1.,0.));
             mEntities.push_back(e);
         }
 
@@ -135,7 +135,7 @@ namespace helios_dev
         q.z = (cr * cp * sy - sr * sp * cy);
     }
 
-// TODO: Create wrapper class to do this work.
+// TODO: Create wrapper class to do this
     void
         BasicLayer::LoadMS3D(std::string &file,
         std::vector<helios::Vertex>& vertices, 

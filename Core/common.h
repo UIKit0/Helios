@@ -211,6 +211,20 @@ namespace helios
             unsigned short tex;
             
         };
+        
+        struct InputRemap
+        {
+            InputRemap(float _data[16], std::string const & _action, int _keyCode) : dataf(_data), action(_action), keyCode(_keyCode) {};
+            InputRemap(int _data[16], std::string const & _action, int _keyCode) : datai(_data), action(_action), keyCode(_keyCode) {};
+            
+            union
+            {
+                float dataf[16];
+                int datai[16];  
+            };
+            std::string const & action;
+            int keyCode;
+        };
 
     };
 };
