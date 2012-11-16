@@ -214,8 +214,12 @@ namespace helios
         
         struct InputRemap
         {
-            InputRemap(float _data[16], std::string const & _action, int _keyCode) : dataf(_data), action(_action), keyCode(_keyCode) {};
-            InputRemap(int _data[16], std::string const & _action, int _keyCode) : datai(_data), action(_action), keyCode(_keyCode) {};
+            InputRemap(float _data[16], std::string const & _action, int _keyCode) : action(_action), keyCode(_keyCode) {
+                memcpy(dataf,_data,16*sizeof(float));
+            };
+            InputRemap(int _data[16], std::string const & _action, int _keyCode) : action(_action), keyCode(_keyCode) {
+                memcpy(datai,_data,16*sizeof(int));
+            };
             
             union
             {

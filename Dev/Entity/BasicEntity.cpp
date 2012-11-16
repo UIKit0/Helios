@@ -11,6 +11,7 @@ namespace helios_dev
         helios::SkeletonComponent * sc = new ((*owner)) helios::SkeletonComponent((*this));
  
         // TODO: Amalgamate respond to touch/mouse/keyboard to input component?
+       
         helios::RespondsToKeyboardComponent * kc = new ((*owner)) helios::RespondsToKeyboardComponent((*this));
         
         helios::RespondsToMouseComponent * mc = new ((*owner)) helios::RespondsToMouseComponent((*this));

@@ -73,10 +73,11 @@ namespace helios
         //----------------------------------------------------------------------
         UniformData& operator= (UniformData const & u);
         //----------------------------------------------------------------------
-        UniformData() : data({0.f}), count(0) {};
+        UniformData() :  count(0) { memset(data,0,sizeof(data)); };
         //----------------------------------------------------------------------
-        UniformData(UniformType t, int n)  : data({0.f})
+        UniformData(UniformType t, int n)  
         {
+            memset(data,0,sizeof(data));
             type = t; 
             name = n ;
         };

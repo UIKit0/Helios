@@ -18,7 +18,7 @@ namespace helios
         
     public:
         
-        RespondsToKeyboardComponent(IEntity& owner, s::InputRemap map);
+        RespondsToKeyboardComponent(IEntity& owner);
         ~RespondsToKeyboardComponent();
         
         void Update(uint64_t) ;

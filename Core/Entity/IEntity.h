@@ -14,11 +14,9 @@
 #include <Event/HEvent.h>
 #include <map>
 
-#ifdef _LIBCPP_STABLE_APPLE_ABI
-    #include <memory>
-#else
-    #include <tr1/memory>
-#endif
+
+#include <memory>
+
 
 namespace helios
 {

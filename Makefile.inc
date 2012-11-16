@@ -9,10 +9,10 @@ RELEASE = -Os
 MODE = $(DEBUG)
 
 # Base dir for BOOST, GLM, SOIL
-LIBDIR = /Users/james/git/Helios_lib
+LIBDIR = /Users/james/Dev/git/hack/Helios_lib
 
 # Base dir for Helios
-HELIOSDIR = /Users/james/git/Helios
+HELIOSDIR = /Users/james/Dev/git/hack/Helios
 
 
 INCLUDES = -I$(LIBDIR)/boost/ -I$(LIBDIR)/glm/ -I$(HELIOSDIR)/Core/ -I$(LIBDIR)/SOIL/src/

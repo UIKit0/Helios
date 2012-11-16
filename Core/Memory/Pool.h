@@ -15,23 +15,13 @@
 
 #ifndef __Pool_h
 #define __Pool_h
-#include <stdlib.h>
-
-
-#include <map>
 #include <common.h>
 
-#ifdef _LIBCPP_STABLE_APPLE_ABI
-    #include <thread>
-    #include <mutex>
-#else
-    #include <boost/utility.hpp>
-    #include <boost/scoped_ptr.hpp>
-    #include <boost/thread/thread.hpp>
-    #include <boost/thread/once.hpp>
-#endif
 
-
+#include <stdlib.h>
+#include <map>
+#include <thread>
+#include <mutex>
 
 typedef unsigned char byte;
 typedef unsigned long ulong;
@@ -42,14 +32,9 @@ namespace helios
     {
     private:
         std::map<std::string,void*> firstPtr;
-        
-        //boost::mutex       mMutex;
-#ifdef _LIBCPP_STABLE_APPLE_ABI
+
         std::mutex mMutex;
-#else
-        boost::mutex       mMutex;
-#endif
-        
+
         std::map<std::string, byte*> block;
         size_t mChunkSize;
         size_t mPoolSize;

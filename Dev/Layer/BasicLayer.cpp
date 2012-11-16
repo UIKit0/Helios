@@ -26,7 +26,7 @@ namespace helios_dev
         std::string b_folder = helios::SceneManager::Inst().GetResourceFolder();
         std::string file =  b_folder + "/ninja.ms3d";
 
-        LoadMS3D(file, verts, ind, mats, joints);
+     
 
         std::map<std::string, int> attribs;
         std::map<std::string, int> uniforms;
@@ -54,6 +54,7 @@ namespace helios_dev
               iter != uniforms.end(); ++iter )
               std::cout << iter->first << '\t' << iter->second << '\n';
               
+           LoadMS3D(file, verts, ind, mats, joints);
         int vbo = mRender->GenerateVBO(&verts[0], sizeof(helios::Vertex), sizeof(helios::Vertex) * verts.size());
         int ibo = mRender->GenerateIBO(&ind[0], ind.size());
 
@@ -167,6 +168,7 @@ namespace helios_dev
                 if(textures[tex] == 0L)
                 {
                     std::string l (b_folder + tex);
+                    D_PRINT("Loading %s\n", l.c_str());
                     textures[tex] = new helios::Texture(l);
                 }
                 mg.tex = (*(textures[tex]))();

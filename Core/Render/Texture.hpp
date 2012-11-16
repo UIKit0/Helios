@@ -1,17 +1,12 @@
-//
-//  Texture.hpp
-//  mercury
-//
-//  Created by James Hurley on 6/17/11.
-//  Copyright 2011 5th Planet Games. All rights reserved.
-//
+
 
 #ifndef mercury_Texture_hpp
 #define mercury_Texture_hpp
 
 #include <string>
+extern "C" {
 #include "SOIL.h"
-
+}
 #if defined(__APPLE__) || defined(__APPLE_CC__)
 #ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
     #include <OpenGLES/ES1/gl.h>
@@ -55,8 +50,8 @@ namespace helios
             //flags |= SOIL_FLAG_POWER_OF_TWO;
            
             mTextureId = SOIL_load_OGL_texture(filename.c_str(), 
-                                               SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, 
-                                               flags, &mWidth, &mHeight);  
+                                               0, SOIL_CREATE_NEW_ID, 
+                                               flags);  
         };
         ~Texture()
         {

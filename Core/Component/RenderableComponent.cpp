@@ -34,7 +34,12 @@ namespace helios
         
         frame_t frame ;
         frame = (*(TextureAtlas*)mTexture)[mTextureName];
-        mCurrentTMat = glm::translate(glm::mat3(1.0), glm::vec2(frame.coords.minS, frame.coords.minT)) * glm::scale(glm::mat3(1.0), glm::vec2(frame.coords.maxS - frame.coords.minS, frame.coords.maxT - frame.coords.minT));
+        mCurrentTMat = glm::mat3(1.0, 0.0, 0.0,
+                                 0.0, 1.0, 0.0,
+                                 frame.coords.minS, frame.coords.minT, 1.0) * 
+                      glm::mat3(frame.coords.maxS - frame.coords.minS, 0.0, 0.0,
+                                0.0, frame.coords.maxT - frame.coords.minT, 0.0,
+                                0.0, 0.0, 1.0);
     }
     
     RenderableComponent::RenderableComponent(IEntity& owner, std::string texture)
@@ -59,7 +64,12 @@ namespace helios
         frame.coords.maxT = 1.f;
         frame.coords.minS = 0.f;
         frame.coords.minT = 0.f;
-        mCurrentTMat = glm::translate(glm::mat3(1.0), glm::vec2(frame.coords.minS, frame.coords.minT)) * glm::scale(glm::mat3(1.0), glm::vec2(frame.coords.maxS - frame.coords.minS, frame.coords.maxT - frame.coords.minT));
+        mCurrentTMat = glm::mat3(1.0, 0.0, 0.0,
+                                 0.0, 1.0, 0.0,
+                                 frame.coords.minS, frame.coords.minT, 1.0) * 
+                      glm::mat3(frame.coords.maxS - frame.coords.minS, 0.0, 0.0,
+                                0.0, frame.coords.maxT - frame.coords.minT, 0.0,
+                                0.0, 0.0, 1.0);
     }
     RenderableComponent::RenderableComponent(IEntity& owner, unsigned vbo, unsigned vao, unsigned mvLoc,unsigned pLoc, unsigned texLoc, unsigned normalLoc, unsigned shader)
     : BaseComponent(owner), mVBO(vbo), mVAO(vao), mMVLoc(mvLoc), mTexLoc(texLoc), mShaderId(shader), mOwnsTexture(0), mTextureType(0), mNormalLoc(normalLoc), mPLoc(pLoc)

@@ -9,10 +9,9 @@
 #ifdef DEBUG
 #define eglError( Error )\
 {\
-D_PRINT("OpenGL Error: %s", Error );\
-\
-assert( 0 );\
-}
+D_PRINT("OpenGL Error: %s", Error ); }
+//assert( 0 );\
+//}
 
 #define eglGetError( )\
 {\
@@ -175,7 +174,7 @@ namespace helios
     {
         
         glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT ) ;
-        
+        eglGetError();
     }
     unsigned int  
     GL32Render::GenerateVBO(void* data, size_t stride, size_t length) 
@@ -269,6 +268,7 @@ namespace helios
             mGroups[hash].tex = (*it).tex;
             mGroups[hash].hash = hash;
         }
+        eglGetError();
     }
     void 
     GL32Render::SetUniforms(std::vector<UniformData_ptr>& uniformdata, Shader& currentShader, Shader& targetShader, int clear)
@@ -322,7 +322,7 @@ namespace helios
                     break;
             }
         }
-        
+        eglGetError();
     }
     void
     GL32Render::RenderShadows(std::vector<RenderGroup>& gVec)
@@ -375,7 +375,7 @@ namespace helios
         
         glDepthFunc(GL_LESS);
         glStencilFunc(GL_ALWAYS, 0, ~0);
-
+        eglGetError();
     }
     void 
     GL32Render::RenderStage(e::RenderStage stage,  std::vector<RenderGroup>& gVec)
@@ -457,7 +457,7 @@ namespace helios
                 eglGetError();
             }
         }
-        
+        eglGetError();
         
     }
     
@@ -484,12 +484,14 @@ namespace helios
             RenderStage(e::kRenderStageGeometry,gVec);
         
         ClearRenderStack();
+        eglGetError();
+
     }
     void 
     GL32Render::ClearRenderStack() 
     {
         mGroups.clear();
-        
+    eglGetError();
     }
     void 
     GL32Render::SetViewport(int x, int y, int w, int h) 
@@ -502,6 +504,7 @@ namespace helios
             mCurrentViewport.w = w;
             mCurrentViewport.h = h;
         }
+        eglGetError();
     }
     unsigned 
     GL32Render::LoadShader(std::string & vertex_file, std::string & fragment_file, std::map<std::string, int>& attribs, std::map<std::string, int>& uniforms, std::string defines)
@@ -512,6 +515,8 @@ namespace helios
     unsigned 
     GL32Render::LoadShader(std::string &vertex_file, std::string &geometry_file, std::string &fragment_file, std::map<std::string, int>& attribs, std::map<std::string, int>& uniforms, std::string defines)
     {
+        eglGetError();
+
         if(mShaderManager.ShaderLoaded(vertex_file + fragment_file, uniforms))
             return mShaderManager.GetShader(vertex_file + fragment_file).name;
         
@@ -662,6 +667,7 @@ namespace helios
         up.shader_id = shader_name;
         up.uniform = ud;
         mUniforms.push_back(up);
+        eglGetError();
     }
     void
     GL32Render::SetRenderStage(e::RenderStage stage, std::vector<UniformData> parameters)
@@ -671,7 +677,7 @@ namespace helios
             glDeleteFramebuffers(1, &mFBO[stage].name);
         }
         //GenerateFBO(stage,FBO_WIDTH,FBO_HEIGHT);
-        
+         eglGetError();
     }
     };
     
