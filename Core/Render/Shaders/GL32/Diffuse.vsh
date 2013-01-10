@@ -18,6 +18,7 @@ out vec2 vCoords;
 
 void main()
 {
+/*
     mat4 j = (ATTR_NO_BONES < 1. ? mat4(1.) : UNIFORM_JOINTS[int(ATTR_BONEID)]);
     mat4 m = UNIFORM_MV * j;
     
@@ -27,5 +28,9 @@ void main()
     //float fac = dot(normalize(lightDir.xyz),normalize(UNIFORM_NM * (ATTR_NORM*2.0-1.0))) * 0.5 + 0.5 ;
     vColor = ATTR_DIFFUSE;// * fac  ;
     gl_Position = pos;
+    vCoords = ATTR_TEX; */
+
+    vColor = ATTR_DIFFUSE  ;
+    gl_Position = UNIFORM_P * UNIFORM_MV  * UNIFORM_JOINTS[int(ATTR_BONEID)] * ATTR_POS;
     vCoords = ATTR_TEX;
 }

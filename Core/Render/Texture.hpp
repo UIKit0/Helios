@@ -51,10 +51,13 @@ namespace helios
         {
             //short flags;
             //flags |= SOIL_FLAG_POWER_OF_TWO;
-           
+            int w, h;
+
             mTextureId = SOIL_load_OGL_texture(filename.c_str(), 
                                                0, SOIL_CREATE_NEW_ID, 
-                                               flags);  
+                                               flags, &w, &h);
+            mWidth = w;
+            mHeight = h;  
         };
         ~Texture()
         {
