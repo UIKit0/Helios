@@ -4,9 +4,12 @@
 #define mercury_Texture_hpp
 
 #include <string>
+
 extern "C" {
-#include "SOIL.h"
+    #include "SOIL.h"
 }
+
+
 #if defined(__APPLE__) || defined(__APPLE_CC__)
 #ifdef __IPHONE_OS_VERSION_MIN_REQUIRED
     #include <OpenGLES/ES1/gl.h>

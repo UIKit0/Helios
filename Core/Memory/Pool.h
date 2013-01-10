@@ -17,7 +17,6 @@
 #define __Pool_h
 #include <common.h>
 
-
 #include <stdlib.h>
 #include <map>
 #include <thread>
@@ -34,6 +33,7 @@ namespace helios
         std::map<std::string,void*> firstPtr;
 
         std::mutex mMutex;
+
 
         std::map<std::string, byte*> block;
         size_t mChunkSize;
