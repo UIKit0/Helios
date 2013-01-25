@@ -24,7 +24,7 @@ namespace helios_dev
         std::vector<helios::s::MaterialGroup> mats;
         std::vector<helios::s::Joint> joints;
         std::string b_folder = helios::SceneManager::Inst().GetResourceFolder();
-        std::string file =  b_folder + "/ninja.ms3d";
+        std::string file =  b_folder + "/zombie02.ms3d";
 
      
 
@@ -92,7 +92,7 @@ namespace helios_dev
             mEntities.push_back(e);
         }
         {
-            CameraEntity * e = new CameraEntity(this,glm::vec3(0.,5.,-15.),  glm::vec3(0.,0.,5.), glm::vec3(0.,0.,1.), glm::vec3(0.,1.,0.));
+            CameraEntity * e = new CameraEntity(this,glm::vec3(0.,25.,25.),  glm::vec3(0.,0.,5.), glm::vec3(0.,-0.5,-1.), glm::vec3(0.,1.,0.));
             mEntities.push_back(e);
         }
 

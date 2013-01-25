@@ -11,5 +11,5 @@ in vec2 vCoords;
 
 void main()
 {
-    OUT_FRAG =vec4((vColor.rgb + texture(UNIFORM_SAMPLER0, vCoords).rgb) * 0.5, 1.0);
+    OUT_FRAG =vec4((vColor.rgb + texture(UNIFORM_SAMPLER0, vCoords).rgb) * 0.3, 1.0);
 }

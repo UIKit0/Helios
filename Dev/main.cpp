@@ -7,8 +7,8 @@
 #include <utility>
 #include "Scene/BasicScene.h"
 
-#define W 684
-#define H 384
+#define W 1280
+#define H 720
 
 void GLFWCALL mouseButtonCallback(int b, int a)
 {
@@ -51,6 +51,7 @@ void GLFWCALL keyCallback(int k, int a)
     }
     else if ( a == GLFW_PRESS )
     {
+        std::cout << "Key pressed: " << char(k) << " :: " << k << std::endl ;
         
         KeyEvent_t p(new helios::HEvent<helios::KeyEvent>  ( helios::e::kEventTargetKeyboard, helios::e::kEventKeyDown, ke ) );
         helios::SceneManager::Inst().PushEvent( p ); 
@@ -102,7 +103,7 @@ int main()
         CFStringGetCString( str, path, FILENAME_MAX, kCFStringEncodingASCII );
         CFRelease(str);
         
-        helios::SceneManager::Inst().Setup(render,std::string(path) + "/Contents/Resources");
+        helios::SceneManager::Inst().Setup(render,std::string(path) + "/Contents/Resources", "config.json");
         
     }
     

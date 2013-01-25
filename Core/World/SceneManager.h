@@ -10,21 +10,16 @@
 
 #include <Event/Events.h>
 
-#ifdef _LIBCPP_STABLE_APPLE_ABI
-    #include <thread>
-    #include <mutex>
-#else
-    #include <boost/utility.hpp>
-    #include <boost/scoped_ptr.hpp>
-    #include <boost/thread/thread.hpp>
-    #include <boost/thread/once.hpp>
-#endif
 
-#include <boost/property_tree/ptree.hpp>
+#include <thread>
+#include <mutex>
 
 #include <map>
 #include <vector>
+
+#include <World/Configuration.h>
 #include <Render/TextureAtlas.hpp>
+
 #include <common.h>
 
 namespace helios
@@ -41,12 +36,10 @@ namespace helios
     private:
         
         uint64_t                mCurrentTimestamp;
-#ifdef _LIBCPP_STABLE_APPLE_ABI
+
         std::mutex              mMutex;
-#else
-        boost::mutex            mMutex;
-#endif
-        boost::property_tree::ptree mSettings;
+
+        Configuration*          mConfiguration ;
         
         //ILayer*                 mCurrentLayer = 0L;
         IScene*                 mCurrentScene = 0L;
@@ -67,16 +60,18 @@ namespace helios
             static SceneManager s_instance;
             return s_instance;
         }
+
         
-         
+        const Configuration& GetConfiguration() const { return *mConfiguration ; } ;
+
         std::map<std::string, ILayer*>& GetLayers();
          
         void                 SwitchScene(std::string name);
         void                 RegisterScene(std::string, IScene* scene);
         void                 UnRegisterScene(std::string);
         
-        IScene*              CurrentScene() { return mCurrentScene; } ;
-        IScene*              GetScene(std::string name) { return mScenes[name]; };
+        IScene*              CurrentScene() const { return mCurrentScene; } ;
+        IScene*              GetScene(std::string name) const { return mScenes.at(name); };
         
         void                 PushEvent(IEvent_ptr e);
         
@@ -95,12 +90,11 @@ namespace helios
         
         TextureAtlas       & LoadAtlas ( std::string filename, std::string referencefile, short flags = 0);
         
-        void                 Setup(IRender* renderer, std::string resourceFolder);
+        void                 Setup(IRender* renderer, std::string resourceFolder, std::string configFile);
         void                 ShutDown();
         void                 Background();
         void                 Foreground();
         
-        boost::property_tree::ptree & Settings() { return mSettings; } ;
     };    
 };
 

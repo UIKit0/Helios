@@ -76,12 +76,14 @@ namespace helios
         
             for ( auto it = e.begin() ; it != e.end() ; ++it )
             {
-                if((*it)->GetName() == e::kActionMove) {
-                    glm::vec3 v = HEvent<glm::vec3>::GetData((*it));
+                if((*it)->GetName() == e::kActionMoveForward) {
+                    //glm::vec3 v = HEvent<glm::vec3>::GetData((*it));
                     // TODO: save movement vector for Process pass
+
+                    //std::cout << "Moving Forward!" << std::endl;
                 }
                 else if((*it)->GetName() == e::kActionRotate) {
-                    glm::quat q = HEvent<glm::quat>::GetData((*it));
+                   // glm::quat q = HEvent<glm::quat>::GetData((*it));
                     // TODO: save rotation quat for Process pass.
                 }
             }

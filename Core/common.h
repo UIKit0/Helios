@@ -107,7 +107,10 @@ namespace helios
         
         extern std::string const kSceneBase           ;
         
-        extern std::string const kActionMove          ;   
+        extern std::string const kActionMoveForward   ;
+        extern std::string const kActionMoveRight     ;
+        extern std::string const kActionMoveLeft      ;
+        extern std::string const kActionMoveBack      ;
         extern std::string const kActionRotate        ;   
         
         

@@ -52,6 +52,7 @@ namespace helios
             mJoints.push_back(joint);
             //mJoints[mJointsCount++] = joint;
         };
+        void LoadAnimationMap(const std::string & file) ;
         void SetAnimation(int startFrame, int endFrame, float fps, bool loop = TRUE);
         void SetDefaultAnimation(int startFrame, int endFrame, float fps);
         void Process();

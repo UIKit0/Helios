@@ -51,30 +51,17 @@ namespace helios
         for ( auto it = mCurrentKeys.begin() ; it != mCurrentKeys.end() ; ++it)
         {
             int k = (*it);
-            
-            switch(k)
-            {
-                
-                case 'W': 
-                v.z += 1.;
-                break;
-                case 'A': 
-                v.x -= 1.;
-                break;
-                case 'S': 
-                v.z -= 1.;
-                break;
-                case 'D':
-                v.x += 1.;
-                break;
-            }
+
+            std::string action = helios::SceneManager::Inst().GetConfiguration().GetActionForKey(k) ;
+
+            boost::shared_ptr<HEvent<const char> > p ( new HEvent<const char>(e::kEventTargetAction, action, 0));
+  
+            mOwner.PushEvent(e::kEventTargetAction, p);
         }
         if(!(v.x == 0. && v.y == 0. && v.z == 0.) && mCurrentKeys.size() > 0) {
             v = glm::normalize(v);
         
-            boost::shared_ptr<HEvent<glm::vec3> > p ( new HEvent<glm::vec3>(e::kEventTargetAction, e::kActionMove, v));
-        
-            mOwner.PushEvent(e::kEventTargetAction, p);
+
         }
     }
 }

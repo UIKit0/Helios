@@ -70,11 +70,11 @@ namespace helios
         };
         HEvent() {};
         ~HEvent() {};
-        HEvent( std::string const & target, std::string const & name, T & data) 
+        HEvent( std::string const & target, std::string const & name, T & data) : _target(target), _name(name), _data(data)
         {
-            _target = target;
-            _name = name;
-            _data = data;
+           // _target = target;
+           // _name = name;
+           // _data = data;
         };
       
         HEvent<T>& operator= (HEvent<T> const & rhs)

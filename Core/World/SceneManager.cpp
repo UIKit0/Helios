@@ -12,6 +12,7 @@
 #ifdef __BLOCKS__
 #include <dispatch/dispatch.h>
 #endif
+
 namespace helios
 {
 
@@ -23,11 +24,11 @@ namespace helios
         
     }
     void
-    SceneManager::Setup(IRender* render,  std::string resourceFolder)
+    SceneManager::Setup(IRender* render,  std::string resourceFolder, std::string configFile)
     {
         mRender = render;
         mResourceFolder = resourceFolder;
-        
+        mConfiguration = new Configuration(resourceFolder + "/" + configFile);
     }
     void
     SceneManager::ShutDown()
@@ -36,6 +37,7 @@ namespace helios
         {
             delete (*it).second;
         }
+        delete mConfiguration;
     }
     void
     SceneManager::RegisterScene(std::string name, helios::IScene *scene)

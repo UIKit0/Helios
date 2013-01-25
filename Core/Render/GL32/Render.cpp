@@ -370,7 +370,7 @@ namespace helios
         mCurrentShader = mDiffuseProgram;
         
         
-        RenderStage(e::kRenderStageGeometry,gVec);  
+        RenderStage(e::kRenderStageDiffuse,gVec);
         
         
         glDepthFunc(GL_LESS);
@@ -516,7 +516,7 @@ namespace helios
     GL32Render::LoadShader(std::string &vertex_file, std::string &geometry_file, std::string &fragment_file, std::map<std::string, int>& attribs, std::map<std::string, int>& uniforms, std::string defines)
     {
         eglGetError();
-
+        std::cout << "Loading " << vertex_file << std::endl;
         if(mShaderManager.ShaderLoaded(vertex_file + fragment_file, uniforms))
             return mShaderManager.GetShader(vertex_file + fragment_file).name;
         
