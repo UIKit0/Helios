@@ -1,5 +1,6 @@
-
 .DS_Store
+.o
+objects
 
 Core/Component/CameraComponent.o
 
