@@ -94,7 +94,7 @@ namespace helios_dev
             mEntities.push_back(e);
         }
         {
-            CameraEntity * e = new CameraEntity(this,glm::vec3(0.,25.,25.),  glm::vec3(0.,0.,5.), glm::vec3(0.,-0.5,-1.), glm::vec3(0.,1.,0.));
+            CameraEntity * e = new CameraEntity(this,glm::vec3(0.,25.,50.),  glm::vec3(0.,0.,5.), glm::vec3(0.,-0.5,-1.), glm::vec3(0.,1.,0.));
             mEntities.push_back(e);
         }
 
@@ -189,7 +189,7 @@ namespace helios_dev
                         float v [4] = { va.vertex[0], va.vertex[1], va.vertex[2], 1.f };
                         a.p = glm::vec4(v[0],v[1],v[2],v[3]);
                         a.boneId = va.boneId;
-
+                        
                         if(std::find(boneIds.begin(), boneIds.end(), a.boneId) == boneIds.end())
                         {
                             boneIds.push_back(a.boneId);

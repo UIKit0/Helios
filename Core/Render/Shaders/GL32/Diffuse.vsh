@@ -30,7 +30,14 @@ void main()
     gl_Position = pos;
     vCoords = ATTR_TEX; */
 
-    vColor = ATTR_DIFFUSE  ;
-    gl_Position = UNIFORM_P * UNIFORM_MV  * UNIFORM_JOINTS[int(ATTR_BONEID)] * ATTR_POS;
+    mat4 j = ATTR_NO_BONES > 0. ? mat4(1.) : UNIFORM_JOINTS[int(ATTR_BONEID)];
+    mat4 m = UNIFORM_MV * j;
+    
+    vec4 L = UNIFORM_LIGHTPOS;
+    
+    gl_Position = UNIFORM_P * m * ATTR_POS;
+    //vec4 lightDir = gl_Position - L;
+    //float fac = dot(normalize(lightDir.xyz),normalize(UNIFORM_NM * (ATTR_NORM*2.0-1.0))) * 0.5 + 0.5 ;
+    vColor = ATTR_DIFFUSE ;//* fac  ;
     vCoords = ATTR_TEX;
 }

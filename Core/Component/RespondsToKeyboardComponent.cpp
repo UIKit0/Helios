@@ -21,14 +21,10 @@ namespace helios
             
             if((*it)->GetName() == e::kEventKeyDown)
             {
-                
-                //D_PRINT("-> Got key: %d\n",k.keyCode);
-               
                 mCurrentKeys.push_back(std::pair<int,int>(k.keyCode,0));
             }
             else if((*it)->GetName() == e::kEventKeyUp)
-            {
-                
+            {                
                 auto it = std::find(mCurrentKeys.begin(),mCurrentKeys.end(),std::pair<int,int>(k.keyCode,0));
 
                 if( it == mCurrentKeys.end())
@@ -48,9 +44,7 @@ namespace helios
     void 
     RespondsToKeyboardComponent::DispatchEvents()
     {
-        // todo: create remapping system for actions
-        
-        glm::vec3 v(0.,0.,0.);
+
         std::vector<std::vector<std::pair<int,int> >::iterator> toErase;
         
         for ( auto it = mCurrentKeys.begin() ; it != mCurrentKeys.end() ; ++it)
@@ -68,7 +62,6 @@ namespace helios
             }
             else if(stage == 2)
             {
-                std::cout << "Marking " << (*it).first << std::endl ; 
                 toErase.push_back(it);
             }
             mOwner.PushEvent(e::kEventTargetAction, p);
@@ -76,14 +69,8 @@ namespace helios
 
         for( auto it = toErase.begin() ; it != toErase.end() ; ++it )
         {
-            std::cout << "Erasing " << (*(*it)).first << std::endl ;
             mCurrentKeys.erase((*it)) ;
         }
         
-        if(!(v.x == 0. && v.y == 0. && v.z == 0.) && mCurrentKeys.size() > 0) {
-            v = glm::normalize(v);
-        
-
-        }
     }
 }

@@ -41,7 +41,7 @@ void GLFWCALL keyCallback(int k, int a)
     
     ke.keyCode=k;
     
-    if(k > GLFW_KEY_SPECIAL+30 && k < GLFW_KEY_SPECIAL+37)
+    /*if(k > GLFW_KEY_SPECIAL+30 && k < GLFW_KEY_SPECIAL+37)
     {
         
         ke.mask = uint16_t( 1 << (k - (GLFW_KEY_SPECIAL+31) ) ) << 16;
@@ -49,9 +49,9 @@ void GLFWCALL keyCallback(int k, int a)
         helios::SceneManager::Inst().PushEvent( p );
     
     }
-    else if ( a == GLFW_PRESS )
+    else */if ( a == GLFW_PRESS )
     {
-        std::cout << "Key pressed: " << char(k) << " :: " << k << std::endl ;
+        //std::cout << "Key pressed: " << char(k) << " :: " << k << std::endl ;
         
         KeyEvent_t p(new helios::HEvent<helios::KeyEvent>  ( helios::e::kEventTargetKeyboard, helios::e::kEventKeyDown, ke ) );
         helios::SceneManager::Inst().PushEvent( p ); 

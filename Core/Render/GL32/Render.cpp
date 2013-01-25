@@ -345,20 +345,17 @@ namespace helios
         glDepthMask(GL_FALSE);
         glUseProgram(mShadowVolumeProgram);
         mCurrentShader = mShadowVolumeProgram;
+
         glDisable(GL_CULL_FACE);
-        
-        glStencilOpSeparate(GL_FRONT, GL_KEEP,GL_DECR_WRAP, GL_KEEP);
-        glStencilOpSeparate(GL_BACK, GL_KEEP, GL_INCR_WRAP, GL_KEEP);
+        glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_DECR_WRAP, GL_KEEP);
+        glStencilOpSeparate(GL_BACK, GL_KEEP , GL_INCR_WRAP, GL_KEEP);
         
         RenderStage(e::kRenderStageShadows, gVec);
         
         glEnable(GL_CULL_FACE);
-        
         glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
-        glCullFace(GL_BACK);
-        
-        
-        
+         
+
         glDepthFunc(GL_LEQUAL);
         
         glStencilFunc(GL_EQUAL, 0, ~0);
@@ -369,7 +366,7 @@ namespace helios
         glUseProgram(mDiffuseProgram);
         mCurrentShader = mDiffuseProgram;
         
-        
+
         RenderStage(e::kRenderStageDiffuse,gVec);
         
         
@@ -398,6 +395,9 @@ namespace helios
         
         for ( ; it != ite ; ++it )
         {
+
+            std::sort((*it).commands.begin(), (*it).commands.end());
+
             if(tex != (*it).tex) {
                 tex = (*it).tex;
                 glBindTexture(GL_TEXTURE_2D, tex);
@@ -441,8 +441,12 @@ namespace helios
              
              
              if(lp > -1)
-             glUniform4f(lp, 65.f ,80.f,65.0f,1.f);
-             
+             {
+                 static float x = 0.f;
+                 glUniform4f(lp, 10.f,25.f,15.f,1.f);
+                 x += 0.01;
+             }
+
              
              eglGetError();
              }
@@ -469,12 +473,7 @@ namespace helios
         std::transform(mGroups.begin(), mGroups.end(), std::back_inserter(gVec), boost::bind(&std::map<unsigned,RenderGroup>::value_type::second,_1));
         
         if ( mOptions & RenderOptions_Blend ) {
-            
-#ifdef _LIBCPP_STABLE_APPLE_ABI
             std::sort<helios::RenderGroup>(gVec.begin(),gVec.end());
-#else
-            std::sort(gVec.begin(), gVec.end());
-#endif
         }
         
         if(mOptions & RenderOptions_StenciledShadowVolumes) 

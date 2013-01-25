@@ -7,7 +7,8 @@ out vec4 OUT_FRAG;
 in vec4 vColor;
 in vec2 vCoords;
 
+
 void main()
 {
-    OUT_FRAG = vec4(0.0,0.0,0.0, 1.0);
+    OUT_FRAG = vColor;
 }

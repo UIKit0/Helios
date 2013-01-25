@@ -34,11 +34,11 @@ namespace helios
          *  If it is aimed slightly above the anchor, it will always point slightly "above" the anchor (relative to the 'up' vector).
          **/
         mCurrentMat = glm::mat4(1.f);
-        //static float x = 0.;
+        static float x = 0.;
         
         glm::mat4 ppos = mPos * glm::translate(glm::mat4(1.f), -mAnchorPos);
         
-        //x += 0.01;
+        x += 0.01;
         glm::mat3 rot(ppos);
         
         
