@@ -9,12 +9,11 @@ namespace helios
     class RespondsToKeyboardComponent : public BaseComponent
     {
     private:
-        std::vector<int> mCurrentKeys;
+        std::vector<std::pair<int, int>> mCurrentKeys;
         union {
             modifier_flags_t mFlags;    
             int16_t          mModifiers;
         };
-        std::map<uint32_t, uint32_t> mRemapTable;
         
     public:
         

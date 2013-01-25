@@ -63,8 +63,10 @@ namespace helios
         extern std::string const kEventTime           = "com.helios.event.Time";
         
         extern std::string const kSceneBase           = "com.helios.scene.Base";
-        
-        extern std::string const kActionMoveForward   = "com.helios.action.MoveForward";   // i.e. vec3 describing movement direction
+
+        extern std::string const kActionIdle          = "com.helios.action.Idle";
+        extern std::string const kActionNotFound      = "com.helios.action.NotFound";
+        extern std::string const kActionMoveForward   = "com.helios.action.MoveForward";   
         extern std::string const kActionMoveRight     = "com.helios.action.MoveRight";
         extern std::string const kActionMoveLeft      = "com.helios.action.MoveLeft";
         extern std::string const kActionMoveBack      = "com.helios.action.MoveBack";

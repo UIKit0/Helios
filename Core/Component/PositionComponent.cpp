@@ -80,7 +80,6 @@ namespace helios
                     //glm::vec3 v = HEvent<glm::vec3>::GetData((*it));
                     // TODO: save movement vector for Process pass
 
-                    //std::cout << "Moving Forward!" << std::endl;
                 }
                 else if((*it)->GetName() == e::kActionRotate) {
                    // glm::quat q = HEvent<glm::quat>::GetData((*it));

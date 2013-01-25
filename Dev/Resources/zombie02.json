@@ -1,9 +1,10 @@
 {
     "keyframes":
     {
-        "com.helios.action.MoveForward": [0, 10],
+        "com.helios.action.MoveForward": [3, 24],
         "com.helios.action.MoveRight": [10, 20],
         "com.helios.action.MoveLeft": [20, 30],
-        "com.helios.action.MoveBack": [30, 40]
+        "com.helios.action.MoveBack": [30, 40],
+        "com.helios.action.Idle": [137, 200]
     }
 }

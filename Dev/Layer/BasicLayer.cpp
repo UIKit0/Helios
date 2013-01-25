@@ -88,7 +88,9 @@ namespace helios_dev
             }
             D_PRINT("Joint uniform %d", uniforms[helios::e::kVertexUniformJoints]);
             sc->SetUniformLocation(uniforms[helios::e::kVertexUniformJoints]);
-            sc->SetDefaultAnimation(2,16, 30.f);
+            sc->SetDefaultAnimation(177,252, 30.f);
+           sc->LoadAnimationMap(b_folder + "/zombie02.json");
+           
             mEntities.push_back(e);
         }
         {

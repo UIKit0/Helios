@@ -19,16 +19,18 @@ namespace helios
     {
     private:
         
-        std::map<char, std::string> mKeybindings;
+        std::map<short, std::string> mKeybindings;
         
     public:
         
         Configuration(const std::string file);
         ~Configuration();
 
-        const std::string & GetActionForKey(char key) const
+        const std::string & GetActionForKey(short key) const
         {
-            return mKeybindings.at(key);
+            if(mKeybindings.find(key) != mKeybindings.end() )
+                return mKeybindings.at(key);
+            return e::kActionNotFound;
         };
     };
 };

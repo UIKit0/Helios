@@ -10,7 +10,9 @@
 #include <Render/RenderCommand.h>
 #include <glm/gtx/matrix_interpolation.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
+#include <boost/foreach.hpp>
 namespace helios
 {
     void 
@@ -113,6 +115,28 @@ namespace helios
         }
         mCurrentTime = t;
         mCurrentAnimation.currentTime += (float)(delta / 1.0e6f);
+        {
+            auto e = mOwner.GetEvents(e::kEventTargetAction);
+            bool endAnimation = TRUE;
+            bool gotKeyup = FALSE ;
+            
+            for ( auto it = e.begin() ; it != e.end() ; ++it )
+            {
+                auto k = HEvent<const char>::GetData((*it));
+                
+                if(mAnimationMap.find((*it)->GetName()) != mAnimationMap.end() && k != 2 ) {
+                    std::pair<int, int> anim = mAnimationMap[(*it)->GetName()];
+                    SetAnimation(anim.first, anim.second, 30.f, TRUE);
+                    endAnimation = FALSE;
+                } else {
+                    gotKeyup = TRUE;
+                }
+            }
+            if(endAnimation && gotKeyup)
+            {
+                mCurrentAnimation = mDefaultAnimation;
+            }
+        }
     }
     void 
     SkeletonComponent::DispatchEvents()
@@ -188,11 +212,16 @@ namespace helios
     void 
     SkeletonComponent::SetAnimation(int startKeyframe, int endKeyframe, float fps, bool loop)
     {
+        int id = (startKeyframe ^ 2) + (endKeyframe ^3) + ((int)fps ^5) + (loop) ;
+
+        if( mCurrentAnimation.id == id ) return ;
+
         float delta = 1.f / fps;
         
         float startTarget = startKeyframe * delta;
         float endTarget = endKeyframe * delta;
-        
+
+        mCurrentAnimation.id = id ;
         mCurrentAnimation.startTime = startTarget;
         mCurrentAnimation.endTime = endTarget;
         mCurrentAnimation.fpsDelta = delta;
@@ -216,5 +245,40 @@ namespace helios
         mDefaultAnimation.currentTime = startTarget;
         
         mCurrentAnimation = mDefaultAnimation;
+    }
+    void
+    SkeletonComponent::LoadAnimationMap(const std::string & file)
+    {
+        boost::property_tree::ptree pt;
+        try
+        {
+            boost::property_tree::read_json(file, pt);
+        }
+        catch(boost::property_tree::json_parser::json_parser_error &je)
+        {
+            std::cout << "Error parsing: " << je.filename() << " on line: " << je.line() << std::endl;
+            std::cout << je.message() << std::endl;
+        }
+        BOOST_FOREACH(const boost::property_tree::ptree::value_type &v, pt.get_child("keyframes"))
+        {
+
+            int i = 0 ;
+            
+            std::string action = v.first.data() ;
+
+           
+         
+            BOOST_FOREACH(const boost::property_tree::ptree::value_type &s, v.second)
+            {
+                switch(i) {
+                    case 0 :
+                        mAnimationMap[action].first =  s.second.get_value<int>() ;
+                    default:
+                        mAnimationMap[action].second =  s.second.get_value<int>() ;
+                }
+                i++;
+            }
+            
+        }
     }
 }

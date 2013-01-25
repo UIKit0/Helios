@@ -27,13 +27,12 @@ namespace helios
             std::cout << "Error parsing: " << je.filename() << " on line: " << je.line() << std::endl;
             std::cout << je.message() << std::endl;
         }
-        boost::property_tree::ptree::const_iterator it, ite ;
-
+    
  
         BOOST_FOREACH(const boost::property_tree::ptree::value_type &v, pt.get_child("keybinding"))
         {
 
-            char key = v.second.get_value<int>() ;
+            short key = v.second.get_value<int>() ;
             std::string value = v.first.data() ;
 
             std::cout << "Found (" << v.first.data() << "," << v.second.get_value<int>() << ")" << std::endl ;

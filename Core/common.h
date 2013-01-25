@@ -106,7 +106,9 @@ namespace helios
         extern std::string const kEventTime           ;
         
         extern std::string const kSceneBase           ;
-        
+
+        extern std::string const kActionIdle          ;
+        extern std::string const kActionNotFound      ;
         extern std::string const kActionMoveForward   ;
         extern std::string const kActionMoveRight     ;
         extern std::string const kActionMoveLeft      ;
@@ -198,6 +200,7 @@ namespace helios
         };
         struct Animation
         {
+            int id ;
             float startTime, endTime, fpsDelta, currentTime;
             bool loop;
             

@@ -24,7 +24,8 @@ namespace helios
         uint64_t mCurrentTime=0L;
         
         std::vector<s::Joint> mJoints;
-
+        std::map<std::string, std::pair<int, int>> mAnimationMap ;
+        
 #if(USE_QUATERNIONS == 1)
         std::vector<glm::quat> mCurrentRots;
         std::vector<glm::vec3> mCurrentTrans;
