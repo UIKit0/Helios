@@ -118,7 +118,7 @@ namespace helios
         {
             auto e = mOwner.GetEvents(e::kEventTargetAction);
             bool endAnimation = TRUE;
-            bool gotKeyup = FALSE ;
+            bool gotActionEnd = FALSE ;
             
             for ( auto it = e.begin() ; it != e.end() ; ++it )
             {
@@ -128,11 +128,12 @@ namespace helios
                     std::pair<int, int> anim = mAnimationMap[(*it)->GetName()];
                     SetAnimation(anim.first, anim.second, 30.f, TRUE);
                     endAnimation = FALSE;
-                } else {
-                    gotKeyup = TRUE;
+                    break;
+                } else if(k == 2){
+                    gotActionEnd = TRUE;
                 }
             }
-            if(endAnimation && gotKeyup)
+            if(endAnimation && gotActionEnd)
             {
                 mCurrentAnimation = mDefaultAnimation;
             }
