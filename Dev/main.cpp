@@ -87,7 +87,7 @@ int main()
     assert(r);
     
     helios::GL32Render * render = new helios::GL32Render();
-    helios::RenderOptions opt = helios::RenderOptions_StenciledShadowVolumes;
+    helios::RenderOptions opt  = helios::RenderOptions_StenciledShadowVolumes;
     render->SetOptions(opt);
     glfwSetKeyCallback(keyCallback);
     glfwSetMouseButtonCallback(mouseButtonCallback);

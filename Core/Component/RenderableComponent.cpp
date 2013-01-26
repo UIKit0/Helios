@@ -165,7 +165,11 @@ namespace helios
         }
         if(!mMaterialGroups.size())
         {
-            com.tex =  mTexture->id();
+            if(mTexture) {
+                com.tex =  mTexture->id();
+            } else {
+                com.tex = 0;
+            }
             com.ibo = mIBO;
             com.iboOffset = 0;
             com.iboSize = mIBOSize;

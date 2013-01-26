@@ -79,7 +79,7 @@ namespace helios
                 if((*it)->GetName() == e::kActionMoveForward) {
                     //glm::vec3 v = HEvent<glm::vec3>::GetData((*it));
                     // TODO: save movement vector for Process pass
-
+                    mPosition.z += 0.1;
                 }
                 else if((*it)->GetName() == e::kActionRotate) {
                    // glm::quat q = HEvent<glm::quat>::GetData((*it));

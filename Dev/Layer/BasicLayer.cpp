@@ -2,6 +2,7 @@
 #include "../Entity/BasicEntity.h"
 #include "../Entity/CameraEntity.h"
 #include "../Tool/MilkShape3D.h"
+#include "../Entity/CubeEntity.h"
 
 #include <glm/gtx/normal.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -13,6 +14,65 @@ namespace helios_dev
     BasicLayer::BasicLayer(helios::IScene& owner) : helios::BaseLayer(owner) {} ;
     BasicLayer::~BasicLayer() {};
 
+    void generateQuad(std::vector<helios::Vertex>& verts, const glm::vec3 pos, std::vector<unsigned short> &indices, const glm::vec3 normal, const glm::vec2 size)
+    {
+        glm::vec3 f (normal);
+        glm::vec3 right ( glm::cross(f, glm::vec3(0.f,1.f,0.f))) ;
+        glm::vec3 up (glm::cross(right, f));
+
+        f = glm::normalize(f);
+        right = glm::normalize(right);
+        up = glm::normalize(up);
+        size_t offset = verts.size();
+        
+        {
+            helios::Vertex v;
+            v.p = glm::vec4(pos + (right * size[0] * 0.5f) + (up * size[1] * 0.5f), 1.f);
+            v.SetNormals(glm::vec4(normal,1.f));
+            unsigned char  c[4] = { 200, 100, 100, 255 };
+            memcpy(v.c,c,4);
+            v.noBones = 1;
+            v.boneId = 0;
+            verts.push_back(v);
+        }
+        {
+            helios::Vertex v;
+            v.p = glm::vec4(pos + (right * size[0] * 0.5f) + (up * -size[1] * 0.5f), 1.f);
+            v.SetNormals(glm::vec4(normal,1.f));
+            unsigned char  c[4] = { 200, 100, 100, 255 };
+            memcpy(v.c,c,4);
+            v.noBones = 1;
+            v.boneId = 0;
+            verts.push_back(v);
+        }
+        {
+            helios::Vertex v;
+            v.p = glm::vec4(pos + (right * -size[0] * 0.5f) + (up * size[1] * 0.5f), 1.f);
+            v.SetNormals(glm::vec4(normal,1.f));
+            unsigned char  c[4] = { 200, 100, 100, 255 };
+            memcpy(v.c,c,4);
+            v.noBones = 1;
+            v.boneId = 0;
+            verts.push_back(v);
+        }
+        {
+            helios::Vertex v;
+            v.p = glm::vec4(pos + (right * -size[0] * 0.5f) + (up * -size[1] * 0.5f), 1.f);
+            v.SetNormals(glm::vec4(normal,1.f));
+            unsigned char  c[4] = { 200, 100, 100, 255 };
+            memcpy(v.c,c,4);
+            v.noBones = 1;
+            v.boneId = 0;
+            verts.push_back(v);
+        }
+       // {  0 , 1 , 2, 1, 3, 2  } ;
+        indices.push_back(offset+3);
+        indices.push_back(offset);
+        indices.push_back(offset+2);
+        indices.push_back(offset);
+        indices.push_back(offset+1);
+        indices.push_back(offset+2);
+    }
     void
         BasicLayer::onActive(uint64_t t)
     {
@@ -60,14 +120,16 @@ namespace helios_dev
 
         std::vector<helios::VAOObj> vaoobj;
         vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribPosition], helios::VAOObj::R_FLOAT, 4, sizeof(helios::Vertex), 0, 0 }));
-        vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribNormal], helios::VAOObj::R_UBYTE, 3, sizeof(helios::Vertex), offsetof(helios::Vertex,n[0]), 1 }));
+        
         vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribTexCoord], helios::VAOObj::R_USHORT, 2, sizeof(helios::Vertex), 16, 1}));
         vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribBoneId], helios::VAOObj::R_SHORT, 1, sizeof(helios::Vertex), 20, 0 }));
-        vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribNoBones], helios::VAOObj::R_UBYTE, 1, sizeof(helios::Vertex), offsetof(helios::Vertex, noBones), 0}));
+        vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribNoBones], helios::VAOObj::R_SHORT, 1, sizeof(helios::Vertex), 22, 0}));
         vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribDiffuseColor], helios::VAOObj::R_UBYTE, 4, sizeof(helios::Vertex), 24, 1}));
+        vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribNormal], helios::VAOObj::R_UBYTE, 3, sizeof(helios::Vertex), offsetof(helios::Vertex,n[0]), 1 }));
 
         int vao = mRender->GenerateVAO(vaoobj, vbo);
        {
+           
             BasicEntity* e = new BasicEntity(this, glm::vec3(0.f,0.f,0.f), vao, vbo, ibo, uniforms[helios::e::kVertexUniformModelView],
                 uniforms[helios::e::kVertexUniformProjection],
                 uniforms[helios::e::kVertexUniformNormalMat], mCurrentShader);
@@ -78,7 +140,7 @@ namespace helios_dev
             for( auto it = mats.begin() ; it != mats.end() ; ++it)
             {
                 (*it).ibo = ibo;
-
+           
                 rc->AddMaterialGroup((*it));
             }
 
@@ -88,10 +150,69 @@ namespace helios_dev
             }
             D_PRINT("Joint uniform %d", uniforms[helios::e::kVertexUniformJoints]);
             sc->SetUniformLocation(uniforms[helios::e::kVertexUniformJoints]);
-            sc->SetDefaultAnimation(177,252, 30.f);
+            sc->SetDefaultAnimation(177,205, 30.f);
            sc->LoadAnimationMap(b_folder + "/zombie02.json");
            
+            mEntities.push_back(e); 
+        }
+        {
+            std::vector<helios::Vertex> vertices;
+            std::vector<unsigned short> indices;
+
+           /* generateQuad(vertices, glm::vec3(1.0,0.0,0.0), indices, glm::vec3(1.0,0.0,0.0), glm::vec2(10.0,10.0));
+            generateQuad(vertices, glm::vec3(-1.0,0.0,0.0), indices, glm::vec3(-1.0,0.0,0.0), glm::vec2(10.0,10.0));
+            generateQuad(vertices, glm::vec3(0.0,1.0,0.0), indices, glm::vec3(0.0,1.0,0.0), glm::vec2(10.0,10.0));
+            generateQuad(vertices, glm::vec3(0.0,-1.0,0.0), indices, glm::vec3(0.0,-1.0,0.0), glm::vec2(10.0,10.0));
+            generateQuad(vertices, glm::vec3(0.0,0.0,1.0), indices, glm::vec3(0.0,0.0,1.0), glm::vec2(10.0,10.0));
+            generateQuad(vertices, glm::vec3(0.0,0.0,-1.0), indices, glm::vec3(0.0,0.0,-1.0), glm::vec2(10.0,10.0)); 
+            generateQuad(vertices, glm::vec3(0.0,1.0,0.0), indices, glm::vec3(0.0,1.0,0.0), glm::vec2(10.0,10.0)); */
+            float s = 100.f ;
+            /*            v [0] = Vertex( { glm::vec4(0.f,0.f,0.f,1.f),minS,maxT } );
+
+             v [1] = Vertex( { glm::vec4(1.f,0.f,0.f,1.f), maxS,maxT } );
+             v [2] = Vertex( { glm::vec4(0.f,1.f,0.f,1.f), minS,minT} );
+
+             v [3] = Vertex( { glm::vec4(1.f,1.f,0.f,1.f), maxS,minT } );*/
+            
+            {
+                helios::Vertex v = { glm::vec4(-s,0.f,-s,1.f), 0, 0, 0, 1, { 255, 255, 255, 255 }, {0, 255, 0, 255} };
+                vertices.push_back(v);
+            }
+            {
+                helios::Vertex v = { glm::vec4(s,0.f,-s,1.f), 0, 0, 0, 1, { 255, 255, 255, 255 }, {0, 255, 0, 255} };
+                vertices.push_back(v);
+            }
+            {
+                helios::Vertex v = { glm::vec4(-s,0.f,s,1.f), 0, 0, 0, 1, { 255, 255, 255, 255 }, {0, 255, 0, 255} };
+                vertices.push_back(v);
+            }
+
+            {
+                helios::Vertex v = { glm::vec4(s,0.f,s,1.f), 0, 0, 0, 1, { 255, 255, 255, 255 }, {0, 255, 0, 255} };
+                vertices.push_back(v);
+            }
+
+            indices.push_back(0);
+            indices.push_back(1);
+            indices.push_back(2);
+            indices.push_back(1);
+            indices.push_back(3);
+            indices.push_back(2);
+            
+            int vvbo = mRender->GenerateVBO(&vertices[0], sizeof(helios::Vertex), sizeof(helios::Vertex) * verts.size());
+            int vibo = mRender->GenerateIBO(&indices[0], ind.size());
+            CubeEntity * e = new CubeEntity(this, glm::vec3(0.f,0.f,0.f), vao, vvbo, vibo, uniforms[helios::e::kVertexUniformModelView],
+                                              uniforms[helios::e::kVertexUniformProjection],
+                                              uniforms[helios::e::kVertexUniformNormalMat], mCurrentShader );
+            helios::RenderableComponent* rc = (helios::RenderableComponent*)e->GetComponent(helios::e::kComponentRenderable)[0];
+            helios::s::MaterialGroup mat ;
+            mat.ibo = vibo;
+            mat.tex = 0;
+            mat.iboRange.start = 0 ;
+            mat.iboRange.end = indices.size();
+            rc->AddMaterialGroup(mat);
             mEntities.push_back(e);
+            
         }
         {
             CameraEntity * e = new CameraEntity(this,glm::vec3(0.,25.,50.),  glm::vec3(0.,0.,5.), glm::vec3(0.,-0.5,-1.), glm::vec3(0.,1.,0.));
@@ -122,6 +243,7 @@ namespace helios_dev
         mP = glm::infinitePerspective (45.f, aspect_w, 0.1f);
     }
 
+    
     void 
         BasicLayer::quaternionFromEuler(glm::quat& q, float roll, float pitch, float yaw)
     {

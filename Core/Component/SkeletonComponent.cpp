@@ -124,13 +124,17 @@ namespace helios
             {
                 auto k = HEvent<const char>::GetData((*it));
                 
-                if(mAnimationMap.find((*it)->GetName()) != mAnimationMap.end() && k != 2 ) {
-                    std::pair<int, int> anim = mAnimationMap[(*it)->GetName()];
-                    SetAnimation(anim.first, anim.second, 30.f, TRUE);
-                    endAnimation = FALSE;
-                    break;
-                } else if(k == 2){
-                    gotActionEnd = TRUE;
+                if(mAnimationMap.find((*it)->GetName()) != mAnimationMap.end()  ) {
+                    if(k < 2) {
+                        std::pair<int, int> anim = mAnimationMap[(*it)->GetName()];
+                        SetAnimation(anim.first, anim.second, 30.f, TRUE);
+                        endAnimation = FALSE;
+                        break;
+                    }
+                    else
+                    {
+                        gotActionEnd = TRUE;
+                    }
                 }
             }
             if(endAnimation && gotActionEnd)
