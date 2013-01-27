@@ -120,12 +120,11 @@ namespace helios_dev
 
         std::vector<helios::VAOObj> vaoobj;
         vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribPosition], helios::VAOObj::R_FLOAT, 4, sizeof(helios::Vertex), 0, 0 }));
-        
+        vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribNormal], helios::VAOObj::R_UBYTE, 3, sizeof(helios::Vertex), offsetof(helios::Vertex,n[0]), 1 }));
         vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribTexCoord], helios::VAOObj::R_USHORT, 2, sizeof(helios::Vertex), 16, 1}));
         vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribBoneId], helios::VAOObj::R_SHORT, 1, sizeof(helios::Vertex), 20, 0 }));
-        vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribNoBones], helios::VAOObj::R_SHORT, 1, sizeof(helios::Vertex), 22, 0}));
+        vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribNoBones], helios::VAOObj::R_USHORT, 1, sizeof(helios::Vertex), offsetof(helios::Vertex, noBones), 0}));
         vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribDiffuseColor], helios::VAOObj::R_UBYTE, 4, sizeof(helios::Vertex), 24, 1}));
-        vaoobj.push_back ( helios::VAOObj({ attribs[helios::e::kVertexAttribNormal], helios::VAOObj::R_UBYTE, 3, sizeof(helios::Vertex), offsetof(helios::Vertex,n[0]), 1 }));
 
         int vao = mRender->GenerateVAO(vaoobj, vbo);
        {
@@ -199,7 +198,7 @@ namespace helios_dev
             indices.push_back(3);
             indices.push_back(2);
             
-            int vvbo = mRender->GenerateVBO(&vertices[0], sizeof(helios::Vertex), sizeof(helios::Vertex) * verts.size());
+          /*  int vvbo = mRender->GenerateVBO(&vertices[0], sizeof(helios::Vertex), sizeof(helios::Vertex) * verts.size());
             int vibo = mRender->GenerateIBO(&indices[0], ind.size());
             CubeEntity * e = new CubeEntity(this, glm::vec3(0.f,0.f,0.f), vao, vvbo, vibo, uniforms[helios::e::kVertexUniformModelView],
                                               uniforms[helios::e::kVertexUniformProjection],
@@ -211,7 +210,7 @@ namespace helios_dev
             mat.iboRange.start = 0 ;
             mat.iboRange.end = indices.size();
             rc->AddMaterialGroup(mat);
-            mEntities.push_back(e);
+            mEntities.push_back(e); */
             
         }
         {
@@ -311,6 +310,7 @@ namespace helios_dev
                         float v [4] = { va.vertex[0], va.vertex[1], va.vertex[2], 1.f };
                         a.p = glm::vec4(v[0],v[1],v[2],v[3]);
                         a.boneId = va.boneId;
+                        a.noBones = 0;
                         
                         if(std::find(boneIds.begin(), boneIds.end(), a.boneId) == boneIds.end())
                         {
@@ -327,7 +327,7 @@ namespace helios_dev
                     a.g = 0;
                     a.b = 0;
                     a.a = 255;
-                    a.noBones = 0;
+                    
 
                     vertices.push_back(a);
                     indices.push_back(currentIndex++);

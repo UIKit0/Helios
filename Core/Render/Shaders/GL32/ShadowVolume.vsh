@@ -19,7 +19,7 @@ out vec2 vCoords;
 
 void main()
 {
-    mat4 j = ATTR_NO_BONES > 0. ? mat4(1.) : UNIFORM_JOINTS[int(ATTR_BONEID)];
+    mat4 j = ATTR_NO_BONES < 1. ? mat4(1.) : UNIFORM_JOINTS[int(ATTR_BONEID)];
     mat4 m = UNIFORM_MV * j;
     
     vec4 pos = m * ATTR_POS;
