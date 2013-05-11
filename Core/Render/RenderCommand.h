@@ -20,8 +20,15 @@ namespace helios
 {
     struct RenderState
     {
-        uint32_t shadowmap : 1; 
-        uint32_t stencilshadows : 1;
+        union {
+            struct {
+                uint32_t geometry : 1;
+                uint32_t diffuse  : 1;
+                uint32_t stencilshadows : 1;
+                uint32_t postprocess : 1;
+            };
+            uint32_t mask;
+        };
     };
     struct UniformData
     {
@@ -111,6 +118,7 @@ namespace helios
         unsigned short vao;
         short          shader;
         unsigned short tex;
+
         
         bool operator<(RenderCommand rhs) { return depth < rhs.depth; };
         

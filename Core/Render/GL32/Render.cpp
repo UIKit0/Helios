@@ -350,7 +350,7 @@ namespace helios
         glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_DECR_WRAP, GL_KEEP);
         glStencilOpSeparate(GL_BACK, GL_KEEP , GL_INCR_WRAP, GL_KEEP);
         
-        RenderStage(e::kRenderStageShadows, gVec);
+        RenderStage(e::kRenderStageStencilShadows, gVec);
         
         glEnable(GL_CULL_FACE);
         glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
@@ -452,7 +452,8 @@ namespace helios
              }
             for ( auto jt = (*it).commands.begin() ; jt != (*it).commands.end() ; ++jt) {
                 
-                
+                // If this object doesn't participate in this render stage, continue.
+                if(!(stage & (*jt).state.mask)) continue;
                 
                 SetUniforms((*jt).uniforms,currentShader,targetShader);
                 

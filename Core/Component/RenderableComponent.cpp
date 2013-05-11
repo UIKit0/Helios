@@ -16,7 +16,7 @@
 namespace helios
 {
     RenderableComponent::RenderableComponent(IEntity& owner, TextureAtlas* atlas, std::string const & name)
-    : BaseComponent(owner), mTextureName(name), mOwnsTexture(0), mTextureType(1), mTexture(atlas), mShaderId(-1)
+    : BaseComponent(owner), mTextureName(name), mOwnsTexture(0), mTextureType(1), mTexture(atlas), mShaderId(-1), mExtrudeStencilShadows(0)
     {
         mName = e::kComponentRenderable;
         mNormalLoc = -1;
@@ -30,7 +30,7 @@ namespace helios
         
         mIsActive = false;
         
-        memset(&mRenderState,0,sizeof(RenderState));
+        memset(&mRenderState,0xFF,sizeof(RenderState));
         
         frame_t frame ;
         frame = (*(TextureAtlas*)mTexture)[mTextureName];
@@ -43,7 +43,7 @@ namespace helios
     }
     
     RenderableComponent::RenderableComponent(IEntity& owner, std::string texture)
-    : BaseComponent(owner), mOwnsTexture(1), mTextureType(0), mShaderId(-1)
+    : BaseComponent(owner), mOwnsTexture(1), mTextureType(0), mShaderId(-1), mExtrudeStencilShadows(0)
     {
         mName = e::kComponentRenderable;
         D_PRINT("Generating texture...");
@@ -58,7 +58,7 @@ namespace helios
         mCurrentTMat = glm::mat3(1.f);
         mCurrentEvent.SetTarget(e::kEventTargetRender);
         mIsActive = false;
-        memset(&mRenderState,0,sizeof(RenderState));
+        memset(&mRenderState,0xFF,sizeof(RenderState));
         frame_t frame ;
         frame.coords.maxS = 1.f;
         frame.coords.maxT = 1.f;
@@ -71,15 +71,17 @@ namespace helios
                                 0.0, frame.coords.maxT - frame.coords.minT, 0.0,
                                 0.0, 0.0, 1.0);
     }
-    RenderableComponent::RenderableComponent(IEntity& owner, unsigned vbo, unsigned vao, unsigned mvLoc,unsigned pLoc, unsigned texLoc, unsigned normalLoc, unsigned shader)
-    : BaseComponent(owner), mVBO(vbo), mVAO(vao), mMVLoc(mvLoc), mTexLoc(texLoc), mShaderId(shader), mOwnsTexture(0), mTextureType(0), mNormalLoc(normalLoc), mPLoc(pLoc)
+    RenderableComponent::RenderableComponent(IEntity& owner, unsigned vbo, unsigned vao, unsigned mvLoc,unsigned pLoc, unsigned texLoc, unsigned normalLoc, unsigned shader, bool extrudeStencilShadow)
+    : BaseComponent(owner), mVBO(vbo), mVAO(vao), mMVLoc(mvLoc), mTexLoc(texLoc), mShaderId(shader), mOwnsTexture(0), mTextureType(0), mNormalLoc(normalLoc), mPLoc(pLoc), mExtrudeStencilShadows(extrudeStencilShadow)
     {
         mName = e::kComponentRenderable;
         mCurrentEvent.SetName(e::kEventRenderCommand);
         mCurrentTMat = glm::mat3(1.f);
         mCurrentEvent.SetTarget(e::kEventTargetRender);
         mIsActive = false;
-        memset(&mRenderState,0,sizeof(RenderState));
+        memset(&mRenderState,0xFF,sizeof(RenderState));
+        
+        mRenderState.stencilshadows = mExtrudeStencilShadows;
     };
     RenderableComponent::~RenderableComponent()
     {

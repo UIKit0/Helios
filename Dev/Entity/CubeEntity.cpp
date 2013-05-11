@@ -14,7 +14,7 @@ namespace helios_dev
     {
         mComponents[helios::e::kComponentPosition].push_back(new ((*owner)) helios::PositionComponent((*this), pos, glm::vec3(1.f,1.f,1.f) ));
 
-        helios::RenderableComponent * rc = new ((*owner)) helios::RenderableComponent((*this), vbo,vao,mvLoc,pLoc,-1,normLoc,shader);
+        helios::RenderableComponent * rc = new ((*owner)) helios::RenderableComponent((*this), vbo,vao,mvLoc,pLoc,-1,normLoc,shader,false);
 
         mComponents[helios::e::kComponentRenderable].push_back(rc);
         

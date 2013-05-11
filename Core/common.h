@@ -152,16 +152,15 @@ namespace helios
             kVertexAttribPositionDiffuseColor,
             kVertexAttribPositionTexCoord,
             kVertexAttribPositionBoneId,
-        //    kVertexAttribPositionNoExtrude,
             kVertexAttribPositionNoBones
         };
         
         enum RenderStage
         {
-            kRenderStageGeometry,
-            kRenderStageDiffuse,
-            kRenderStageShadows,
-            kRenderStagePostprocess
+            kRenderStageGeometry = 0x1,
+            kRenderStageDiffuse = 0x2,
+            kRenderStageStencilShadows = 0x4,
+            kRenderStagePostprocess = 0x8
         };
         
     };
