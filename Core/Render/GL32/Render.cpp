@@ -104,7 +104,6 @@ namespace helios
             mShadowVolumeProgram = LoadShader(v,f, attribs,uniforms);
             glEnable(GL_STENCIL_TEST);
             glEnable(GL_DEPTH_CLAMP);
-            GLint p;
             
         }
         //D_PRINT("Loaded shaders.");
@@ -332,7 +331,7 @@ namespace helios
         glUseProgram(mDiffuseProgram);
         mCurrentShader = mDiffuseProgram;
         
-        RenderStage(e::kRenderStageDiffuse, gVec);
+     //   RenderStage(e::kRenderStageDiffuse, gVec);
         
         
         glClear(GL_STENCIL_BUFFER_BIT);
@@ -475,13 +474,14 @@ namespace helios
         
         if ( mOptions & RenderOptions_Blend ) {
             std::sort<helios::RenderGroup>(gVec.begin(),gVec.end());
+        } else {
+            glDisable(GL_BLEND);
         }
         
-        if(mOptions & RenderOptions_StenciledShadowVolumes) 
-            RenderShadows(gVec);
+        RenderStage(e::kRenderStageGeometry,gVec);
         
-        else 
-            RenderStage(e::kRenderStageGeometry,gVec);
+        if(mOptions & RenderOptions_StenciledShadowVolumes)
+            RenderShadows(gVec);
         
         ClearRenderStack();
         eglGetError();
@@ -559,7 +559,7 @@ namespace helios
             glBindAttribLocation(prog, (*it).second, str);
             
         }
-        glBindFragDataLocation(prog,0,e::kFragmentOut.c_str());
+        glBindFragDataLocation(prog,0,e::kColorOut.c_str());
         glLinkProgram(prog);
 #ifdef DEBUG
         getProgramLog(prog);
@@ -604,27 +604,34 @@ namespace helios
     }
     
     void
-    GL32Render::GenerateFBO(e::RenderStage r, size_t w, size_t h)
+    GL32Render::GenerateFBO(e::RenderStage r, size_t w, size_t h, int colorAttachments)
     {
         GLuint fbo;
         
         GLuint tex[3];
         GLuint rbo;
+        FBO f;
+        int i ;
+        
+        colorAttachments = (colorAttachments > MAX_COLOR_ATTACHMENTS ? MAX_COLOR_ATTACHMENTS : colorAttachments);
         glGenRenderbuffers(1, &rbo);
         glGenFramebuffers(1, &fbo);
         glBindFramebuffer(GL_FRAMEBUFFER, fbo);
-        glGenTextures(3, tex);
+        glGenTextures(2+colorAttachments, tex);
         
-        
-        glBindTexture(GL_TEXTURE_2D, tex[0]);
-        
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mCurrentViewport.w, mCurrentViewport.h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
-        
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, tex[0], 0);
+        for ( i = 0 ; i < colorAttachments ; ++i ) {
+            
+            f.colorBufferTex[i] = tex[i];
+            glBindTexture(GL_TEXTURE_2D, tex[i]);
+            
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mCurrentViewport.w, mCurrentViewport.h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0+i, GL_TEXTURE_2D, tex[0], 0);
+        }
+  
         glBindTexture(GL_TEXTURE_2D, tex[1]);
         
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -634,16 +641,15 @@ namespace helios
         glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, mCurrentViewport.w, mCurrentViewport.h, 0, GL_DEPTH_COMPONENT,GL_UNSIGNED_INT, NULL);
         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, tex[1], 0);
         
-        /* glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-         glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, mCurrentViewport.w, mCurrentViewport.h, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, NULL);
-         glFramebufferTexture2D(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_TEXTURE_2D, tex[2], 0);*/
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, mCurrentViewport.w, mCurrentViewport.h, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, NULL);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_TEXTURE_2D, tex[2], 0);
         
-        FBO f;
+        
         f.name = fbo;
-        f.colorBufferTex = tex[0];
         f.depthBufferTex = tex[1];
         f.stencilBufferTex = tex[2];
         

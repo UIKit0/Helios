@@ -2,7 +2,7 @@
 
 uniform sampler2D UNIFORM_SAMPLER0;
 
-out vec4 OUT_FRAG;
+out vec4 OUT_COLOR;
 
 in vec4 vColor;
 in vec2 vCoords;
@@ -10,5 +10,5 @@ in vec2 vCoords;
 
 void main()
 {
-    OUT_FRAG = vColor;
+    OUT_COLOR = vColor;
 }

@@ -8,14 +8,17 @@
 #include <OpenGL/gl3.h>
 #include <OpenGL/gl3ext.h>
 
+#define MAX_COLOR_ATTACHMENTS 4
+
 namespace helios
 {
     namespace gl32
     {
         struct FBO
         {
+            GLuint colorBufferCount;
             GLuint name;
-            GLuint colorBufferTex;
+            GLuint colorBufferTex[MAX_COLOR_ATTACHMENTS];
             GLuint depthBufferTex;
             GLuint stencilBufferTex;
         };
@@ -52,7 +55,7 @@ namespace helios
             
             short mCurrentVBO=0, mCurrentIBO=0, mCurrentVAO=0, mCurrentTex=0, mCurrentShader=0;
             
-            void GenerateFBO(e::RenderStage, size_t w, size_t h);
+            void GenerateFBO(e::RenderStage, size_t w, size_t h, int colorAttachments = 1);
             void RenderStage(e::RenderStage, std::vector<RenderGroup>& gVec);
             void RenderShadows(std::vector<RenderGroup>& gVec);
             void SetUniforms(std::vector<UniformData_ptr>& uniformdata, Shader& currentShader, Shader& targetShader, int clear = 0);

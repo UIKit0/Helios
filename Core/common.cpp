@@ -101,6 +101,8 @@ namespace helios
         extern std::string const kVertexAttribNoExtrude   = "ATTR_NO_EXTRUDE";
         extern std::string const kVertexAttribNoBones     = "ATTR_NO_BONES"; 
         // For use with OpenGL 3.2+
-        extern std::string const kFragmentOut             = "OUT_FRAG";
+        extern std::string const kColorOut                = "OUT_COLOR";
+        extern std::string const kNormalsOut              = "OUT_NORMALS";
+        extern std::string const kPositionOut             = "OUT_POSITION";
     }
 }
