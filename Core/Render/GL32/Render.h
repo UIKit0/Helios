@@ -37,10 +37,8 @@ namespace helios
             GLuint mDefaultVBO = 0;
             GLuint mDefaultIBO = 0 ;
             GLuint mDefaultFBO = 0;
-            GLuint mDiffuseProgram, mShadowVolumeProgram;
             
-            //std::map<std::string, GLuint> mDiffuseUniforms, mShadowUniforms;
-            
+            std::map<e::RenderStage, GLuint> mShader;
             std::map<e::RenderStage, FBO> mFBO;
             std::map<unsigned,RenderGroup> mGroups;
             

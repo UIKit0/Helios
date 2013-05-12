@@ -152,66 +152,7 @@ namespace helios_dev
             sc->SetDefaultAnimation(177,205, 30.f);
            sc->LoadAnimationMap(b_folder + "/zombie02.json");
            
-            mEntities.push_back(e); 
-        }
-        {
-            std::vector<helios::Vertex> vertices;
-            std::vector<unsigned short> indices;
-
-           /* generateQuad(vertices, glm::vec3(1.0,0.0,0.0), indices, glm::vec3(1.0,0.0,0.0), glm::vec2(10.0,10.0));
-            generateQuad(vertices, glm::vec3(-1.0,0.0,0.0), indices, glm::vec3(-1.0,0.0,0.0), glm::vec2(10.0,10.0));
-            generateQuad(vertices, glm::vec3(0.0,1.0,0.0), indices, glm::vec3(0.0,1.0,0.0), glm::vec2(10.0,10.0));
-            generateQuad(vertices, glm::vec3(0.0,-1.0,0.0), indices, glm::vec3(0.0,-1.0,0.0), glm::vec2(10.0,10.0));
-            generateQuad(vertices, glm::vec3(0.0,0.0,1.0), indices, glm::vec3(0.0,0.0,1.0), glm::vec2(10.0,10.0));
-            generateQuad(vertices, glm::vec3(0.0,0.0,-1.0), indices, glm::vec3(0.0,0.0,-1.0), glm::vec2(10.0,10.0)); 
-            generateQuad(vertices, glm::vec3(0.0,1.0,0.0), indices, glm::vec3(0.0,1.0,0.0), glm::vec2(10.0,10.0)); */
-            float s = 100.f ;
-            /*            v [0] = Vertex( { glm::vec4(0.f,0.f,0.f,1.f),minS,maxT } );
-
-             v [1] = Vertex( { glm::vec4(1.f,0.f,0.f,1.f), maxS,maxT } );
-             v [2] = Vertex( { glm::vec4(0.f,1.f,0.f,1.f), minS,minT} );
-
-             v [3] = Vertex( { glm::vec4(1.f,1.f,0.f,1.f), maxS,minT } );*/
-            
-            {
-                helios::Vertex v = { glm::vec4(-s,0.f,-s,1.f), 0, 0, 0, 1, { 255, 255, 255, 255 }, {0, 255, 0, 255} };
-                vertices.push_back(v);
-            }
-            {
-                helios::Vertex v = { glm::vec4(s,0.f,-s,1.f), 0, 0, 0, 1, { 255, 255, 255, 255 }, {0, 255, 0, 255} };
-                vertices.push_back(v);
-            }
-            {
-                helios::Vertex v = { glm::vec4(-s,0.f,s,1.f), 0, 0, 0, 1, { 255, 255, 255, 255 }, {0, 255, 0, 255} };
-                vertices.push_back(v);
-            }
-
-            {
-                helios::Vertex v = { glm::vec4(s,0.f,s,1.f), 0, 0, 0, 1, { 255, 255, 255, 255 }, {0, 255, 0, 255} };
-                vertices.push_back(v);
-            }
-
-            indices.push_back(0);
-            indices.push_back(1);
-            indices.push_back(2);
-            indices.push_back(1);
-            indices.push_back(3);
-            indices.push_back(2);
-            
-          /*  int vvbo = mRender->GenerateVBO(&vertices[0], sizeof(helios::Vertex), sizeof(helios::Vertex) * verts.size());
-            int vibo = mRender->GenerateIBO(&indices[0], ind.size());
-            CubeEntity * e = new CubeEntity(this, glm::vec3(0.f,0.f,0.f), vao, vvbo, vibo, uniforms[helios::e::kVertexUniformModelView],
-                                              uniforms[helios::e::kVertexUniformProjection],
-                                              uniforms[helios::e::kVertexUniformNormalMat], mCurrentShader );
-            helios::RenderableComponent* rc = (helios::RenderableComponent*)e->GetComponent(helios::e::kComponentRenderable)[0];
-            helios::s::MaterialGroup mat ;
-            mat.ibo = vibo;
-            mat.tex = 0;
-            mat.iboRange.start = 0 ;
-            mat.iboRange.end = indices.size();
-            rc->AddMaterialGroup(mat);
-            mEntities.push_back(e); */
-            
+            mEntities.push_back(e);
         }
         {
             CameraEntity * e = new CameraEntity(this,glm::vec3(0.,25.,50.),  glm::vec3(0.,0.,5.), glm::vec3(0.,-0.5,-1.), glm::vec3(0.,1.,0.));

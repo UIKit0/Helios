@@ -26,6 +26,7 @@ namespace helios
                 uint32_t diffuse  : 1;
                 uint32_t stencilshadows : 1;
                 uint32_t postprocess : 1;
+                uint32_t hud : 1;
             };
             uint32_t mask;
         };

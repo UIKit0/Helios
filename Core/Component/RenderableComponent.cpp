@@ -30,7 +30,7 @@ namespace helios
         
         mIsActive = false;
         
-        memset(&mRenderState,0xFF,sizeof(RenderState));
+        mRenderState.mask = UINT32_MAX;
         
         frame_t frame ;
         frame = (*(TextureAtlas*)mTexture)[mTextureName];
@@ -52,13 +52,14 @@ namespace helios
         mVBO = mOwner.GetOwner()->GetRenderer()->GenerateDefaultVBO();  
         mNormalLoc = -1;
         mTexLoc = -1;
-      //  mCurrentEvent = 0L;
+
         mIBOSize = 6;
         mCurrentEvent.SetName(e::kEventRenderCommand);
         mCurrentTMat = glm::mat3(1.f);
         mCurrentEvent.SetTarget(e::kEventTargetRender);
         mIsActive = false;
-        memset(&mRenderState,0xFF,sizeof(RenderState));
+        mRenderState.mask = UINT32_MAX;
+        
         frame_t frame ;
         frame.coords.maxS = 1.f;
         frame.coords.maxT = 1.f;
@@ -79,7 +80,8 @@ namespace helios
         mCurrentTMat = glm::mat3(1.f);
         mCurrentEvent.SetTarget(e::kEventTargetRender);
         mIsActive = false;
-        memset(&mRenderState,0xFF,sizeof(RenderState));
+        mRenderState.mask = UINT32_MAX;
+        
         
         mRenderState.stencilshadows = mExtrudeStencilShadows;
     };

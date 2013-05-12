@@ -98,10 +98,10 @@ namespace helios
             uniforms[e::kFragmentUniformSampler0] = 0;
             uniforms[e::kVertexUniformJoints] = 0;
             
-            mDiffuseProgram = LoadShader(v, f, attribs, uniforms);
+            mShader[e::kRenderStageGeometry] = LoadShader(v, f, attribs, uniforms);
             v = b_folder + "/ShadowVolume.vsh";
             f = b_folder + "/ShadowVolume.fsh";
-            mShadowVolumeProgram = LoadShader(v,f, attribs,uniforms);
+            mShader[e::kRenderStageStencilShadows] = LoadShader(v,f, attribs,uniforms);
             glEnable(GL_STENCIL_TEST);
             glEnable(GL_DEPTH_CLAMP);
             
@@ -328,8 +328,8 @@ namespace helios
     {
         
         glDisable(GL_BLEND);
-        glUseProgram(mDiffuseProgram);
-        mCurrentShader = mDiffuseProgram;
+        glUseProgram(mShader[e::kRenderStageGeometry]);
+        mCurrentShader = mShader[e::kRenderStageGeometry];
         
      //   RenderStage(e::kRenderStageDiffuse, gVec);
         
@@ -342,8 +342,8 @@ namespace helios
         
         glColorMask(GL_FALSE,GL_FALSE,GL_FALSE,GL_FALSE);
         glDepthMask(GL_FALSE);
-        glUseProgram(mShadowVolumeProgram);
-        mCurrentShader = mShadowVolumeProgram;
+        glUseProgram(mShader[e::kRenderStageStencilShadows]);
+        mCurrentShader = mShader[e::kRenderStageStencilShadows];
 
         glDisable(GL_CULL_FACE);
         glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_DECR_WRAP, GL_KEEP);
@@ -362,8 +362,8 @@ namespace helios
         glDepthMask(GL_TRUE);
         glEnable(GL_BLEND);
         glBlendFunc(GL_ONE, GL_ONE);
-        glUseProgram(mDiffuseProgram);
-        mCurrentShader = mDiffuseProgram;
+        glUseProgram(mShader[e::kRenderStageGeometry]);
+        mCurrentShader = mShader[e::kRenderStageGeometry];
         
 
         RenderStage(e::kRenderStageDiffuse,gVec);
@@ -452,13 +452,14 @@ namespace helios
             for ( auto jt = (*it).commands.begin() ; jt != (*it).commands.end() ; ++jt) {
                 
                 // If this object doesn't participate in this render stage, continue.
-                if(!(stage & (*jt).state.mask)) continue;
+                if((stage & (*jt).state.mask)) {
                 
-                SetUniforms((*jt).uniforms,currentShader,targetShader);
+                    SetUniforms((*jt).uniforms,currentShader,targetShader);
                 
-                glDrawElements(GL_TRIANGLES, (*jt).iboSize , GL_UNSIGNED_SHORT, (void*)((*jt).iboOffset*sizeof(short)));
+                    glDrawElements(GL_TRIANGLES, (*jt).iboSize , GL_UNSIGNED_SHORT, (void*)((*jt).iboOffset*sizeof(short)));
                 
-                eglGetError();
+                    eglGetError();
+                }
             }
         }
         eglGetError();
@@ -476,6 +477,7 @@ namespace helios
             std::sort<helios::RenderGroup>(gVec.begin(),gVec.end());
         } else {
             glDisable(GL_BLEND);
+            glDisable(GL_CULL_FACE);
         }
         
         RenderStage(e::kRenderStageGeometry,gVec);
@@ -682,8 +684,8 @@ namespace helios
         {
             glDeleteFramebuffers(1, &mFBO[stage].name);
         }
-        //GenerateFBO(stage,FBO_WIDTH,FBO_HEIGHT);
-         eglGetError();
+        GenerateFBO(stage,mCurrentViewport.w,mCurrentViewport.h);
+        eglGetError();
     }
     };
     

@@ -159,10 +159,11 @@ namespace helios
         
         enum RenderStage
         {
-            kRenderStageGeometry = 0x1,
-            kRenderStageDiffuse = 0x2,
-            kRenderStageStencilShadows = 0x4,
-            kRenderStagePostprocess = 0x8
+            kRenderStageGeometry = 1,
+            kRenderStageDiffuse =  1<<1,
+            kRenderStageStencilShadows = 1<<2,
+            kRenderStagePostprocess = 1<<3,
+            kRenderStageHUD = 1<<4
         };
         
     };
