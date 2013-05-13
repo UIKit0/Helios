@@ -41,7 +41,7 @@ namespace helios
             {
                 for (auto it = mSimulateBodies.begin() ; it != mSimulateBodies.end() ; ++it)
                 {
-                    Body& b = mBodies[(*it)];
+                    //Body& b = mBodies[(*it)];
                     
                 }
             }
@@ -69,7 +69,7 @@ namespace helios
         void 
         Physics::SubmitGeometryLOD(BODY_ID body, std::vector<Vertex>& geometry, LOD lod)
         {
-            Body& b = mBodies[body];
+            //Body& b = mBodies[body];
             
         }
         void 

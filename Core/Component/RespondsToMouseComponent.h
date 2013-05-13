@@ -25,7 +25,8 @@ namespace helios
         void DispatchEvents();
         
         IEvent_ptr operator()() { 
-            
+            IEvent_ptr p;
+            return p;
         };
         
         void* operator new (size_t size, ILayer& layer)

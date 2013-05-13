@@ -12,6 +12,7 @@
 #include <Component/IComponent.h>
 #include <Layer/ILayer.h>
 #include <Event/HEvent.h>
+#include <sstream>
 
 namespace helios
 {
@@ -27,8 +28,10 @@ namespace helios
         BaseEntity(ILayer* owner) : mOwner(owner) 
         { 
             static int tag = 0;
-            
-            mTag = "entity" + tag;
+            std::stringstream ss;
+            ss << "entity" << tag;
+
+            mTag = ss.str();
             
             tag++;
         };

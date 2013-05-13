@@ -31,7 +31,6 @@ namespace helios_dev
             v.SetNormals(glm::vec4(normal,1.f));
             unsigned char  c[4] = { 200, 100, 100, 255 };
             memcpy(v.c,c,4);
-            v.noBones = 1;
             v.boneId = 0;
             verts.push_back(v);
         }
@@ -41,7 +40,6 @@ namespace helios_dev
             v.SetNormals(glm::vec4(normal,1.f));
             unsigned char  c[4] = { 200, 100, 100, 255 };
             memcpy(v.c,c,4);
-            v.noBones = 1;
             v.boneId = 0;
             verts.push_back(v);
         }
@@ -51,7 +49,6 @@ namespace helios_dev
             v.SetNormals(glm::vec4(normal,1.f));
             unsigned char  c[4] = { 200, 100, 100, 255 };
             memcpy(v.c,c,4);
-            v.noBones = 1;
             v.boneId = 0;
             verts.push_back(v);
         }
@@ -61,7 +58,6 @@ namespace helios_dev
             v.SetNormals(glm::vec4(normal,1.f));
             unsigned char  c[4] = { 200, 100, 100, 255 };
             memcpy(v.c,c,4);
-            v.noBones = 1;
             v.boneId = 0;
             verts.push_back(v);
         }
@@ -186,7 +182,6 @@ namespace helios_dev
 
             std::string tex ( mat.texture );
             if(tex.size() > 0) {
-                size_t ts = tex.size();
                 size_t fn = tex.find_last_of("/");
                 tex = tex.substr(fn);
                 if(textures[tex] == 0L)
@@ -211,7 +206,6 @@ namespace helios_dev
                         float v [4] = { va.vertex[0], va.vertex[1], va.vertex[2], 1.f };
                         a.p = glm::vec4(v[0],v[1],v[2],v[3]);
                         a.boneId = va.boneId;
-                        a.noBones = 0;
                         
                         if(std::find(boneIds.begin(), boneIds.end(), a.boneId) == boneIds.end())
                         {

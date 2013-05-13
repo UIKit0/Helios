@@ -96,7 +96,6 @@ namespace helios
                 attribs[e::kVertexAttribDiffuseColor]  = e::kVertexAttribPositionDiffuseColor;
                 attribs[e::kVertexAttribTexCoord] = e::kVertexAttribPositionTexCoord;
                 attribs[e::kVertexAttribBoneId] = e::kVertexAttribPositionBoneId;
-                attribs[e::kVertexAttribNoBones] = e::kVertexAttribPositionNoBones;
                 
                 uniforms[e::kVertexUniformModelView] = 0;
                 uniforms[e::kVertexUniformProjection] = 0;
@@ -151,17 +150,15 @@ namespace helios
         {
             if ( !mDefaultVBO )
             {
-                Vertex v [4];
+                Vertex v [4] ;
                 unsigned short minS = 0;
                 unsigned short maxS = 0xFFFF;
                 unsigned short minT = 0;
                 unsigned short maxT = 0xFFFF;
-                v [0] = Vertex( { glm::vec4(0.f,0.f,0.f,1.f),minS,maxT } );
-                
-                v [1] = Vertex( { glm::vec4(1.f,0.f,0.f,1.f), maxS,maxT } );
-                v [2] = Vertex( { glm::vec4(0.f,1.f,0.f,1.f), minS,minT} );
-                
-                v [3] = Vertex( { glm::vec4(1.f,1.f,0.f,1.f), maxS,minT } );
+                v [0] = Vertex( glm::vec4(0.f,0.f,0.f,1.f), minS,maxT );
+                v [1] = Vertex( glm::vec4(1.f,0.f,0.f,1.f), maxS,maxT );
+                v [2] = Vertex( glm::vec4(0.f,1.f,0.f,1.f), minS,minT );                
+                v [3] = Vertex( glm::vec4(1.f,1.f,0.f,1.f), maxS,minT );
                 
                 
                 mDefaultVBO = GenerateVBO(&v, sizeof(v), sizeof(v) * 4);
@@ -192,7 +189,6 @@ namespace helios
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionNormal, helios::VAOObj::R_UBYTE, 3, sizeof(helios::Vertex), offsetof(helios::Vertex,n[0]), 1 }));
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionTexCoord, helios::VAOObj::R_USHORT, 2, sizeof(helios::Vertex), 16, 1}));
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionBoneId, helios::VAOObj::R_SHORT, 1, sizeof(helios::Vertex), 20, 0 }));
-            vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionNoBones, helios::VAOObj::R_USHORT, 1, sizeof(helios::Vertex), offsetof(helios::Vertex, noBones), 0}));
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionDiffuseColor, helios::VAOObj::R_UBYTE, 4, sizeof(helios::Vertex), 24, 1}));
             
             mVAOMap[vbo] = GenerateVAO(vaoobj);
@@ -364,7 +360,7 @@ namespace helios
             
             glDisable(GL_CULL_FACE);
             glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_DECR_WRAP, GL_KEEP);
-            glStencilOpSeparate(GL_BACK, GL_KEEP , GL_INCR_WRAP, GL_KEEP);
+            glStencilOpSeparate(GL_BACK , GL_KEEP, GL_INCR_WRAP, GL_KEEP);
             
             RenderStage(e::kRenderStageStencilShadows, gVec);
             

@@ -8,7 +8,7 @@ namespace helios
     {
         glm::vec4 p;
         
-        unsigned short s, t , boneId, noBones;
+        unsigned short s, t , boneId, reserved;
         
 
         union
@@ -16,7 +16,8 @@ namespace helios
             unsigned char c[4];
             struct {
                 unsigned char r, g, b, a;  
-            }; 
+            };
+            uint32_t _c;
         };
         union
         {
@@ -24,7 +25,11 @@ namespace helios
             struct {
                 unsigned char nx, ny, nz, nw;
             };
+            uint32_t _n;
         };
+
+        Vertex() : p(0.), s(0), t(0), boneId(0), _c(0), _n(0) {};
+        Vertex(glm::vec4 pos, unsigned short S, unsigned short T) : p(pos), s(S), t(T), boneId(0), _c(0), _n(0) {};
         
         glm::vec4 GetNormals() 
         {
