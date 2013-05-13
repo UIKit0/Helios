@@ -95,7 +95,7 @@ namespace helios
         //----------------------------------------------------------------------
         ~UniformData() { };
     };
-    typedef boost::shared_ptr<UniformData> UniformData_ptr;
+    typedef std::shared_ptr<UniformData> UniformData_ptr;
     
     struct HRenderCommand
     {

@@ -42,7 +42,7 @@ namespace helios
         virtual void Render(uint64_t time) = 0;
         
         virtual void SetRenderer(IRender* renderer) = 0;
-        virtual IRender* GetRenderer() = 0;
+        virtual std::shared_ptr<IRender> GetRenderer() = 0;
         
         virtual void RegisterComponent(IComponent* component) = 0;
         virtual void RegisterComponents(std::map<std::string, std::vector<IComponent*> >) = 0;

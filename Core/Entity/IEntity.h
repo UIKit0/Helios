@@ -46,9 +46,9 @@ namespace helios
         };
         
         template <typename T>
-        boost::shared_ptr<HEvent<T> > PushEvent(std::string const & target, std::string const & name, T& data) 
+        std::shared_ptr<HEvent<T> > PushEvent(std::string const & target, std::string const & name, T& data)
         {
-            boost::shared_ptr< HEvent<T> > _event( new HEvent<T>(target, name, data) );
+            std::shared_ptr< HEvent<T> > _event( new HEvent<T>(target, name, data) );
             _event->SetOwner(this);
            // mEvents[target].push_back((IEvent_ptr)_event);
             

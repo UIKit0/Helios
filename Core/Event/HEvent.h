@@ -29,7 +29,7 @@ namespace helios
         virtual IEntity* GetOwner() = 0;
     };
     // -------------------------------------------------------------------------
-    typedef boost::shared_ptr<IEvent> IEvent_ptr;
+    typedef std::shared_ptr<IEvent> IEvent_ptr;
     // -------------------------------------------------------------------------
     
     template<typename T>
@@ -50,13 +50,13 @@ namespace helios
         };
         static T& GetData(IEvent_ptr e)
         {
-            boost::shared_ptr<HEvent< T > > p = boost::static_pointer_cast<HEvent<T> >(e);
+            std::shared_ptr<HEvent< T > > p = std::static_pointer_cast<HEvent<T> >(e);
             
             return (*p).GetData();
         };
         static HEvent<T> & GetEvent(IEvent_ptr e)
         {
-            boost::shared_ptr<HEvent< T > > p = boost::static_pointer_cast<HEvent<T> >(e);
+            std::shared_ptr<HEvent< T > > p = std::static_pointer_cast<HEvent<T> >(e);
             return *p;
         };
         T& GetData()
@@ -64,9 +64,9 @@ namespace helios
             return _data;
         };
         
-        boost::shared_ptr<HEvent<T> >  ptr() 
+        std::shared_ptr<HEvent<T> >  ptr() 
         {
-            return boost::shared_ptr<HEvent<T> >(new HEvent<T>(*this));
+            return std::shared_ptr<HEvent<T> >(new HEvent<T>(*this));
         };
         HEvent() {};
         ~HEvent() {};

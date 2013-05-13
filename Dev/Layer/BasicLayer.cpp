@@ -78,7 +78,7 @@ namespace helios_dev
     {
         BaseLayer::onActive(t);
 
-        mPool = new helios::Pool(10);
+        mPool.reset( new helios::Pool(10) );
         std::vector<helios::Vertex> verts;
         std::vector<unsigned short> ind;
         std::vector<helios::s::MaterialGroup> mats;
@@ -112,11 +112,11 @@ namespace helios_dev
             sc->SetDefaultAnimation(177,205, 30.f);
            sc->LoadAnimationMap(b_folder + "/zombie02.json");
            
-            mEntities.push_back(e);
+            mEntities.push_back(std::shared_ptr<helios::IEntity>(e));
         }
         {
             CameraEntity * e = new CameraEntity(this,glm::vec3(0.,25.,50.),  glm::vec3(0.,0.,5.), glm::vec3(0.,-0.5,-1.), glm::vec3(0.,1.,0.));
-            mEntities.push_back(e);
+            mEntities.push_back(std::shared_ptr<helios::IEntity>(e));
         }
 
     }

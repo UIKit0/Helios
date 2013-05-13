@@ -12,7 +12,7 @@
 
 void GLFWCALL mouseButtonCallback(int b, int a)
 {
-    typedef boost::shared_ptr<helios::HEvent<char> > MouseEvent_t;
+    typedef std::shared_ptr<helios::HEvent<char> > MouseEvent_t;
     printf("Mousebutton: %d\n",b);
     
     if( a == GLFW_PRESS )
@@ -35,7 +35,7 @@ void GLFWCALL mouseButtonCallback(int b, int a)
 
 void GLFWCALL keyCallback(int k, int a)
 {
-    typedef boost::shared_ptr<helios::HEvent<helios::KeyEvent> > KeyEvent_t;
+    typedef std::shared_ptr<helios::HEvent<helios::KeyEvent> > KeyEvent_t;
     
     helios::KeyEvent ke;
     
@@ -123,7 +123,7 @@ int main()
             int x, y;
             glfwGetMousePos(&x,&y);
             std::pair<int,int> m(x,y);
-            boost::shared_ptr<helios::HEvent<std::pair<int,int> > > p(new helios::HEvent<std::pair<int,int> >(helios::e::kEventTargetMouse, helios::e::kEventMousePos, m));
+            std::shared_ptr<helios::HEvent<std::pair<int,int> > > p(new helios::HEvent<std::pair<int,int> >(helios::e::kEventTargetMouse, helios::e::kEventMousePos, m));
             helios::SceneManager::Inst().PushEvent(p);
             
         }

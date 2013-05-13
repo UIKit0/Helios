@@ -40,7 +40,7 @@ namespace helios
         void Rotate(glm::quat rotation) { mCurrentRotation = rotation ; } ;
         
         IEvent_ptr operator()() { 
-            return boost::shared_ptr< HEvent<glm::mat4> >( new HEvent<glm::mat4>(e::kEventTargetPosition, e::kEventPositionMatrix, mCurrentPosition ) );
+            return std::shared_ptr< HEvent<glm::mat4> >( new HEvent<glm::mat4>(e::kEventTargetPosition, e::kEventPositionMatrix, mCurrentPosition ) );
         };
         void* operator new (size_t size, ILayer& layer)
         {

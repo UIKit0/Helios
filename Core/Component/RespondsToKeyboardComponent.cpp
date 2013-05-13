@@ -54,7 +54,7 @@ namespace helios
             
             std::string action = helios::SceneManager::Inst().GetConfiguration().GetActionForKey(k) ;
 
-            boost::shared_ptr<HEvent<const char> > p ( new HEvent<const char>(e::kEventTargetAction, action, stage));
+            std::shared_ptr<HEvent<const char> > p ( new HEvent<const char>(e::kEventTargetAction, action, stage));
 
             if(stage == 0 )
             {

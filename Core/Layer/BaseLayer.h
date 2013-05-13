@@ -30,14 +30,14 @@ namespace helios
     {
     protected:
         
-        ISpatialIndex * mSpatialIndex;
+        std::shared_ptr<ISpatialIndex> mSpatialIndex;
         IScene&         mOwner;
         
         glm::mat4 mMV, mP;                      // modelView, projection
         uint64_t  mCurrentTimestamp;
         
-        std::vector<IEntity*> mEntities;
-        std::map<std::string, std::vector<IComponent*> > mComponents;
+        std::vector<std::shared_ptr<IEntity> > mEntities;
+        std::map<std::string, std::vector<std::shared_ptr<IComponent> > > mComponents;
         std::map<std::string, unsigned> mShaders;
         std::map<std::string, unsigned> mVAOs;
         std::map<unsigned, std::map<std::string, int> > mUniforms;
@@ -46,9 +46,9 @@ namespace helios
         unsigned mCurrentShader;
         unsigned mCurrentVAO;
         
-        Pool *    mPool;
-        IRender*  mRender;
-        ISimulator* mSimulator;
+        std::shared_ptr<Pool>       mPool;
+        std::shared_ptr<IRender>    mRender;
+        std::shared_ptr<ISimulator> mSimulator;
         
 
         
@@ -125,7 +125,7 @@ namespace helios
         
         virtual void UpdateLayer()
         {
-            std::vector<IComponent*> & r = mComponents[e::kComponentRenderable];
+            std::vector<std::shared_ptr<IComponent> > & r = mComponents[e::kComponentRenderable];
             for (auto it = r.begin() ; it != r.end() ; ++it)
             {
                 if(!(*it)->IsActive()) (*it)->SetActive(true);
@@ -144,9 +144,9 @@ namespace helios
                     }
                 }
             }
-            mEvents[e::kEventTargetMatrix].push_back(boost::shared_ptr<HEvent<glm::mat4> >(new HEvent<glm::mat4>(e::kEventTargetMatrix, e::kEventMatrixModelView, mMV)));
+            mEvents[e::kEventTargetMatrix].push_back(std::shared_ptr<HEvent<glm::mat4> >(new HEvent<glm::mat4>(e::kEventTargetMatrix, e::kEventMatrixModelView, mMV)));
                                              
-            mEvents[e::kEventTargetMatrix].push_back(boost::shared_ptr<HEvent<glm::mat4> >(new HEvent<glm::mat4>(e::kEventTargetMatrix, e::kEventMatrixProjection, mP)));
+            mEvents[e::kEventTargetMatrix].push_back(std::shared_ptr<HEvent<glm::mat4> >(new HEvent<glm::mat4>(e::kEventTargetMatrix, e::kEventMatrixProjection, mP)));
             
             
             {
@@ -220,7 +220,7 @@ namespace helios
 
             for ( auto it = renderables.begin() ; it != renderables.end() ; ++ it ) 
             {
-                IEvent_ptr p = (*((RenderableComponent*)(*it)))();
+                IEvent_ptr p = (*(std::static_pointer_cast<RenderableComponent>(*it)))();
                 mRender->PushRenderCommand(helios::HEvent<std::vector<helios::RenderCommand> >::GetData(p));
             }
             mRender->SetViewport(mScreen.x,mScreen.y,mScreen.w,mScreen.h);
@@ -230,9 +230,9 @@ namespace helios
         
         void SetRenderer(IRender* renderer)
         {
-            mRender = renderer;
+            mRender.reset(renderer);
         };
-        IRender* GetRenderer()
+        std::shared_ptr<IRender> GetRenderer()
         {
             return mRender;
         };
@@ -240,8 +240,9 @@ namespace helios
         
         void RegisterComponent(IComponent* component)
         {
-            
-            mComponents[ component->Name() ].push_back ( component ) ;
+            std::shared_ptr<IComponent> ptr(component);
+
+            mComponents[ component->Name() ].push_back ( ptr ) ;
         };
         
         void RegisterComponents(std::map<std::string, std::vector<IComponent*> > components)
@@ -264,10 +265,10 @@ namespace helios
         };
         void UnRegisterComponent(IComponent* component, std::string mask)
         {
-            std::vector<IComponent*>::iterator it = mComponents[mask].begin();
+            auto it = mComponents[mask].begin();
             while (it != mComponents[mask].end())
             {
-                if( (*it) == component )
+                if( (*it).get() == component )
                 {
                     it = mComponents[mask].erase(it);
                 } else {
@@ -298,13 +299,12 @@ namespace helios
         
         ILayer* OwnsComponent(IComponent* component, std::string name)
         {
-            std::vector<IComponent*>::iterator it, ite;
-            it = mComponents[ name ].begin();
-            ite = mComponents[ name ].end();
+            auto it = mComponents[ name ].begin();
+            auto ite = mComponents[ name ].end();
             
             for ( ; it != ite ; ++it )
             {
-                if( (*it) == component )
+                if( (*it).get() == component )
                 {
                     return this;
                 }
