@@ -21,6 +21,12 @@ namespace helios
             GLuint colorBufferTex[MAX_COLOR_ATTACHMENTS];
             GLuint depthBufferTex;
             GLuint stencilBufferTex;
+            ~FBO() {
+                glDeleteTextures(colorBufferCount, colorBufferTex);
+                glDeleteTextures(1,&depthBufferTex);
+                glDeleteTextures(1,&stencilBufferTex);
+                glDeleteFramebuffers(1, &name);
+            };
         };
         struct UniformPair
         {

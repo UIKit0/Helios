@@ -68,7 +68,15 @@ namespace helios
         {
             if(mDefaultVBO)
             {
-                glDeleteBuffers(1, &mDefaultVBO);
+                DeleteVBO(mDefaultVBO);
+            }
+            if(mDefaultIBO)
+            {
+                glDeleteBuffers(1, &mDefaultIBO);
+            }
+            for( auto it = mShader.begin(); it != mShader.end(); ++it)
+            {
+                DeleteShader((*it).second);
             }
         }
         void
@@ -102,9 +110,6 @@ namespace helios
                 uniforms[e::kFragmentUniformSampler4] = 0;
                 uniforms[e::kFragmentUniformSampler5] = 0;
                 uniforms[e::kFragmentUniformSampler6] = 0;                
-
-                
-
                 
                 mShader[e::kRenderStageGeometry] = LoadShader(v, f, attribs, uniforms);
                 v = b_folder + "/ShadowVolume.vsh";
@@ -253,6 +258,7 @@ namespace helios
         GL32Render::DeleteVBO ( unsigned int vbo )
         {
             glDeleteBuffers(1, &vbo);
+            DeleteVAO(mVAOMap[vbo]);
             eglGetError();
         }
         void
