@@ -37,10 +37,12 @@ namespace helios
             GLuint mDefaultVBO = 0;
             GLuint mDefaultIBO = 0 ;
             GLuint mDefaultFBO = 0;
+            GLuint mDefaultVAO = 0;
             
             std::map<e::RenderStage, GLuint> mShader;
             std::map<e::RenderStage, FBO> mFBO;
             std::map<unsigned,RenderGroup> mGroups;
+            std::map<unsigned, unsigned> mVAOMap;
             
             std::vector<UniformPair> mUniforms;
             
@@ -64,7 +66,7 @@ namespace helios
             unsigned GenerateDefaultVBO();
             unsigned GenerateDefaultIBO();
             unsigned int  GenerateVBO(void* data, size_t stride, size_t length) ;
-            unsigned int  GenerateVAO(std::vector<VAOObj> data, unsigned vbo ) ;
+            unsigned int  GenerateVAO(const std::vector<VAOObj>& data ) ;
             unsigned int  GenerateIBO(unsigned * indices, size_t size);
             unsigned int  GenerateIBO(unsigned short * indices, size_t size);
             

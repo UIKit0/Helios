@@ -16,11 +16,9 @@
 namespace helios
 {
     RenderableComponent::RenderableComponent(IEntity& owner, TextureAtlas* atlas, std::string const & name)
-    : BaseComponent(owner), mTextureName(name), mOwnsTexture(0), mTextureType(1), mTexture(atlas), mShaderId(-1), mExtrudeStencilShadows(0)
+    : BaseComponent(owner), mTextureName(name), mOwnsTexture(0), mTextureType(1), mTexture(atlas), mExtrudeStencilShadows(0)
     {
         mName = e::kComponentRenderable;
-        mNormalLoc = -1;
-        mTexLoc = -1;
         mVBO = mOwner.GetOwner()->GetRenderer()->GenerateDefaultVBO();
   
         mIBOSize = 6;
@@ -43,15 +41,13 @@ namespace helios
     }
     
     RenderableComponent::RenderableComponent(IEntity& owner, std::string texture)
-    : BaseComponent(owner), mOwnsTexture(1), mTextureType(0), mShaderId(-1), mExtrudeStencilShadows(0)
+    : BaseComponent(owner), mOwnsTexture(1), mTextureType(0), mExtrudeStencilShadows(0)
     {
         mName = e::kComponentRenderable;
         D_PRINT("Generating texture...");
         mTexture = new Texture(texture);
         D_PRINT("Done.");
         mVBO = mOwner.GetOwner()->GetRenderer()->GenerateDefaultVBO();  
-        mNormalLoc = -1;
-        mTexLoc = -1;
 
         mIBOSize = 6;
         mCurrentEvent.SetName(e::kEventRenderCommand);
@@ -72,8 +68,8 @@ namespace helios
                                 0.0, frame.coords.maxT - frame.coords.minT, 0.0,
                                 0.0, 0.0, 1.0);
     }
-    RenderableComponent::RenderableComponent(IEntity& owner, unsigned vbo, unsigned vao, unsigned mvLoc,unsigned pLoc, unsigned texLoc, unsigned normalLoc, unsigned shader, bool extrudeStencilShadow)
-    : BaseComponent(owner), mVBO(vbo), mVAO(vao), mMVLoc(mvLoc), mTexLoc(texLoc), mShaderId(shader), mOwnsTexture(0), mTextureType(0), mNormalLoc(normalLoc), mPLoc(pLoc), mExtrudeStencilShadows(extrudeStencilShadow)
+    RenderableComponent::RenderableComponent(IEntity& owner, unsigned vbo, bool extrudeStencilShadow)
+    : BaseComponent(owner), mVBO(vbo), mOwnsTexture(0), mTextureType(0), mExtrudeStencilShadows(extrudeStencilShadow)
     {
         mName = e::kComponentRenderable;
         mCurrentEvent.SetName(e::kEventRenderCommand);
@@ -112,8 +108,6 @@ namespace helios
         glm::mat4 er =  mv * pos; // Multiply ModelView * Position matrices to create MV uniform
         com.vbo = mVBO;
         //com.ibo = mIBO;
-        com.vao = mVAO;
-        com.shader = mShaderId;
         com.state = mRenderState;
         
         // Generate texture matrix
@@ -126,27 +120,25 @@ namespace helios
         glm::mat3 norm = glm::inverseTranspose(glm::mat3(mv*pos));
         
         {
-            UniformData u(UniformData::kUTMat4, mMVLoc);
+            UniformData u(UniformData::kUTMat4, &e::kVertexUniformModelView);
             u.SetData<glm::mat4>(er);
         
             com.uniforms.push_back(UniformData_ptr(new UniformData(u)));
 
         }
         {
-            UniformData u(UniformData::kUTMat4, mPLoc);
+            UniformData u(UniformData::kUTMat4, &e::kVertexUniformProjection);
             u.SetData<glm::mat4>(p);
             com.uniforms.push_back(UniformData_ptr(new UniformData(u)));
 
         }
-        if(mTexLoc > -1)
         {
-            UniformData u(UniformData::kUTMat3, mTexLoc);
+            UniformData u(UniformData::kUTMat3, &e::kVertexUniformTexMat);
             u.SetData<glm::mat3>(tex);
             com.uniforms.push_back(UniformData_ptr(new UniformData(u)));
         }
-        if(mNormalLoc > -1)
         {
-            UniformData u(UniformData::kUTMat3, mNormalLoc);
+            UniformData u(UniformData::kUTMat3, &e::kVertexUniformNormalMat);
             u.SetData<glm::mat3>(norm);
             com.uniforms.push_back(UniformData_ptr(new UniformData(u)));
         }

@@ -114,12 +114,6 @@
 		1A47E3B916B3706D00927FE4 /* Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Render.h; sourceTree = "<group>"; };
 		1A47E3BA16B3706D00927FE4 /* Shadows.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shadows.cpp; sourceTree = "<group>"; };
 		1A47E3BB16B3706D00927FE4 /* Shadows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shadows.h; sourceTree = "<group>"; };
-		1A47E3BD16B3706D00927FE4 /* Lights.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lights.h; sourceTree = "<group>"; };
-		1A47E3BE16B3706D00927FE4 /* PostProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostProcess.h; sourceTree = "<group>"; };
-		1A47E3BF16B3706D00927FE4 /* Render.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Render.cpp; sourceTree = "<group>"; };
-		1A47E3C016B3706D00927FE4 /* Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Render.h; sourceTree = "<group>"; };
-		1A47E3C116B3706D00927FE4 /* Shadows.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Shadows.cpp; sourceTree = "<group>"; };
-		1A47E3C216B3706D00927FE4 /* Shadows.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Shadows.h; sourceTree = "<group>"; };
 		1A47E3C316B3706D00927FE4 /* IRender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRender.h; sourceTree = "<group>"; };
 		1A47E3C416B3706D00927FE4 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		1A47E3C616B3706D00927FE4 /* RenderCommand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderCommand.cpp; sourceTree = "<group>"; };
@@ -129,14 +123,6 @@
 		1A47E3CC16B3706D00927FE4 /* Diffuse.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Diffuse.vsh; sourceTree = "<group>"; };
 		1A47E3CD16B3706D00927FE4 /* ShadowVolume.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShadowVolume.fsh; sourceTree = "<group>"; };
 		1A47E3CE16B3706D00927FE4 /* ShadowVolume.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShadowVolume.vsh; sourceTree = "<group>"; };
-		1A47E3D016B3706D00927FE4 /* Diffuse.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Diffuse.fsh; sourceTree = "<group>"; };
-		1A47E3D116B3706D00927FE4 /* Diffuse.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Diffuse.vsh; sourceTree = "<group>"; };
-		1A47E3D216B3706D00927FE4 /* PostProcess.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PostProcess.fsh; sourceTree = "<group>"; };
-		1A47E3D316B3706D00927FE4 /* PostProcess.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PostProcess.vsh; sourceTree = "<group>"; };
-		1A47E3D416B3706D00927FE4 /* ShadowMap.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShadowMap.fsh; sourceTree = "<group>"; };
-		1A47E3D516B3706D00927FE4 /* ShadowMap.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShadowMap.vsh; sourceTree = "<group>"; };
-		1A47E3D616B3706D00927FE4 /* ShadowVolume.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShadowVolume.fsh; sourceTree = "<group>"; };
-		1A47E3D716B3706D00927FE4 /* ShadowVolume.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShadowVolume.vsh; sourceTree = "<group>"; };
 		1A47E3D816B3706D00927FE4 /* Texture.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Texture.hpp; sourceTree = "<group>"; };
 		1A47E3D916B3706D00927FE4 /* TextureAtlas.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = TextureAtlas.hpp; sourceTree = "<group>"; };
 		1A47E3DA16B3706D00927FE4 /* Vertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vertex.h; sourceTree = "<group>"; };
@@ -374,7 +360,6 @@
 			isa = PBXGroup;
 			children = (
 				1A47E3B516B3706D00927FE4 /* GL32 */,
-				1A47E3BC16B3706D00927FE4 /* GLES2 */,
 				1A47E3C316B3706D00927FE4 /* IRender.h */,
 				1A47E3C416B3706D00927FE4 /* Makefile */,
 				1A47E3C616B3706D00927FE4 /* RenderCommand.cpp */,
@@ -401,24 +386,10 @@
 			path = GL32;
 			sourceTree = "<group>";
 		};
-		1A47E3BC16B3706D00927FE4 /* GLES2 */ = {
-			isa = PBXGroup;
-			children = (
-				1A47E3BD16B3706D00927FE4 /* Lights.h */,
-				1A47E3BE16B3706D00927FE4 /* PostProcess.h */,
-				1A47E3BF16B3706D00927FE4 /* Render.cpp */,
-				1A47E3C016B3706D00927FE4 /* Render.h */,
-				1A47E3C116B3706D00927FE4 /* Shadows.cpp */,
-				1A47E3C216B3706D00927FE4 /* Shadows.h */,
-			);
-			path = GLES2;
-			sourceTree = "<group>";
-		};
 		1A47E3C916B3706D00927FE4 /* Shaders */ = {
 			isa = PBXGroup;
 			children = (
 				1A47E3CA16B3706D00927FE4 /* GL32 */,
-				1A47E3CF16B3706D00927FE4 /* GLES2 */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -432,21 +403,6 @@
 				1A47E3CE16B3706D00927FE4 /* ShadowVolume.vsh */,
 			);
 			path = GL32;
-			sourceTree = "<group>";
-		};
-		1A47E3CF16B3706D00927FE4 /* GLES2 */ = {
-			isa = PBXGroup;
-			children = (
-				1A47E3D016B3706D00927FE4 /* Diffuse.fsh */,
-				1A47E3D116B3706D00927FE4 /* Diffuse.vsh */,
-				1A47E3D216B3706D00927FE4 /* PostProcess.fsh */,
-				1A47E3D316B3706D00927FE4 /* PostProcess.vsh */,
-				1A47E3D416B3706D00927FE4 /* ShadowMap.fsh */,
-				1A47E3D516B3706D00927FE4 /* ShadowMap.vsh */,
-				1A47E3D616B3706D00927FE4 /* ShadowVolume.fsh */,
-				1A47E3D716B3706D00927FE4 /* ShadowVolume.vsh */,
-			);
-			path = GLES2;
 			sourceTree = "<group>";
 		};
 		1A47E3DB16B3706D00927FE4 /* Scene */ = {

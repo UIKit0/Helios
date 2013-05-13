@@ -45,7 +45,7 @@ namespace helios
 
         } type;
         
-        int name;
+        const std::string * name;
         
         union {
             float* ptr[(sizeof(float)*16)/sizeof(float*)];
@@ -85,11 +85,9 @@ namespace helios
         UniformData() : count(0) { memset(data,0,sizeof(data)); };
 
         //----------------------------------------------------------------------
-        UniformData(UniformType t, int n)  
+        UniformData(UniformType t, const std::string * n) : type(t), name(n)
         {
             memset(data,0,sizeof(data));
-            type = t; 
-            name = n ;
         };
         //----------------------------------------------------------------------
         UniformData(UniformData const & u);
@@ -116,10 +114,7 @@ namespace helios
         
         unsigned short ibo;
         unsigned short vbo;
-        unsigned short vao;
-        short          shader;
         unsigned short tex;
-
         
         bool operator<(RenderCommand rhs) { return depth < rhs.depth; };
         
@@ -132,8 +127,6 @@ namespace helios
         std::vector<HRenderCommand> commands;
         unsigned short ibo;
         unsigned short vbo;
-        unsigned short vao;
-        short          shader;
         unsigned short tex;
         
         unsigned hash;
@@ -153,7 +146,7 @@ namespace helios
         {
             unsigned h = 
             
-            (r.ibo ^ 2) + (r.vbo ^ 3) + (r.vao ^ 5) + (r.shader ^ 7) + (r.tex ^ 11) + (( r.depth >> 7 )^ 13);
+            (r.ibo ^ 2) + (r.vbo ^ 3) + (r.tex ^ 5) + (( r.depth >> 7 )^ 7);
             
             return h;
         };

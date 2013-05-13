@@ -34,15 +34,11 @@ namespace helios
     RenderCommand::RenderCommand(RenderCommand const & r)
     {
         {
-         //   uniforms.clear();
-            //uniforms.insert(uniforms.begin(), r.uniforms.begin(), r.uniforms.end());
             uniforms = r.uniforms;
             iboSize = r.iboSize;
             iboOffset = r.iboOffset;
             ibo = r.ibo;
             vbo = r.vbo;
-            vao = r.vao;
-            shader = r.shader;
             tex = r.tex;
             depth = r.depth;
             state = r.state;
@@ -56,22 +52,15 @@ namespace helios
         if(this == &r)
             return *this;
         
-        //uniforms.clear();
-        //uniforms.reserve(r.uniforms.size());
-        //uniforms = r.uniforms;
-        
         iboSize = r.iboSize;
         iboOffset = r.iboOffset;
         ibo = r.ibo;
         vbo = r.vbo;
-        vao = r.vao;
-        shader = r.shader;
         tex = r.tex;
         depth = r.depth;
-        //printf("Reserving: %zu\n", r.uniforms.size());
         uniforms = r.uniforms;
         state = r.state;
-        //uniforms.insert(uniforms.begin(), r.uniforms.begin(), r.uniforms.end());
+
         return *this;
     };
 }

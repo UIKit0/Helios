@@ -73,7 +73,7 @@ namespace helios
         
         virtual ~IRender() {} ;
         virtual unsigned int  GenerateVBO(void* data, size_t stride, size_t length) = 0;
-        virtual unsigned int  GenerateVAO(std::vector<VAOObj> data, unsigned vbo )  = 0;
+        virtual unsigned int  GenerateVAO(const std::vector<VAOObj> & data )  = 0;
         virtual unsigned int  GenerateIBO(unsigned* indices, size_t size) = 0;
         virtual unsigned int  GenerateIBO(unsigned short* indices, size_t size) = 0;
         virtual void SetDefaultFBO( unsigned int ) = 0;

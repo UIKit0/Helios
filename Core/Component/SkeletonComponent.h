@@ -29,10 +29,8 @@ namespace helios
 #if(USE_QUATERNIONS == 1)
         std::vector<glm::quat> mCurrentRots;
         std::vector<glm::vec3> mCurrentTrans;
-        int mJointRotationLoc, mJointTransformLoc;
 #else
         std::vector<glm::mat4> mCurrentMat;
-        int mJointMatLoc;
 #endif
         
         struct {
@@ -62,18 +60,6 @@ namespace helios
         IEvent_ptr operator()() { 
            
         };
-#if(USE_QUATERNIONS==1)
-        void SetUniformLocations(int jointRotationLoc, int jointTransformLoc)
-        {
-            mJointRotationLoc = jointRotationLoc;
-            mJointTransformLoc = jointTransformLoc;
-        };
-#else
-        void SetUniformLocation(int matLoc)
-        {
-            mJointMatLoc = matLoc;
-        };
-#endif
         void* operator new (size_t size, ILayer& layer)
         {
             return layer.GetPool().alloc(e::kComponentSkeleton, size);

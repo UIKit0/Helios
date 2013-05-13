@@ -123,20 +123,20 @@ namespace helios
         mOwner.PushEvent< glm::mat3 >(e::kEventTargetTexture, e::kEventTextureMatrix, mCurrentMat);
        // mOwner.PushEvent< uint8_t[4] >(e::kEventTargetTexture, e::kEventTextureMix, mCurrentColor);
         {
-        UniformData_ptr u( new UniformData(UniformData::kUTVec3, mMinMaxUniformLoc));
+      //  UniformData_ptr u( new UniformData(UniformData::kUTVec3, mMinMaxUniformLoc));
         glm::vec3 t(mCurrentMinMax,0.f);
-        u->SetData<glm::vec3>(t);
+     //   u->SetData<glm::vec3>(t);
         
-        auto e = mOwner.PushEvent<UniformData_ptr>(e::kEventTargetUniformData, e::kEventUniformData, u);
+        //auto e = mOwner.PushEvent<UniformData_ptr>(e::kEventTargetUniformData, e::kEventUniformData, u);
         if ( mEventElevation.push.layer ) 
         {
-            mOwner.GetOwner()->PushEvent(e);
+        //    mOwner.GetOwner()->PushEvent(e);
         }
         }
         {
-            UniformData_ptr u ( new UniformData(UniformData::kUTVec4, mColorMixLoc));
-            u->SetData<glm::vec4>(mCurrentColor);
-            auto e = mOwner.PushEvent<UniformData_ptr>(e::kEventTargetUniformData, e::kEventUniformData, u);
+       //     UniformData_ptr u ( new UniformData(UniformData::kUTVec4, mColorMixLoc));
+       //     u->SetData<glm::vec4>(mCurrentColor);
+         //   auto e = mOwner.PushEvent<UniformData_ptr>(e::kEventTargetUniformData, e::kEventUniformData, u);
             
         }
         

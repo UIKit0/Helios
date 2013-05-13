@@ -46,11 +46,8 @@ namespace helios
         std::vector<s::MaterialGroup> mMaterialGroups;
         
         unsigned                mVBO;
-        unsigned                mVAO;
         unsigned                mIBO;
         RenderState             mRenderState;
-        short                   mMVLoc,mPLoc, mTexLoc, mNormalLoc;
-        short                   mShaderId;
         short                   mIBOSize;
         
         struct {
@@ -61,14 +58,14 @@ namespace helios
         
         
     public:
-        RenderableComponent (IEntity& owner) : BaseComponent(owner), mShaderId(-1)
+        RenderableComponent (IEntity& owner) : BaseComponent(owner)
         { mName = e::kComponentRenderable; };
         
         RenderableComponent(IEntity& owner, TextureAtlas* atlas, std::string const & name);
         
         RenderableComponent(IEntity& owner, std::string texture);
         
-        RenderableComponent(IEntity& owner, unsigned vbo, unsigned vao, unsigned mvLoc,unsigned pLoc, unsigned texLoc, unsigned normalLoc, unsigned shader, bool extrudeStencilShadow);
+        RenderableComponent(IEntity& owner, unsigned vbo, bool extrudeStencilShadow);
         
 
         
@@ -85,7 +82,7 @@ namespace helios
         
         void Render(uint64_t);
         
-        void AddUniform(int name, UniformData_ptr data)
+        void AddUniform(const std::string * name, UniformData_ptr data)
         {
             
             for ( size_t i = 0 ; i < mUniformData.size() ; ++i )
@@ -99,12 +96,7 @@ namespace helios
             
         };
         void SetVBO( unsigned vbo ) { mVBO = vbo; }; 
-        void SetVAO( unsigned vao ) { mVAO = vao; };
         void SetIBO( unsigned ibo ) { mIBO = ibo; };
-        void SetTextureMatLoc(unsigned texMatLoc) { mTexLoc = texMatLoc; };
-        void SetMVLoc(unsigned mvLoc) { mMVLoc = mvLoc; };
-        void SetPLoc(unsigned pLoc) { mPLoc = pLoc; };
-        void SetShader(unsigned shader) { mShaderId = shader; }; 
         void SetRenderState(RenderState r) { mRenderState = r; };
         void SetTextureAtlas(TextureAtlas* atl, std::string name)
         {

@@ -8,7 +8,7 @@ namespace helios_dev
     {
     public:
         
-        BasicEntity(helios::ILayer* owner, glm::vec3 pos, int vao, int vbo, int ibo, int mvLoc, int pLoc, int normLoc, int shader) ;
+        BasicEntity(helios::ILayer* owner, glm::vec3 pos, int vbo, int ibo) ;
         ~BasicEntity();
     };
     

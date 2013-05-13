@@ -25,8 +25,8 @@ namespace helios
         
         int GetUniform(std::string name)
         {
-           if(uniforms.find(name) != uniforms.end())
-               return uniforms[name];
+            if(uniforms.find(name) != uniforms.end())
+                return uniforms[name];
             return -1;
         };
         std::string GetUniformName(unsigned target)
@@ -41,13 +41,13 @@ namespace helios
             
             return _name;
         };
-        int GetRemappedUniform(Shader s,unsigned target)
+        int GetRemappedUniform(Shader s,const std::string * target)
         {
-            std::string _tn = s.GetUniformName(target);
+            
             unsigned i = -1 ;
             for ( auto it = uniforms.begin() ; it != uniforms.end() ; ++it)
             {
-                if( _tn == it->first )
+                if( *target == it->first )
                 {
                     i = it->second;
                 }

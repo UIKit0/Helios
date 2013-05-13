@@ -170,7 +170,7 @@ namespace helios
 #else
         if(mCurrentMat.size() > 1)
         {
-            UniformData_ptr ud( new UniformData(UniformData::kUTMat4, mJointMatLoc));
+            UniformData_ptr ud( new UniformData(UniformData::kUTMat4, &e::kVertexUniformJoints));
             ud->SetData<float*>(&mCurrentMat[0][0][0], mCurrentMat.size());
             auto e = mOwner.PushEvent<UniformData_ptr>(e::kEventTargetUniformData, e::kEventUniformData, ud);
             if ( mEventElevation.push.layer ) 
@@ -179,7 +179,7 @@ namespace helios
             }
         } else if ( mCurrentMat.size() > 0)
         {
-            UniformData_ptr u( new UniformData(UniformData::kUTMat4, mJointMatLoc));
+            UniformData_ptr u( new UniformData(UniformData::kUTMat4, &e::kVertexUniformJoints));
             u->SetData<glm::mat4>(mCurrentMat[0]);
             
             auto e = mOwner.PushEvent<UniformData_ptr>(e::kEventTargetUniformData, e::kEventUniformData, u);
