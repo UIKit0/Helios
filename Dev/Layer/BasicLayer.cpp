@@ -84,11 +84,12 @@ namespace helios_dev
 
               
         LoadMS3D(file, verts, ind, mats, joints);
-        int vbo = mRender->GenerateVBO(&verts[0], sizeof(helios::Vertex), sizeof(helios::Vertex) * verts.size());
-        int ibo = mRender->GenerateIBO(&ind[0], ind.size());
+
 
         {
-           
+            int vbo = mRender->GenerateVBO(&verts[0], sizeof(helios::Vertex), sizeof(helios::Vertex) * verts.size());
+            int ibo = mRender->GenerateIBO(&ind[0], ind.size());
+            
             BasicEntity* e = new BasicEntity(this, glm::vec3(0.f,0.f,0.f),  vbo, ibo);
 
             helios::RenderableComponent* rc = (helios::RenderableComponent*)e->GetComponent(helios::e::kComponentRenderable)[0];
@@ -106,8 +107,38 @@ namespace helios_dev
                 sc->AddJoint((*it));
             }
             sc->SetDefaultAnimation(177,205, 30.f);
-           sc->LoadAnimationMap(b_folder + "/zombie02.json");
+            sc->LoadAnimationMap(b_folder + "/zombie02.json");
            
+            mEntities.push_back(std::shared_ptr<helios::IEntity>(e));
+        } 
+        {
+            helios::Vertex v [4] ;
+            unsigned short minS = 0;
+            unsigned short maxS = 0xFFFF;
+            unsigned short minT = 0;
+            unsigned short maxT = 0xFFFF;
+            v [0] = helios::Vertex( glm::vec4(0.f,0.f,0.f,1.f), minS,maxT );
+            v [1] = helios::Vertex( glm::vec4(50.f,0.f,0.f,1.f), maxS,maxT );
+            v [2] = helios::Vertex( glm::vec4(0.f,0.f,50.f,1.f), minS,minT );
+            v [3] = helios::Vertex( glm::vec4(50.f,0.f,50.f,1.f), maxS,minT );
+            for ( int i = 0 ; i < 4 ; ++i )
+            {
+                v[i].r = 200;
+                v[i].g = 170;
+                v[i].b = 40;
+            }
+            int vbo = mRender->GenerateVBO(&v[0], sizeof(helios::Vertex), sizeof(helios::Vertex) * 4);
+            
+            CubeEntity* e = new CubeEntity(this, glm::vec3(-25.f,0.f,-25.f), vbo, mRender->GenerateDefaultIBO());
+            helios::s::MaterialGroup mg = {0};
+            
+            mg.ibo = mRender->GenerateDefaultIBO();
+            mg.iboRange.start = 0;
+            mg.iboRange.end = 6;
+            mg.tex = 0;
+            auto rc = static_cast<helios::RenderableComponent*>(e->GetComponent(helios::e::kComponentRenderable)[0]);
+            rc->AddMaterialGroup(mg);
+            
             mEntities.push_back(std::shared_ptr<helios::IEntity>(e));
         }
         {

@@ -376,7 +376,6 @@ namespace helios
             glStencilFunc(GL_NOTEQUAL, 0, ~0);
             glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
             glDepthMask(GL_TRUE);
-                  
             
             RenderStage(e::kRenderStageShadowFill,gVec);
             
@@ -391,9 +390,9 @@ namespace helios
             
             Shader currentShader;
             Shader targetShader ;
-            GLuint tex = 0;//mCurrentTex;
-            GLuint vbo = 0;//mCurrentVBO;
-            GLuint ibo = 0;//mCurrentIBO;
+            GLuint tex = -1;
+            GLuint vbo = -1;
+            GLuint ibo = -1;
 
             
             auto it = gVec.begin();
@@ -452,6 +451,10 @@ namespace helios
                         
                         glDrawElements(GL_TRIANGLES, (*jt).iboSize , GL_UNSIGNED_SHORT, (void*)((*jt).iboOffset*sizeof(short)));
                         
+                        // clear the first bone.
+                        glm::mat4 clear(1.f);
+                        glUniformMatrix4fv(currentShader.GetUniform(e::kVertexUniformJoints), 1, GL_FALSE, &clear[0][0]);
+                        
                         eglGetError();
                     }
                 }
@@ -471,7 +474,7 @@ namespace helios
                 std::sort<helios::RenderGroup>(gVec.begin(),gVec.end());
             } else {
                 glDisable(GL_BLEND);
-                glDisable(GL_CULL_FACE);
+               
             }
             
             RenderStage(e::kRenderStageGeometry,gVec);
