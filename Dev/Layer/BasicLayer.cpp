@@ -128,11 +128,13 @@ namespace helios_dev
                 v[i].b = 40;
             }
             int vbo = mRender->GenerateVBO(&v[0], sizeof(helios::Vertex), sizeof(helios::Vertex) * 4);
+            unsigned short indices [6] = {  2 , 1 , 0, 2, 3, 1  } ;
+            int ibo = mRender->GenerateIBO(indices, 6);
             
-            CubeEntity* e = new CubeEntity(this, glm::vec3(-25.f,0.f,-25.f), vbo, mRender->GenerateDefaultIBO());
+            CubeEntity* e = new CubeEntity(this, glm::vec3(-25.f,0.f,-25.f), vbo, ibo );
             helios::s::MaterialGroup mg = {0};
             
-            mg.ibo = mRender->GenerateDefaultIBO();
+            mg.ibo = ibo;
             mg.iboRange.start = 0;
             mg.iboRange.end = 6;
             mg.tex = 0;
