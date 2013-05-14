@@ -89,6 +89,8 @@ int main()
     helios::GL32Render * render = new helios::GL32Render();
     helios::RenderOptions opt  = helios::RenderOptions_StenciledShadowVolumes;
     render->SetOptions(opt);
+    render->SetDefaultFBO(0);
+    
     glfwSetKeyCallback(keyCallback);
     glfwSetMouseButtonCallback(mouseButtonCallback);
     //glfwSetMousePosCallback(mousePosCallback);

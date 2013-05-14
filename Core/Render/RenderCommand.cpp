@@ -39,7 +39,9 @@ namespace helios
             iboOffset = r.iboOffset;
             ibo = r.ibo;
             vbo = r.vbo;
-            tex = r.tex;
+            for(int i = 0 ; i < (sizeof(tex) / sizeof(tex[0])) ; ++i)
+                tex[i] = r.tex[i];
+            
             depth = r.depth;
             state = r.state;
         }
@@ -56,7 +58,8 @@ namespace helios
         iboOffset = r.iboOffset;
         ibo = r.ibo;
         vbo = r.vbo;
-        tex = r.tex;
+        for(int i = 0 ; i < (sizeof(tex) / sizeof(tex[0])) ; ++i)
+            tex[i] = r.tex[i];
         depth = r.depth;
         uniforms = r.uniforms;
         state = r.state;

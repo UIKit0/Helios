@@ -5,8 +5,7 @@ in vec3 ATTR_NORM;
 in vec4 ATTR_DIFFUSE;
 in vec2 ATTR_TEX;
 in float ATTR_BONEID;
-in float ATTR_NO_EXTRUDE;
-in float ATTR_NO_BONES;
+in int ATTR_EXTRUDES;
 
 uniform mat4 UNIFORM_MV;
 uniform mat4 UNIFORM_P;
@@ -19,6 +18,7 @@ out vec2 vCoords;
 
 void main()
 {
+        
     mat4 j = UNIFORM_JOINTS[int(ATTR_BONEID)];
     mat4 m = UNIFORM_MV * j;
     
@@ -31,7 +31,7 @@ void main()
     vCoords = ATTR_TEX;
     
     
-    if ( dot (lightDir.xyz, n * (ATTR_NORM*2.0-1.0))<0.  ) {
+    if ( (dot (lightDir.xyz, n * (ATTR_NORM*2.0-1.0))<0.) || (ATTR_EXTRUDES == 0) ) {
         // Move the shadow caster slightly further away from the light source so flat surfaces don't
         // get artifacts from the depth test conflicting
         gl_Position = UNIFORM_P * (pos + (normalize(lightDir)*0.1));

@@ -140,7 +140,8 @@ namespace helios
         extern std::string const kVertexAttribDiffuseColor;
         extern std::string const kVertexAttribTexCoord    ;
         extern std::string const kVertexAttribBoneId      ;
-
+        extern std::string const kVertexAttribExtrudes    ;
+        
         // For use with OpenGL 3.2+
         extern std::string const kColorOut             ;
         extern std::string const kNormalsOut           ;
@@ -150,10 +151,10 @@ namespace helios
         {
             kVertexAttribPositionPosition = 0,
             kVertexAttribPositionNormal,
-            kVertexAttribPositionDiffuseColor,
             kVertexAttribPositionTexCoord,
             kVertexAttribPositionBoneId,
-            kVertexAttribPositionNoBones
+            kVertexAttribPositionExtrudes,
+            kVertexAttribPositionDiffuseColor,
         };
         
         enum RenderStage

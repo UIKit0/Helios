@@ -16,6 +16,8 @@ namespace helios
     {
         struct FBO
         {
+            FBO() : colorBufferCount(0) {};
+            
             GLuint colorBufferCount;
             GLuint name;
             GLuint colorBufferTex[MAX_COLOR_ATTACHMENTS];
@@ -46,7 +48,7 @@ namespace helios
             GLuint mDefaultVAO = 0;
             
             std::map<e::RenderStage, GLuint> mShader;
-            std::map<e::RenderStage, FBO> mFBO;
+            std::map<e::RenderStage, std::shared_ptr<FBO> > mFBO;
             std::map<unsigned,RenderGroup> mGroups;
             std::map<unsigned, unsigned> mVAOMap;
             
@@ -61,8 +63,8 @@ namespace helios
             
             short mCurrentVBO=0, mCurrentIBO=0, mCurrentVAO=0, mCurrentTex=0, mCurrentShader=0;
             
-            void GenerateFBO(e::RenderStage, size_t w, size_t h, int colorAttachments = 1);
-            void RenderStage(e::RenderStage, std::vector<RenderGroup>& gVec);
+            void GenerateFBO(e::RenderStage, size_t w, size_t h, int colorAttachments = 1, bool useDepthStencil = true);
+            void RenderStage(e::RenderStage, std::vector<RenderGroup>& gVec, bool clear = true);
             void RenderShadows(std::vector<RenderGroup>& gVec);
             void SetUniforms(std::vector<UniformData_ptr>& uniformdata, Shader& currentShader, Shader& targetShader, int clear = 0);
         public:
@@ -95,9 +97,7 @@ namespace helios
             
             unsigned LoadShader(std::string &vertex_file, std::string &fragment_file, std::map<std::string, int>& attribs, std::map<std::string, int>& uniforms, std::string defines = "");
             unsigned LoadShader(std::string &vertex_file, std::string &geometry_file, std::string &fragment_file, std::map<std::string, int>& attribs, std::map<std::string, int>& uniforms, std::string defines = "");
-            
-            
-            void SetRenderStage(e::RenderStage stage, std::vector<UniformData> parameters);
+        
             void ClearRenderStages() {};
             
             void DeleteShader(unsigned shader);

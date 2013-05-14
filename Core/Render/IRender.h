@@ -88,7 +88,6 @@ namespace helios
         virtual void Prepare(int fboWidth=1024, int fboHeight=1024) = 0;
         virtual void SetOptions(RenderOptions) = 0;
         virtual void ClearViewport(float r = 0., float g = 0., float b = 0., float a = 0.) = 0;
-        //virtual void SetUniforms(std::vector<UniformData>& uniformdata, int clear = 0) = 0;
         virtual void SetUniform(int shader_name, UniformData_ptr ud) = 0;
         virtual unsigned LoadShader(std::string &vertex_file, std::string &fragment_file, std::map<std::string, int>& attribs, std::map<std::string, int>& uniforms,std::string defines = "") = 0;
         virtual unsigned LoadShader(std::string &vertex_file, std::string &geometry_file, std::string &fragment_file, std::map<std::string, int>& attribs, std::map<std::string, int>& uniforms, std::string defines = "") = 0;
@@ -96,7 +95,6 @@ namespace helios
         // Create two triangles for rendering spritedata
         virtual unsigned GenerateDefaultVBO() = 0;
         virtual unsigned GenerateDefaultIBO() = 0;
-       // virtual void SetRenderStage(e::RenderStage stage, std::vector<UniformData> parameters) = 0;
         virtual void ClearRenderStages() = 0;
     };
     

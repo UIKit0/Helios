@@ -109,14 +109,20 @@ namespace helios
                 uniforms[e::kFragmentUniformSampler4] = 0;
                 uniforms[e::kFragmentUniformSampler5] = 0;
                 uniforms[e::kFragmentUniformSampler6] = 0;                
-                
+
+
                 mShader[e::kRenderStageGeometry] = LoadShader(v, f, attribs, uniforms);
                 v = b_folder + "/ShadowVolume.vsh";
                 f = b_folder + "/ShadowVolume.fsh";
+
                 mShader[e::kRenderStageStencilShadows] = LoadShader(v,f, attribs,uniforms);
                 v = b_folder + "/ShadowFill.vsh";
                 f = b_folder + "/ShadowFill.fsh";
+                // ShadowFill uses the StencilShadows FBO.
                 mShader[e::kRenderStageShadowFill] = LoadShader(v,f,attribs,uniforms);
+                v = b_folder + "/Postprocess.vsh";
+                f = b_folder + "/Postprocess.fsh";
+                mShader[e::kRenderStagePostprocess] = LoadShader(v,f,attribs,uniforms);
                 glEnable(GL_STENCIL_TEST);
                 glEnable(GL_DEPTH_CLAMP);
                 
@@ -158,9 +164,9 @@ namespace helios
                 unsigned short maxS = 0xFFFF;
                 unsigned short minT = 0;
                 unsigned short maxT = 0xFFFF;
-                v [0] = Vertex( glm::vec4(0.f,0.f,0.f,1.f), minS,maxT );
-                v [1] = Vertex( glm::vec4(1.f,0.f,0.f,1.f), maxS,maxT );
-                v [2] = Vertex( glm::vec4(0.f,1.f,0.f,1.f), minS,minT );                
+                v [0] = Vertex( glm::vec4(-1.f,-1.f,0.f,1.f), minS,maxT );
+                v [1] = Vertex( glm::vec4(1.f,-1.f,0.f,1.f), maxS,maxT );
+                v [2] = Vertex( glm::vec4(-1.f,1.f,0.f,1.f), minS,minT );
                 v [3] = Vertex( glm::vec4(1.f,1.f,0.f,1.f), maxS,minT );
                 
                 
@@ -192,6 +198,7 @@ namespace helios
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionNormal, helios::VAOObj::R_UBYTE, 3, sizeof(helios::Vertex), offsetof(helios::Vertex,n[0]), 1 }));
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionTexCoord, helios::VAOObj::R_USHORT, 2, sizeof(helios::Vertex), 16, 1}));
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionBoneId, helios::VAOObj::R_SHORT, 1, sizeof(helios::Vertex), 20, 0 }));
+            vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionExtrudes, helios::VAOObj::R_USHORT, 1, sizeof(helios::Vertex), 22, 0 }));
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionDiffuseColor, helios::VAOObj::R_UBYTE, 4, sizeof(helios::Vertex), 24, 1}));
             
             mVAOMap[vbo] = GenerateVAO(vaoobj);
@@ -277,7 +284,11 @@ namespace helios
                 mGroups[hash].commands.push_back((*it));
                 mGroups[hash].vbo = (*it).vbo;
                 mGroups[hash].ibo = (*it).ibo;
-                mGroups[hash].tex = (*it).tex;
+
+                for(int i = 0 ; i < sizeof(mGroups[hash].tex) / sizeof(mGroups[hash].tex[0]) ; ++i ){
+                    mGroups[hash].tex[i] = (*it).tex[i];
+                }
+                
                 mGroups[hash].hash = hash;
             }
             eglGetError();
@@ -349,8 +360,10 @@ namespace helios
         {
             
             glDisable(GL_BLEND);
-            
-            glClear(GL_STENCIL_BUFFER_BIT);
+
+            glBindFramebuffer(GL_FRAMEBUFFER, mFBO[e::kRenderStageStencilShadows]->name);
+            glClearColor(1.0,1.0,1.0,1.0);
+            glClear(GL_STENCIL_BUFFER_BIT | GL_COLOR_BUFFER_BIT);
             
             glStencilFunc(GL_ALWAYS, 0, ~0);
             glEnable(GL_DEPTH_TEST);
@@ -365,7 +378,7 @@ namespace helios
             glStencilOpSeparate(GL_FRONT, GL_KEEP, GL_DECR_WRAP, GL_KEEP);
             glStencilOpSeparate(GL_BACK , GL_KEEP, GL_INCR_WRAP, GL_KEEP);
             
-            RenderStage(e::kRenderStageStencilShadows, gVec);
+            RenderStage(e::kRenderStageStencilShadows, gVec, false);
             
             glEnable(GL_CULL_FACE);
             glColorMask(GL_TRUE, GL_TRUE, GL_TRUE, GL_TRUE);
@@ -382,15 +395,17 @@ namespace helios
             
             glDepthFunc(GL_LESS);
             glStencilFunc(GL_ALWAYS, 0, ~0);
+          
+
             eglGetError();
         }
         void
-        GL32Render::RenderStage(e::RenderStage stage,  std::vector<RenderGroup>& gVec)
+        GL32Render::RenderStage(e::RenderStage stage,  std::vector<RenderGroup>& gVec, bool clear)
         {
             
             Shader currentShader;
             Shader targetShader ;
-            GLuint tex = -1;
+            //GLuint tex = -1;
             GLuint vbo = -1;
             GLuint ibo = -1;
 
@@ -402,6 +417,12 @@ namespace helios
             targetShader = mShaderManager.GetShader(mShader[stage]);
             
             glUseProgram(currentShader.name);
+            auto fbo = mFBO.find(stage);
+
+            if(fbo != mFBO.end()) {
+                glBindFramebuffer(GL_FRAMEBUFFER, (*fbo).second->name);
+                if(clear) ClearViewport();
+            }
             
             
             eglGetError();
@@ -410,16 +431,15 @@ namespace helios
             {
                 
                 std::sort((*it).commands.begin(), (*it).commands.end());
-                
-                if(tex != (*it).tex) {
-                    tex = (*it).tex;
-                    glBindTexture(GL_TEXTURE_2D, tex);
-                    eglGetError();
+                for ( int i = 0 ; i < sizeof((*it).tex) / sizeof((*it).tex[0]) ; ++i )
+                {
+                    glActiveTexture(GL_TEXTURE0+i);
+                    glBindTexture(GL_TEXTURE_2D, (*it).tex[i]);
                 }
                 if(vbo != (*it).vbo) {
                     vbo = (*it).vbo;
                     BindVBO(vbo);
-                    
+                    eglGetError();
                 }
                 if(ibo != (*it).ibo)
                 {
@@ -476,13 +496,49 @@ namespace helios
                 glDisable(GL_BLEND);
                
             }
-            
+            glClearColor(.3f,.5f,.7f,1.f);
             RenderStage(e::kRenderStageGeometry,gVec);
             
-            if(mOptions & RenderOptions_StenciledShadowVolumes)
+            if(mOptions & RenderOptions_StenciledShadowVolumes){
                 RenderShadows(gVec);
+            }
             
             ClearRenderStack();
+            RenderCommand rc;
+            UniformData u(UniformData::kUTInt, &e::kFragmentUniformSampler0);
+            u.SetData<int>(0, 1);
+            rc.uniforms.push_back(UniformData_ptr(new UniformData(u)));
+            u.SetData<int>(1,1);
+            u.name = &e::kFragmentUniformSampler1;
+            rc.uniforms.push_back(UniformData_ptr(new UniformData(u)));
+            u.SetData<int>(2,1);
+            u.name = &e::kFragmentUniformSampler2;
+            rc.uniforms.push_back(UniformData_ptr(new UniformData(u)));
+            u.SetData<int>(3,1);
+            u.name = &e::kFragmentUniformSampler3;
+            rc.uniforms.push_back(UniformData_ptr(new UniformData(u)));
+
+            rc.tex[0] = mFBO[e::kRenderStageGeometry]->colorBufferTex[0]; // diffuse
+            rc.tex[1] = mFBO[e::kRenderStageGeometry]->colorBufferTex[1]; // normal
+            rc.tex[2] = mFBO[e::kRenderStageStencilShadows]->colorBufferTex[0]; // shadow buffer
+            rc.tex[3] = mFBO[e::kRenderStageGeometry]->depthBufferTex;
+            rc.ibo = GenerateDefaultIBO();
+            rc.vbo = GenerateDefaultVBO();
+            rc.state.mask = e::kRenderStagePostprocess;
+            rc.iboOffset = 0;
+            rc.iboSize = 6;
+            std::vector<RenderCommand> vrc ;
+            vrc.push_back(rc);
+            PushRenderCommand(vrc);
+            std::vector<RenderGroup> vrg;
+            for ( auto it = mGroups.begin() ; it != mGroups.end() ; ++it )
+                vrg.push_back(it->second);
+
+            glBindFramebuffer(GL_FRAMEBUFFER, mDefaultFBO);
+            ClearViewport();
+            RenderStage(e::kRenderStagePostprocess, vrg);
+            ClearRenderStack();
+            
             eglGetError();
             
         }
@@ -502,6 +558,13 @@ namespace helios
                 mCurrentViewport.y = y;
                 mCurrentViewport.w = w;
                 mCurrentViewport.h = h;
+                mFBO.clear();
+                GenerateFBO(e::kRenderStageGeometry, w, h);
+                GenerateFBO(e::kRenderStageStencilShadows, w, h,1, false); // Stencil shadows shares the depth buffer with Geometry.
+                glBindFramebuffer(GL_FRAMEBUFFER, mFBO[e::kRenderStageStencilShadows]->name);
+
+                glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, mFBO[e::kRenderStageGeometry]->depthBufferTex, 0);
+
             }
             eglGetError();
         }
@@ -603,25 +666,26 @@ namespace helios
         }
         
         void
-        GL32Render::GenerateFBO(e::RenderStage r, size_t w, size_t h, int colorAttachments)
+        GL32Render::GenerateFBO(e::RenderStage r, size_t w, size_t h, int colorAttachments, bool useDepthStencil )
         {
             GLuint fbo;
             
             colorAttachments = (colorAttachments > MAX_COLOR_ATTACHMENTS ? MAX_COLOR_ATTACHMENTS : colorAttachments);
             
-            GLuint tex[2+colorAttachments];
-            GLuint rbo;
-            FBO f;
-            int i ;
+            GLuint tex[useDepthStencil+colorAttachments];
             
-            glGenRenderbuffers(1, &rbo);
+            std::shared_ptr<FBO> f(new FBO);
+
+            int i ;
+
             glGenFramebuffers(1, &fbo);
             glBindFramebuffer(GL_FRAMEBUFFER, fbo);
-            glGenTextures(2+colorAttachments, tex);
-            
+            glGenTextures(useDepthStencil+colorAttachments, tex);
+            eglGetError();
+            D_PRINT("FBO size (%d, %d)\n", mCurrentViewport.w, mCurrentViewport.h);
             for ( i = 0 ; i < colorAttachments ; ++i ) {
                 
-                f.colorBufferTex[i] = tex[i];
+                f->colorBufferTex[i] = tex[i];
                 glBindTexture(GL_TEXTURE_2D, tex[i]);
                 
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -630,29 +694,24 @@ namespace helios
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
                 glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mCurrentViewport.w, mCurrentViewport.h, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
                 glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0+i, GL_TEXTURE_2D, tex[i], 0);
+                eglGetError();
+
             }
+            if(useDepthStencil) {
+                glBindTexture(GL_TEXTURE_2D, tex[i]);
+                eglGetError();
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+                glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_STENCIL, mCurrentViewport.w, mCurrentViewport.h, 0, GL_DEPTH_STENCIL,GL_UNSIGNED_INT_24_8, NULL);
+                glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, tex[i], 0);
+                eglGetError();
+                f->depthBufferTex = tex[i];
+            }
+            f->colorBufferCount = colorAttachments;
+            f->name = fbo;
             
-            glBindTexture(GL_TEXTURE_2D, tex[i]);
-            
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT, mCurrentViewport.w, mCurrentViewport.h, 0, GL_DEPTH_COMPONENT,GL_UNSIGNED_INT, NULL);
-            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, tex[i], 0);
-            
-            glBindTexture(GL_TEXTURE_2D, tex[i+1]);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, mCurrentViewport.w, mCurrentViewport.h, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, NULL);
-            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_TEXTURE_2D, tex[i+1], 0);
-            
-            
-            f.name = fbo;
-            f.depthBufferTex = tex[i];
-            f.stencilBufferTex = tex[i+1];
             
             mFBO[r] = f;
             glBindFramebuffer(GL_FRAMEBUFFER, mDefaultFBO);
@@ -672,16 +731,6 @@ namespace helios
             up.shader_id = shader_name;
             up.uniform = ud;
             mUniforms.push_back(up);
-            eglGetError();
-        }
-        void
-        GL32Render::SetRenderStage(e::RenderStage stage, std::vector<UniformData> parameters)
-        {
-            if(mFBO.find(stage) != mFBO.end())
-            {
-                glDeleteFramebuffers(1, &mFBO[stage].name);
-            }
-            GenerateFBO(stage,mCurrentViewport.w,mCurrentViewport.h);
             eglGetError();
         }
     };

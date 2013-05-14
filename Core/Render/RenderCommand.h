@@ -112,11 +112,11 @@ namespace helios
     };
     struct RenderCommand : HRenderCommand
     {
-        RenderCommand() {};
+        RenderCommand() { memset(tex,0,sizeof(tex)); };
         
         unsigned short ibo;
         unsigned short vbo;
-        unsigned short tex;
+        unsigned short tex[5];
         
         bool operator<(RenderCommand rhs) { return depth < rhs.depth; };
         
@@ -126,10 +126,12 @@ namespace helios
     
     struct RenderGroup
     {
+        RenderGroup() { memset(tex,0,sizeof(tex)); };
+        
         std::vector<HRenderCommand> commands;
         unsigned short ibo;
         unsigned short vbo;
-        unsigned short tex;
+        unsigned short tex[5];
         
         unsigned hash;
         
@@ -148,7 +150,7 @@ namespace helios
         {
             unsigned h = 
             
-            (r.ibo ^ 2) + (r.vbo ^ 3) + (r.tex ^ 5) + (( r.depth >> 7 )^ 7);
+            (r.ibo ^ 2) + (r.vbo ^ 3) + (r.tex[0] ^ r.tex[1] ^ r.tex[2] ^ r.tex[3] ^ r.tex[4] ^ 5) + (( r.depth >> 7 )^ 7);
             
             return h;
         };

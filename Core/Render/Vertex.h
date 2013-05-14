@@ -8,7 +8,7 @@ namespace helios
     {
         glm::vec4 p;
         
-        unsigned short s, t , boneId, reserved;
+        unsigned short s, t , boneId, extrudable;
         
 
         union
@@ -28,8 +28,8 @@ namespace helios
             uint32_t _n;
         };
 
-        Vertex() : p(0.), s(0), t(0), boneId(0), _c(0), _n(0) {};
-        Vertex(glm::vec4 pos, unsigned short S, unsigned short T) : p(pos), s(S), t(T), boneId(0), _c(0), _n(0) {};
+        Vertex() : p(0.), s(0), t(0), boneId(0), _c(0), _n(0), extrudable(0) {};
+        Vertex(glm::vec4 pos, unsigned short S, unsigned short T) : p(pos), s(S), t(T), boneId(0), _c(0), _n(0), extrudable(0) {};
         
         glm::vec4 GetNormals() 
         {
@@ -230,15 +230,10 @@ namespace helios
                     indices.push_back(cur_idx+2);
                     
                 }
-              //  vertices[i].noExtrude = 0;
-              //  vertices[i+1].noExtrude = 0;
-              //  vertices[i+2].noExtrude = 0;
-            } /*else {
-                
-                vertices[i].noExtrude = 1;
-                vertices[i+1].noExtrude = 1;
-                vertices[i+2].noExtrude = 1;
-            }*/
+                vertices[i].extrudable = 1;
+                vertices[i+1].extrudable = 1;
+                vertices[i+2].extrudable = 1;
+            } 
             
             
         }

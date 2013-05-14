@@ -11,6 +11,10 @@
 		1A30AFDA1741F3EF0046BD97 /* ShadowFill.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A3554061741EFDD00181B3E /* ShadowFill.fsh */; };
 		1A3554051741EFCE00181B3E /* ShadowFill.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 1A3554041741EFCE00181B3E /* ShadowFill.vsh */; };
 		1A3554071741EFDD00181B3E /* ShadowFill.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 1A3554061741EFDD00181B3E /* ShadowFill.fsh */; };
+		1A42CEC31742B294005D6FD7 /* Postprocess.vsh in Sources */ = {isa = PBXBuildFile; fileRef = 1A42CEC21742B294005D6FD7 /* Postprocess.vsh */; };
+		1A42CEC51742B2B6005D6FD7 /* Postprocess.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 1A42CEC41742B2B6005D6FD7 /* Postprocess.fsh */; };
+		1A42CEC61742B4F6005D6FD7 /* Postprocess.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A42CEC21742B294005D6FD7 /* Postprocess.vsh */; };
+		1A42CEC71742B4F6005D6FD7 /* Postprocess.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A42CEC41742B2B6005D6FD7 /* Postprocess.fsh */; };
 		1A47E26D16B0746E00927FE4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A47E26C16B0746E00927FE4 /* Cocoa.framework */; };
 		1A47E34716B0754D00927FE4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A47E34616B0754D00927FE4 /* OpenGL.framework */; };
 		1A47E34916B075A700927FE4 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A47E34816B075A700927FE4 /* IOKit.framework */; };
@@ -55,6 +59,8 @@
 /* Begin PBXFileReference section */
 		1A3554041741EFCE00181B3E /* ShadowFill.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShadowFill.vsh; sourceTree = "<group>"; };
 		1A3554061741EFDD00181B3E /* ShadowFill.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShadowFill.fsh; sourceTree = "<group>"; };
+		1A42CEC21742B294005D6FD7 /* Postprocess.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Postprocess.vsh; sourceTree = "<group>"; };
+		1A42CEC41742B2B6005D6FD7 /* Postprocess.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Postprocess.fsh; sourceTree = "<group>"; };
 		1A47E26816B0746E00927FE4 /* Helios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A47E26C16B0746E00927FE4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1A47E26F16B0746E00927FE4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -409,6 +415,8 @@
 				1A47E3CE16B3706D00927FE4 /* ShadowVolume.vsh */,
 				1A3554041741EFCE00181B3E /* ShadowFill.vsh */,
 				1A3554061741EFDD00181B3E /* ShadowFill.fsh */,
+				1A42CEC21742B294005D6FD7 /* Postprocess.vsh */,
+				1A42CEC41742B2B6005D6FD7 /* Postprocess.fsh */,
 			);
 			path = GL32;
 			sourceTree = "<group>";
@@ -565,6 +573,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A42CEC61742B4F6005D6FD7 /* Postprocess.vsh in Resources */,
+				1A42CEC71742B4F6005D6FD7 /* Postprocess.fsh in Resources */,
 				1A30AFD91741F3EF0046BD97 /* ShadowFill.vsh in Resources */,
 				1A30AFDA1741F3EF0046BD97 /* ShadowFill.fsh in Resources */,
 				1AF135C716B4D329006EE279 /* Diffuse.fsh in Resources */,
@@ -614,6 +624,8 @@
 				1A47E43C16B3706D00927FE4 /* MilkShape3D.cpp in Sources */,
 				1A3554051741EFCE00181B3E /* ShadowFill.vsh in Sources */,
 				1A3554071741EFDD00181B3E /* ShadowFill.fsh in Sources */,
+				1A42CEC31742B294005D6FD7 /* Postprocess.vsh in Sources */,
+				1A42CEC51742B2B6005D6FD7 /* Postprocess.fsh in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

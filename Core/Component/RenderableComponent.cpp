@@ -151,7 +151,7 @@ namespace helios
 
         for ( auto it = mMaterialGroups.begin() ; it != mMaterialGroups.end() ; ++it )
         {
-            com.tex = (*it).tex;
+            com.tex[0] = (*it).tex;
             com.ibo = (*it).ibo;
             com.iboOffset = (*it).iboRange.start;
             com.iboSize   = (*it).iboRange.end - com.iboOffset;
@@ -161,9 +161,9 @@ namespace helios
         if(!mMaterialGroups.size())
         {
             if(mTexture) {
-                com.tex =  mTexture->id();
+                com.tex[0] =  mTexture->id();
             } else {
-                com.tex = 0;
+                com.tex[0] = 0;
             }
             com.ibo = mIBO;
             com.iboOffset = 0;
