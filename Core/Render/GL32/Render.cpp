@@ -420,8 +420,12 @@ namespace helios
             auto fbo = mFBO.find(stage);
 
             if(fbo != mFBO.end()) {
+                static GLenum bufs[] = { GL_COLOR_ATTACHMENT0, GL_COLOR_ATTACHMENT1, GL_COLOR_ATTACHMENT2, GL_COLOR_ATTACHMENT3, GL_COLOR_ATTACHMENT4, GL_COLOR_ATTACHMENT5 };
                 glBindFramebuffer(GL_FRAMEBUFFER, (*fbo).second->name);
+                glDrawBuffers((*fbo).second->colorBufferCount, bufs);
                 if(clear) ClearViewport();
+
+
             }
             
             
@@ -559,7 +563,7 @@ namespace helios
                 mCurrentViewport.w = w;
                 mCurrentViewport.h = h;
                 mFBO.clear();
-                GenerateFBO(e::kRenderStageGeometry, w, h);
+                GenerateFBO(e::kRenderStageGeometry, w, h,2);
                 GenerateFBO(e::kRenderStageStencilShadows, w, h,1, false); // Stencil shadows shares the depth buffer with Geometry.
                 glBindFramebuffer(GL_FRAMEBUFFER, mFBO[e::kRenderStageStencilShadows]->name);
 
@@ -622,6 +626,7 @@ namespace helios
                 
             }
             glBindFragDataLocation(prog,0,e::kColorOut.c_str());
+            glBindFragDataLocation(prog,1,e::kNormalsOut.c_str());
             glLinkProgram(prog);
 #ifdef DEBUG
             getProgramLog(prog);

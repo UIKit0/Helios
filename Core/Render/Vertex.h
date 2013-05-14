@@ -230,12 +230,12 @@ namespace helios
                     indices.push_back(cur_idx+2);
                     
                 }
-                vertices[i].extrudable = 1;
-                vertices[i+1].extrudable = 1;
-                vertices[i+2].extrudable = 1;
+            
             } 
-            
-            
+            vertices[i].extrudable = 1;
+            vertices[i+1].extrudable = 1;
+            vertices[i+2].extrudable = 1;
+
         }
     }
 };
