@@ -161,8 +161,10 @@ namespace helios
             kRenderStageGeometry = 1,
             kRenderStageDiffuse =  1<<1,
             kRenderStageStencilShadows = 1<<2,
-            kRenderStagePostprocess = 1<<3,
-            kRenderStageHUD = 1<<4
+            kRenderStageShadowFill = 1<<3,
+            kRenderStagePostprocess = 1<<4,
+            kRenderStageHUD = 1<<5,
+            
         };
         
     };

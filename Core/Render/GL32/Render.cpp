@@ -114,6 +114,9 @@ namespace helios
                 v = b_folder + "/ShadowVolume.vsh";
                 f = b_folder + "/ShadowVolume.fsh";
                 mShader[e::kRenderStageStencilShadows] = LoadShader(v,f, attribs,uniforms);
+                v = b_folder + "/ShadowFill.vsh";
+                f = b_folder + "/ShadowFill.fsh";
+                mShader[e::kRenderStageShadowFill] = LoadShader(v,f,attribs,uniforms);
                 glEnable(GL_STENCIL_TEST);
                 glEnable(GL_DEPTH_CLAMP);
                 
@@ -370,16 +373,12 @@ namespace helios
             
             glDepthFunc(GL_LEQUAL);
             
-            glStencilFunc(GL_EQUAL, 0, ~0);
+            glStencilFunc(GL_NOTEQUAL, 0, ~0);
             glStencilOp(GL_KEEP, GL_KEEP, GL_KEEP);
             glDepthMask(GL_TRUE);
-            glEnable(GL_BLEND);
-            glBlendFunc(GL_ONE, GL_ONE);
-            glUseProgram(mShader[e::kRenderStageGeometry]);
-            mCurrentShader = mShader[e::kRenderStageGeometry];
+                  
             
-            
-            RenderStage(e::kRenderStageGeometry,gVec);
+            RenderStage(e::kRenderStageShadowFill,gVec);
             
             
             glDepthFunc(GL_LESS);
