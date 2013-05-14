@@ -20,11 +20,13 @@ namespace helios
 {
     struct RenderState
     {
+        RenderState() : mask(0) {} ;
         union {
             struct {
                 uint32_t geometry : 1;
                 uint32_t diffuse  : 1;
                 uint32_t stencilshadows : 1;
+                uint32_t shadowfill : 1;
                 uint32_t postprocess : 1;
                 uint32_t hud : 1;
             };

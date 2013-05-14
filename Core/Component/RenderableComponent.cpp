@@ -16,7 +16,7 @@
 namespace helios
 {
     RenderableComponent::RenderableComponent(IEntity& owner, TextureAtlas* atlas, std::string const & name)
-    : BaseComponent(owner), mTextureName(name), mOwnsTexture(0), mTextureType(1), mTexture(atlas), mExtrudeStencilShadows(0)
+    : BaseComponent(owner), mTextureName(name), mOwnsTexture(0), mTextureType(1), mTexture(atlas)
     {
         mName = e::kComponentRenderable;
         mVBO = mOwner.GetOwner()->GetRenderer()->GenerateDefaultVBO();
@@ -28,7 +28,8 @@ namespace helios
         
         mIsActive = false;
         
-        mRenderState.mask = UINT32_MAX;
+        mRenderState.mask = 0;
+        mRenderState.hud = 1;
         
         frame_t frame ;
         frame = (*(TextureAtlas*)mTexture)[mTextureName];
@@ -41,7 +42,7 @@ namespace helios
     }
     
     RenderableComponent::RenderableComponent(IEntity& owner, std::string texture)
-    : BaseComponent(owner), mOwnsTexture(1), mTextureType(0), mExtrudeStencilShadows(0)
+    : BaseComponent(owner), mOwnsTexture(1), mTextureType(0)
     {
         mName = e::kComponentRenderable;
         D_PRINT("Generating texture...");
@@ -54,7 +55,10 @@ namespace helios
         mCurrentTMat = glm::mat3(1.f);
         mCurrentEvent.SetTarget(e::kEventTargetRender);
         mIsActive = false;
-        mRenderState.mask = UINT32_MAX;
+        
+        mRenderState.mask = 0;
+        mRenderState.hud = 1;
+        
         
         frame_t frame ;
         frame.coords.maxS = 1.f;
@@ -68,18 +72,14 @@ namespace helios
                                 0.0, frame.coords.maxT - frame.coords.minT, 0.0,
                                 0.0, 0.0, 1.0);
     }
-    RenderableComponent::RenderableComponent(IEntity& owner, unsigned vbo, bool extrudeStencilShadow)
-    : BaseComponent(owner), mVBO(vbo), mOwnsTexture(0), mTextureType(0), mExtrudeStencilShadows(extrudeStencilShadow)
+    RenderableComponent::RenderableComponent(IEntity& owner, unsigned vbo, RenderState renderMask)
+    : BaseComponent(owner), mVBO(vbo), mOwnsTexture(0), mTextureType(0), mRenderState(renderMask)
     {
         mName = e::kComponentRenderable;
         mCurrentEvent.SetName(e::kEventRenderCommand);
         mCurrentTMat = glm::mat3(1.f);
         mCurrentEvent.SetTarget(e::kEventTargetRender);
         mIsActive = false;
-        mRenderState.mask = UINT32_MAX;
-        
-        
-        mRenderState.stencilshadows = mExtrudeStencilShadows;
     };
     RenderableComponent::~RenderableComponent()
     {
@@ -87,8 +87,7 @@ namespace helios
         {
             delete mTexture;
         }
-     //   if(mCurrentEvent) delete mCurrentEvent;
-       
+
     }
     void 
     RenderableComponent::Process()

@@ -53,7 +53,6 @@ namespace helios
         struct {
             byte                mOwnsTexture : 1 ;
             byte                mTextureType : 2 ;
-            byte                mExtrudeStencilShadows:1;
         };
         
         
@@ -65,7 +64,7 @@ namespace helios
         
         RenderableComponent(IEntity& owner, std::string texture);
         
-        RenderableComponent(IEntity& owner, unsigned vbo, bool extrudeStencilShadow);
+        RenderableComponent(IEntity& owner, unsigned vbo, RenderState renderMask);
         
 
         

@@ -6,7 +6,11 @@ namespace helios_dev
     {
         mComponents[helios::e::kComponentPosition].push_back(new ((*owner)) helios::PositionComponent((*this), pos, glm::vec3(1.f,1.f,1.f) ));
 
-        helios::RenderableComponent * rc = new ((*owner)) helios::RenderableComponent((*this), vbo, true);
+        helios::RenderState rs ;
+        
+        rs.mask = helios::e::kRenderStageGeometry | helios::e::kRenderStageShadowFill | helios::e::kRenderStageStencilShadows;
+        
+        helios::RenderableComponent * rc = new ((*owner)) helios::RenderableComponent((*this), vbo, rs);
        
         helios::SkeletonComponent * sc = new ((*owner)) helios::SkeletonComponent((*this));
  
