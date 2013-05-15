@@ -17,16 +17,15 @@ out vec4 vColor;
 out vec2 vCoords;
 
 void main()
-{
-        
+{        
     mat4 j = UNIFORM_JOINTS[int(ATTR_BONEID)];
     mat4 m = UNIFORM_MV * j;
     
     vec4 pos = m * ATTR_POS;
    
     mat3 n = mat3( transpose( inverse( m ) ) );
-    vec4 L = UNIFORM_MV * UNIFORM_LIGHTPOS;
-    vec4 lightDir = pos - L;
+    vec4 L = UNIFORM_LIGHTPOS;
+    vec4 lightDir = normalize(pos - L);
     vColor = ATTR_DIFFUSE;
     vCoords = ATTR_TEX;
     
@@ -38,6 +37,4 @@ void main()
     } else {
         gl_Position = UNIFORM_P * vec4(pos.xyz * L.w - L.xyz,0.);
     }
-    
-    
 }

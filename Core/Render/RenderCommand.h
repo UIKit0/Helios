@@ -33,6 +33,12 @@ namespace helios
             uint32_t mask;
         };
     };
+    struct LightCommand
+    {
+        glm::vec4 pos;
+        glm::vec4 color;
+        bool isShadowCaster;
+    };
     struct UniformData
     {
         

@@ -15,6 +15,7 @@
 #include <Algo/SpatialIndex/ISpatialIndex.h>
 #include <common.h>
 #include <Component/RenderableComponent.h>
+#include <Component/LightComponent.h>
 #include <Scene/IScene.h>
 
 
@@ -217,11 +218,16 @@ namespace helios
         virtual void Render(uint64_t time) 
         {
             auto renderables = mComponents[e::kComponentRenderable];
-
+            auto lights = mComponents[e::kComponentLight];
             for ( auto it = renderables.begin() ; it != renderables.end() ; ++ it ) 
             {
                 IEvent_ptr p = (*(std::static_pointer_cast<RenderableComponent>(*it)))();
                 mRender->PushRenderCommand(helios::HEvent<std::vector<helios::RenderCommand> >::GetData(p));
+            }
+            for( auto it = lights.begin() ; it != lights.end() ; ++it)
+            {
+                IEvent_ptr p = (*(std::static_pointer_cast<helios::LightComponent>(*it)))();
+                //mRender->PushLight(helios::HEvent<helios::RenderCommand>::GetData(p));
             }
             mRender->SetViewport(mScreen.x,mScreen.y,mScreen.w,mScreen.h);
             mRender->Render();

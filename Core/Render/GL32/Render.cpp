@@ -459,7 +459,7 @@ namespace helios
                     
                     if(lp > -1)
                     {
-                        glUniform4f(lp, 10.f,25.f,15.f,1.f);
+                        glUniform4f(lp, 10.f,10.f,-30.f,1.f);
                     }
                     
                     

@@ -15,6 +15,7 @@
 		1A42CEC51742B2B6005D6FD7 /* Postprocess.fsh in Sources */ = {isa = PBXBuildFile; fileRef = 1A42CEC41742B2B6005D6FD7 /* Postprocess.fsh */; };
 		1A42CEC61742B4F6005D6FD7 /* Postprocess.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A42CEC21742B294005D6FD7 /* Postprocess.vsh */; };
 		1A42CEC71742B4F6005D6FD7 /* Postprocess.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 1A42CEC41742B2B6005D6FD7 /* Postprocess.fsh */; };
+		1A42CECA17440B53005D6FD7 /* LightComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A42CEC817440B53005D6FD7 /* LightComponent.cpp */; };
 		1A47E26D16B0746E00927FE4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A47E26C16B0746E00927FE4 /* Cocoa.framework */; };
 		1A47E34716B0754D00927FE4 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A47E34616B0754D00927FE4 /* OpenGL.framework */; };
 		1A47E34916B075A700927FE4 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A47E34816B075A700927FE4 /* IOKit.framework */; };
@@ -61,6 +62,8 @@
 		1A3554061741EFDD00181B3E /* ShadowFill.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = ShadowFill.fsh; sourceTree = "<group>"; };
 		1A42CEC21742B294005D6FD7 /* Postprocess.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Postprocess.vsh; sourceTree = "<group>"; };
 		1A42CEC41742B2B6005D6FD7 /* Postprocess.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Postprocess.fsh; sourceTree = "<group>"; };
+		1A42CEC817440B53005D6FD7 /* LightComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LightComponent.cpp; sourceTree = "<group>"; };
+		1A42CEC917440B53005D6FD7 /* LightComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LightComponent.h; sourceTree = "<group>"; };
 		1A47E26816B0746E00927FE4 /* Helios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Helios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A47E26C16B0746E00927FE4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1A47E26F16B0746E00927FE4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -305,6 +308,8 @@
 				1A47E39916B3706D00927FE4 /* TextureAnimationComponent.h */,
 				1A47E39A16B3706D00927FE4 /* TouchableComponent.cpp */,
 				1A47E39B16B3706D00927FE4 /* TouchableComponent.h */,
+				1A42CEC817440B53005D6FD7 /* LightComponent.cpp */,
+				1A42CEC917440B53005D6FD7 /* LightComponent.h */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -626,6 +631,7 @@
 				1A3554071741EFDD00181B3E /* ShadowFill.fsh in Sources */,
 				1A42CEC31742B294005D6FD7 /* Postprocess.vsh in Sources */,
 				1A42CEC51742B2B6005D6FD7 /* Postprocess.fsh in Sources */,
+				1A42CECA17440B53005D6FD7 /* LightComponent.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

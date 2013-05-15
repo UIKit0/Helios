@@ -15,6 +15,7 @@ namespace helios
         extern std::string const kComponentRespondsToKeyboard = "com.helios.component.Keyboard";
         extern std::string const kComponentRespondsToMouse = "com.helios.component.Mouse";
         extern std::string const kComponentTextureAnimation = "com.helios.component.TextureAnimation";
+        extern std::string const kComponentLight      = "com.helios.component.Light";
         
         extern std::string const kLayerBase           = "com.helios.layer.Base";        
         
