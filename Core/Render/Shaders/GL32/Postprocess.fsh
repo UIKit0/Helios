@@ -13,7 +13,10 @@ void main()
 {
     vec2 coords = vec2(vCoords.x, 1.0 - vCoords.y);
     // combine geometry and shadow buffers
-    vec4 shaded = vec4(texture(UNIFORM_SAMPLER0, coords).rgb * (texture(UNIFORM_SAMPLER2, coords).rgb) , 1.0);
+    
+    float depth = texture(UNIFORM_SAMPLER3, coords).r;
+    
+    vec4 shaded = vec4(texture(UNIFORM_SAMPLER0, coords).rgb * (texture(UNIFORM_SAMPLER2, coords).rgb) * depth , 1.0);
     
     OUT_COLOR = shaded;
 
