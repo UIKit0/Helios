@@ -11,7 +11,6 @@
 #define Helios_Event_h
 
 #include <string>
-#include <boost/shared_ptr.hpp>
 
 namespace helios
 {     

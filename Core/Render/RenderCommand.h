@@ -14,7 +14,6 @@
 #include <string>
 #include <algorithm>
 #include <cstring>
-#include <boost/shared_ptr.hpp>
 
 namespace helios
 {

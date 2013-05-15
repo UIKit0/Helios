@@ -109,7 +109,7 @@ namespace helios
                 uniforms[e::kFragmentUniformSampler4] = 0;
                 uniforms[e::kFragmentUniformSampler5] = 0;
                 uniforms[e::kFragmentUniformSampler6] = 0;                
-
+                uniforms[e::kFragmentUniformFBOSize] = 0;
 
                 mShader[e::kRenderStageGeometry] = LoadShader(v, f, attribs, uniforms);
                 v = b_folder + "/ShadowVolume.vsh";
@@ -294,6 +294,11 @@ namespace helios
             eglGetError();
         }
         void
+        GL32Render::PushLights( std::vector<LightCommand> const & lights)
+        {
+            mLights = lights;
+        }
+        void
         GL32Render::SetUniforms(std::vector<UniformData_ptr>& uniformdata, Shader& currentShader, Shader& targetShader, int clear)
         {
             for ( auto jt = uniformdata.begin() ; jt != uniformdata.end() ; ++jt )
@@ -427,7 +432,11 @@ namespace helios
 
 
             }
-            
+            GLint fboSize =  currentShader.GetUniform(e::kFragmentUniformFBOSize);
+            if( fboSize > -1)
+            {
+                glUniform2f(fboSize, static_cast<float>(mCurrentViewport.w), static_cast<float>(mCurrentViewport.h));
+            }
             
             eglGetError();
             
@@ -459,7 +468,13 @@ namespace helios
                     
                     if(lp > -1)
                     {
-                        glUniform4f(lp, 10.f,10.f,-30.f,1.f);
+                        auto it = mLights.begin();
+                        while( it != mLights.end() && !(*it).isShadowCaster) ++it ;
+                        if( it != mLights.end() ) {
+                            glUniform4f(lp, it->pos.x, it->pos.y, it->pos.z, 1.f);
+                        } else {
+                            glUniform4f(lp,30.f,100.f,30.f,1.f);
+                        }
                     }
                     
                     
@@ -504,6 +519,7 @@ namespace helios
             RenderStage(e::kRenderStageGeometry,gVec);
             
             if(mOptions & RenderOptions_StenciledShadowVolumes){
+                
                 RenderShadows(gVec);
             }
             
@@ -542,7 +558,7 @@ namespace helios
             ClearViewport();
             RenderStage(e::kRenderStagePostprocess, vrg);
             ClearRenderStack();
-            
+            mLights.clear();
             eglGetError();
             
         }

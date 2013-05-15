@@ -82,6 +82,7 @@ namespace helios
         virtual void DeleteVBO ( unsigned int ) = 0;
         virtual void DeleteVAO ( unsigned int ) = 0;
         virtual void PushRenderCommand ( std::vector<RenderCommand> const & ) = 0;
+        virtual void PushLights( std::vector<LightCommand> const & ) = 0;
         virtual void Render() =0;
         virtual void ClearRenderStack() = 0;
         virtual void SetViewport(int x, int y, int w, int h) = 0;

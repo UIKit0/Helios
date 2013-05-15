@@ -46,12 +46,13 @@ namespace helios
             GLuint mDefaultIBO = 0 ;
             GLuint mDefaultFBO = 0;
             GLuint mDefaultVAO = 0;
-            
+
             std::map<e::RenderStage, GLuint> mShader;
             std::map<e::RenderStage, std::shared_ptr<FBO> > mFBO;
             std::map<unsigned,RenderGroup> mGroups;
             std::map<unsigned, unsigned> mVAOMap;
-            
+
+            std::vector<LightCommand> mLights;
             std::vector<UniformPair> mUniforms;
             
             RenderOptions mOptions;
@@ -83,6 +84,7 @@ namespace helios
             void DeleteVAO ( unsigned int ) ;
             void DeleteVBO ( unsigned int );
             void PushRenderCommand ( std::vector<RenderCommand> const & ) ;
+            void PushLights( std::vector<LightCommand> const & )  ;
             void ClearViewport(float r = 0., float g = 0., float b = 0., float a = 0.);
             void Render() ;
             void Prepare( int fboWidth = 2048, int fboHeight = 2048 );

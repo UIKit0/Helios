@@ -79,7 +79,6 @@ namespace helios
     void 
     Pool::release(void *ptr, std::string type)
     {
-      //  boost::mutex::scoped_lock l(mMutex);
         mMutex.lock();
         ulong *p = (ulong*)ptr;
 

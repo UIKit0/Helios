@@ -90,7 +90,7 @@ namespace helios
         extern std::string const kFragmentUniformSampler5 = "UNIFORM_SAMPLER5";
         extern std::string const kFragmentUniformSampler6 = "UNIFORM_SAMPLER6";
         extern std::string const kFragmentUniformSampler7 = "UNIFORM_SAMPLER7";
-        extern std::string const kFragmentUniformShadowmap0 = "UNIFORM_SHADOWMAP0";
+        extern std::string const kFragmentUniformFBOSize  = "UNIFORM_FBOSIZE";
         
         extern std::string const kFragmentUniformTimeSinceStart = "UNIFORM_TIME_SINCE_START";
         
