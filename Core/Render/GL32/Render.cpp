@@ -110,7 +110,10 @@ namespace helios
                 uniforms[e::kFragmentUniformSampler5] = 0;
                 uniforms[e::kFragmentUniformSampler6] = 0;                
                 uniforms[e::kFragmentUniformFBOSize] = 0;
-
+                uniforms[e::kFragmentUniformLightPos] =0;
+                uniforms[e::kFragmentUniformLightCount] = 0;
+                uniforms[e::kFragmentUniformLightColor] = 0;
+                
                 mShader[e::kRenderStageGeometry] = LoadShader(v, f, attribs, uniforms);
                 v = b_folder + "/ShadowVolume.vsh";
                 f = b_folder + "/ShadowVolume.fsh";
@@ -436,6 +439,21 @@ namespace helios
             if( fboSize > -1)
             {
                 glUniform2f(fboSize, static_cast<float>(mCurrentViewport.w), static_cast<float>(mCurrentViewport.h));
+            }
+            {
+                GLint lpos, lcolor, lcount;
+                lpos = currentShader.GetUniform(e::kFragmentUniformLightPos);
+                lcolor = currentShader.GetUniform(e::kFragmentUniformLightColor);
+                lcount = currentShader.GetUniform(e::kFragmentUniformLightCount);
+                if(lpos > -1 && lcolor > -1 && lcount > -1)
+                {
+                    glUniform1i(lcount, static_cast<int>(mLights.size()));
+                    std::vector<glm::mat4> pos,colors;
+                    for(auto it = mLights.begin();it != mLights.end(); ++it)
+                    {
+                        
+                    }
+                }
             }
             
             eglGetError();

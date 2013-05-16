@@ -34,13 +34,18 @@ void main()
     
     float depth = texture(UNIFORM_SAMPLER3, coords).r;
     vec3 pos = vec3(vCoords.xy * 2.0 - 1.0, depth * 2.0 - 1.0);
+    vec3 norm = texture(UNIFORM_SAMPLER1, coords).rgb * 2.0 - 1.0;
+    
     int i ;
+    vec4 lightcolor = vec4(0.0,0.0,0.0,0.0);
     for ( i = 0 ; i < UNIFORM_LIGHT_COUNT ; i ++ )
     {
         vec3 light = vec3(UNIFORM_LIGHT_POS[i].xyz / UNIFORM_LIGHT_POS[i].w);
+        vec3 lightDir = pos - light;
+        lightcolor += UNIFORM_LIGHT_COLOR[i] * max(0.0, dot(lightDir, norm));
     }
     vec4 shadow = texture(UNIFORM_SAMPLER2, coords);
-    vec4 shaded = vec4(texture(UNIFORM_SAMPLER0, coords).rgb * shadow.rgb , 1.0);
+    vec4 shaded = vec4(texture(UNIFORM_SAMPLER0, coords).rgb * shadow.rgb * lightcolor.rgb , 1.0);
     
     OUT_COLOR = shaded;
 
