@@ -1,9 +1,14 @@
 #version 150
+#define MAX_LIGHTS 10
 
 uniform sampler2D UNIFORM_SAMPLER0; // diffuse color
 uniform sampler2D UNIFORM_SAMPLER1; // normal buffer
 uniform sampler2D UNIFORM_SAMPLER2; // shadow buffer
 uniform sampler2D UNIFORM_SAMPLER3; // depth buffer
+
+uniform vec4 UNIFORM_LIGHT_COLOR[MAX_LIGHTS];
+uniform vec4 UNIFORM_LIGHT_POS[MAX_LIGHTS];
+uniform int  UNIFORM_LIGHT_COUNT;
 
 uniform vec2 UNIFORM_FBOSIZE;
 
@@ -28,6 +33,12 @@ void main()
     // combine geometry and shadow buffers
     
     float depth = texture(UNIFORM_SAMPLER3, coords).r;
+    vec3 pos = vec3(vCoords.xy * 2.0 - 1.0, depth * 2.0 - 1.0);
+    int i ;
+    for ( i = 0 ; i < UNIFORM_LIGHT_COUNT ; i ++ )
+    {
+        vec3 light = vec3(UNIFORM_LIGHT_POS[i].xyz / UNIFORM_LIGHT_POS[i].w);
+    }
     vec4 shadow = texture(UNIFORM_SAMPLER2, coords);
     vec4 shaded = vec4(texture(UNIFORM_SAMPLER0, coords).rgb * shadow.rgb , 1.0);
     

@@ -133,6 +133,9 @@ namespace helios
         extern std::string const kFragmentUniformSampler6 ;
         extern std::string const kFragmentUniformSampler7 ;
         extern std::string const kFragmentUniformFBOSize;
+        extern std::string const kFragmentUniformLightColor;
+        extern std::string const kFragmentUniformLightPos;
+        extern std::string const kFragmentUniformLightCount;
         
         extern std::string const kFragmentUniformTimeSinceStart ;
         
