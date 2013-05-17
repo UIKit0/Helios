@@ -10,7 +10,7 @@
 namespace helios
 {
      int
-    LoadH3DMESH::Load(std::string & file, std::vector<helios::Vertex> & vertices, std::vector<uint32_t>& indices, std::vector<s::Material> & mats, std::vector<s::Joint> joints)
+    LoadH3DMESH::Load(std::string & file, std::vector<helios::Vertex> & vertices, std::vector<uint32_t>& indices, std::vector<s::Material> & mats, std::vector<s::Joint>& joints)
     {
         FILE *fp = fopen(file.c_str(), "rb");
         if(!fp) return -1;

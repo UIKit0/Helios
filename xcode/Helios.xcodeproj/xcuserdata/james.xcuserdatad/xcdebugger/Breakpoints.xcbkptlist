@@ -4,16 +4,16 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "../Core/Loader/LoadH3DMESH.cpp"
-         timestampString = "390518333.737943"
+         filePath = "../Core/Component/SkeletonComponent.cpp"
+         timestampString = "390519158.453776"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "52"
-         endingLineNumber = "52"
-         landmarkName = "LoadH3DMESH::Load(std::string &amp; file, std::vector&lt;helios::Vertex&gt; &amp; vertices, std::vector&lt;uint32_t&gt;&amp; indices, std::vector&lt;s::Material&gt; &amp; mats, std::vector&lt;s::Joint&gt; joints)"
+         startingLineNumber = "106"
+         endingLineNumber = "106"
+         landmarkName = "SkeletonComponent::Process()"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -192,8 +192,8 @@ namespace helios
         {
             glm::mat4 absMat;
             glm::mat4 relMat;
-            uint16_t   jointid;
-            uint16_t   parent;
+            int16_t   jointid;
+            int16_t   parent;
             uint32_t   frameCount;
         };
         struct Joint : public JointBase
