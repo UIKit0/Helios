@@ -149,7 +149,7 @@ namespace helios
         {
             if ( !mDefaultIBO )
             {
-                unsigned short indices [6] = {  0 , 1 , 2, 1, 3, 2  } ;
+                uint32_t indices [6] = {  0 , 1 , 2, 1, 3, 2  } ;
                 
                 mDefaultIBO = GenerateIBO(indices, 6);
             }
@@ -198,7 +198,7 @@ namespace helios
             std::vector<helios::VAOObj> vaoobj;
              
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionPosition, helios::VAOObj::R_FLOAT, 4, sizeof(helios::Vertex), 0, 0 }));
-            vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionNormal, helios::VAOObj::R_UBYTE, 3, sizeof(helios::Vertex), offsetof(helios::Vertex,n[0]), 1 }));
+            vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionNormal, helios::VAOObj::R_UBYTE, 4, sizeof(helios::Vertex), offsetof(helios::Vertex,n[0]), 1 }));
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionTexCoord, helios::VAOObj::R_USHORT, 2, sizeof(helios::Vertex), 16, 1}));
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionBoneId, helios::VAOObj::R_SHORT, 1, sizeof(helios::Vertex), 20, 0 }));
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionExtrudes, helios::VAOObj::R_USHORT, 1, sizeof(helios::Vertex), 22, 0 }));
@@ -237,17 +237,25 @@ namespace helios
         unsigned int
         GL32Render::GenerateIBO(unsigned* indices, size_t size)
         {
-            assert("This platform does not support 32-bit indices.");
-            return 0;
+            GLuint ibo;
+            glGenBuffers(1, &ibo);
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+            glBufferData(GL_ELEMENT_ARRAY_BUFFER, size*sizeof(uint32_t), &indices[0], GL_STATIC_DRAW);
+            
+            return ibo;
         }
         unsigned int
         GL32Render::GenerateIBO(unsigned short* indices, size_t size)
         {
-            GLuint ibo;
+            GLuint ibo;/*
             glGenBuffers(1, &ibo);
             glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
             glBufferData(GL_ELEMENT_ARRAY_BUFFER, size*sizeof(short), &indices[0], GL_STATIC_DRAW);
-            eglGetError();
+
+            eglGetError();*/
+            std::cerr << "You must use 32-bit indices." << std::endl;
+            assert(0);
+            
             return ibo;
         }
         void
@@ -509,7 +517,7 @@ namespace helios
                         SetUniforms((*jt).uniforms,currentShader,targetShader);
                         eglGetError();
                         
-                        glDrawElements(GL_TRIANGLES, (*jt).iboSize , GL_UNSIGNED_SHORT, (void*)((*jt).iboOffset*sizeof(short)));
+                        glDrawElements(GL_TRIANGLES, (*jt).iboSize , GL_UNSIGNED_INT, (void*)((*jt).iboOffset*sizeof(uint32_t)));
                         
                         // clear the first bone.
                         glm::mat4 clear(1.f);

@@ -2,8 +2,6 @@
 #include <iostream>
 #include "MilkShape3D.h"
 
-namespace helios_dev
-{
 
     void
     MilkShape3D::LoadComment(FILE* fp, std::vector<ms3d_comment_t>* comments, int32_t numComments)
@@ -21,13 +19,14 @@ namespace helios_dev
             comments->at(i) = comment;
         }
     }
-    void
+    int
     MilkShape3D::LoadMS3D(std::string& filename)
     {        
         printf("\nLoadMS3D::  Loading model %s...", filename.c_str()); fflush(stdin);
         
         
         FILE * fp = fopen(filename.c_str(), "rb");
+        if(!fp) return -1;
         fseek(fp, 14, SEEK_SET); // Skipping header
         fread(&nNumVertices, sizeof(word), 1, fp);
         vertices.resize(nNumVertices);
@@ -132,6 +131,6 @@ namespace helios_dev
             
         }
         fclose(fp);
+        return 0;
     }
     
-}

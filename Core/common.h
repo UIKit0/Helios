@@ -177,30 +177,32 @@ namespace helios
     {
         struct Frame
         {
-            float time;
+            
 #if(USE_QUATERNIONS == 1)
             glm::quat rotation;
             glm::vec3 translation;
 #else
             glm::mat4 mat;
 #endif
+            float time;
+            
         };
+        
         struct JointBase
         {
-
-            //   glm::quat absQuat;
-            //   glm::quat relQuat;
             glm::mat4 absMat;
             glm::mat4 relMat;
-            uint8_t   jointid;
-            int8_t   parent;
+            int16_t   jointid;
+            int16_t   parent;
+            uint32_t   frameCount;
         };
         struct Joint : public JointBase
         {
             glm::vec3 absTrans;
             glm::vec3 relTrans;
             std::vector<Frame> keyframes;
-            
+            Joint(JointBase& jb) : JointBase(jb), absTrans(0.f), relTrans(0.f) {};
+            Joint() : JointBase() {};
         };
         
         struct TexFrame
@@ -217,20 +219,26 @@ namespace helios
             bool loop;
             
         };
-        struct MaterialGroup
+        struct Material
         {
-            float emissive[4];
-            float specular[4];
+            char emissive[4];
+            char specular[4];
+            char ambient[4];
             float shininess;
-            struct
-            {
-                unsigned short start;
-                unsigned short end;
-            } iboRange;
+            uint32_t index_start;
+            uint32_t index_end;
+            char texturename[36];
+        };
+
+        struct MaterialGroup : public Material
+        {
             unsigned short ibo;
             unsigned short tex;
 
+            MaterialGroup(Material & mat) : Material(mat), ibo(0), tex(0) {} ;
+            MaterialGroup() : Material(), ibo(0), tex(0) {}
         };
+
         
         struct InputRemap
         {

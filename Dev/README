@@ -44,8 +44,8 @@ struct Index
     uint32_t index;
 }
 
-[4 bytes] - Joints blob size n
-[n bytes] - Joint blob of structs:
+[4 bytes] - Number of joints
+[? bytes] - Joint blob of structs:
 
 // the absolute matrix is the concatenation of all of the parent
 // matrices and the local matrix.
@@ -57,25 +57,15 @@ struct Joint
     float[4][4] relative_matrix; 
     ushort      joint_id;
     ushort      parent;
-}
-
-
-// Note: frames MUST be sorted by joint_id.
-[4 bytes] - Keyframes blob size n
-[n bytes] of frame groupings:
-
-struct FrameGroup
-{
-[4 bytes] - Frame Group Size x
-[2 bytes] - joint id.
-[x bytes] - blob of Keyframes:
+    uint32_t    frameCount;
+    
+    // array of frames of frameCount * sizeof(Frame) bytes
     struct Frame
     {
         float[4][4] matrix;
         float time;
     }
 }
-// Repeated until n is reached
 
 [4 bytes] - Materials blob size n
 [n bytes] of material blob structs:
@@ -88,5 +78,5 @@ struct Material
     float shininess;
     uint32_t index_start;
     uint32_t index_end;
-    uchar texturename[32];
+    uchar texturename[36];
 }

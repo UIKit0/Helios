@@ -17,9 +17,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/quaternion.hpp>
 
-namespace helios_dev
-{
-    
+
 #ifndef byte
     typedef uint8_t byte;
 #endif // byte
@@ -199,9 +197,8 @@ namespace helios_dev
         {
             
         };
-        void LoadMS3D(std::string& filename);
+        int LoadMS3D(std::string& filename);
     };
-};
 
 
 #endif
