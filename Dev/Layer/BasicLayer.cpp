@@ -60,7 +60,7 @@ namespace helios_dev
             {
                 sc->AddJoint((*it));
             }
-            sc->SetDefaultAnimation(177,205, 30.f);
+            sc->SetDefaultAnimation(173,210, 30.f);
             sc->LoadAnimationMap(b_folder + "/zombie02.json");
            
             mEntities.push_back(std::shared_ptr<helios::IEntity>(e));

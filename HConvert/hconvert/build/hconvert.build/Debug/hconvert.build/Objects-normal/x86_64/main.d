@@ -860,4 +860,32 @@ dependencies: \
   /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtc/matrix_inverse.hpp \
   /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../gtc/matrix_inverse.inl \
   /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/euler_angles.hpp \
-  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/euler_angles.inl
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/euler_angles.inl \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/Importer.hpp \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/types.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/defs.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/vector3.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/./Compiler/pushpack1.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/./Compiler/poppack1.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/vector2.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/color4.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/matrix3x3.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/matrix4x4.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/quaternion.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/vector2.inl \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/vector3.inl \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/color4.inl \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/quaternion.inl \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/matrix3x3.inl \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/matrix4x4.inl \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/config.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/scene.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/texture.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/mesh.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/light.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/camera.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/material.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/material.inl \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/anim.h \
+  /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/postprocess.h

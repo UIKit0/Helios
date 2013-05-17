@@ -11,6 +11,7 @@
 		1A42CEE21746943D005D6FD7 /* hconvert.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A42CEE11746943D005D6FD7 /* hconvert.1 */; };
 		1A42CEE917469471005D6FD7 /* libassimpd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A42CEE817469471005D6FD7 /* libassimpd.a */; };
 		1A42CEEF1746A1B9005D6FD7 /* MilkShape3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A42CEEA17469529005D6FD7 /* MilkShape3D.cpp */; };
+		1A42CEF71746DF3F005D6FD7 /* LoadAssimp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A42CEF51746DF3E005D6FD7 /* LoadAssimp.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		1A42CEEA17469529005D6FD7 /* MilkShape3D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MilkShape3D.cpp; path = ../../../Dev/Tool/MilkShape3D.cpp; sourceTree = "<group>"; };
 		1A42CEEB17469529005D6FD7 /* MilkShape3D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MilkShape3D.h; path = ../../../Dev/Tool/MilkShape3D.h; sourceTree = "<group>"; };
 		1A42CEED174695BD005D6FD7 /* LoadMS3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMS3D.h; sourceTree = "<group>"; };
+		1A42CEF51746DF3E005D6FD7 /* LoadAssimp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadAssimp.cpp; sourceTree = "<group>"; };
+		1A42CEF61746DF3F005D6FD7 /* LoadAssimp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadAssimp.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,8 @@
 				1A42CEDF1746943D005D6FD7 /* main.cpp */,
 				1A42CEE11746943D005D6FD7 /* hconvert.1 */,
 				1A42CEED174695BD005D6FD7 /* LoadMS3D.h */,
+				1A42CEF51746DF3E005D6FD7 /* LoadAssimp.cpp */,
+				1A42CEF61746DF3F005D6FD7 /* LoadAssimp.h */,
 			);
 			path = hconvert;
 			sourceTree = "<group>";
@@ -130,6 +135,7 @@
 			files = (
 				1A42CEEF1746A1B9005D6FD7 /* MilkShape3D.cpp in Sources */,
 				1A42CEE01746943D005D6FD7 /* main.cpp in Sources */,
+				1A42CEF71746DF3F005D6FD7 /* LoadAssimp.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,11 +209,13 @@
 					"$(SRCROOT)/../../../Helios_lib/glm/",
 					"$(SRCROOT)/../../../Helios_lib/boost/",
 					"$(SRCROOT)/../../../Helios_lib/SOIL/src",
+					"$(SRCROOT)/../../../Helios_lib/assimp/include",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Helios_lib/assimp/bin/assimp_Debug_MacOSX\"",
 				);
+				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -222,11 +230,13 @@
 					"$(SRCROOT)/../../../Helios_lib/glm/",
 					"$(SRCROOT)/../../../Helios_lib/boost/",
 					"$(SRCROOT)/../../../Helios_lib/SOIL/src",
+					"$(SRCROOT)/../../../Helios_lib/assimp/include",
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Helios_lib/assimp/bin/assimp_Debug_MacOSX\"",
 				);
+				OTHER_LDFLAGS = "-lstdc++";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -250,6 +260,7 @@
 				1A42CEE71746943D005D6FD7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

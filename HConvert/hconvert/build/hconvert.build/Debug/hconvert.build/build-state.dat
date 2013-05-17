@@ -2,8 +2,9 @@ Thconvert
 v5
 r1
 cCheck dependencies
-cCompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/LoadAssimp.o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cCompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/MilkShape3D.o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/../../../Dev/Tool/MilkShape3D.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 cLd /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/hconvert normal x86_64
 
 N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk
@@ -35,6 +36,141 @@ N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/b
 c000000005195771A00000000030D31B8
 t1368749850
 s51196344
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/./Compiler/poppack1.h
+c00000000496960400000000000000318
+t1231642688
+s792
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/./Compiler/pushpack1.h
+c00000000496960400000000000000445
+t1231642688
+s1093
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/Importer.hpp
+c000000004F951152000000000000704D
+t1335169362
+s28749
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/anim.h
+c000000004F2C92180000000000003801
+t1328321048
+s14337
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/camera.h
+c000000004F2C92180000000000001D04
+t1328321048
+s7428
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/color4.h
+c000000004F4001D80000000000000DE4
+t1329594840
+s3556
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/color4.inl
+c000000004F2C92180000000000001F42
+t1328321048
+s8002
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/config.h
+c000000004FCC250E0000000000007C3A
+t1338778894
+s31802
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/defs.h
+c000000004F2C9218000000000000248C
+t1328321048
+s9356
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/light.h
+c000000004F2C92180000000000001EDD
+t1328321048
+s7901
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/material.h
+c000000004F2C9218000000000000C5BF
+t1328321048
+s50623
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/material.inl
+c000000004F2C921800000000000022DC
+t1328321048
+s8924
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/matrix3x3.h
+c000000004F2C9218000000000000188B
+t1328321048
+s6283
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/matrix3x3.inl
+c000000004F2C92180000000000002C1A
+t1328321048
+s11290
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/matrix4x4.h
+c000000004F2C921800000000000022AF
+t1328321048
+s8879
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/matrix4x4.inl
+c000000004F2C9218000000000000466C
+t1328321048
+s18028
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/mesh.h
+c000000004F2C92180000000000005F37
+t1328321048
+s24375
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/postprocess.h
+c000000004F950C9200000000000073C6
+t1335168146
+s29638
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/quaternion.h
+c000000004F2C92180000000000001040
+t1328321048
+s4160
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/quaternion.inl
+c000000004F2C92180000000000002690
+t1328321048
+s9872
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/scene.h
+c000000004F2C92180000000000003045
+t1328321048
+s12357
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/texture.h
+c000000004F2C92180000000000001937
+t1328321048
+s6455
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/types.h
+c000000004F2C92180000000000003A0F
+t1328321048
+s14863
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/vector2.h
+c000000004F2C92180000000000000D2D
+t1328321048
+s3373
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/vector2.inl
+c000000004F2C92180000000000001EA9
+t1328321048
+s7849
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/vector3.h
+c000000004F2C92180000000000001092
+t1328321048
+s4242
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include/assimp/vector3.inl
+c000000004F2C921800000000000027DC
+t1328321048
+s10204
 
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost/boost/aligned_storage.hpp
 c000000004A68476000000000000010C9
@@ -4091,6 +4227,11 @@ c000000004DEFAD5C000000000000066D
 t1307553116
 s1645
 
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtc/matrix_inverse.inl
+c000000004DEFAD5C0000000000001703
+t1307553116
+s5891
+
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtc/matrix_transform.hpp
 c000000004E36F2C60000000000001681
 t1312223942
@@ -4106,7 +4247,302 @@ c000000004ED19E570000000000003E5B
 t1322360407
 s15963
 
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/.././core/_detail.hpp
+c000000004DDC15DA0000000000001C85
+t1306269146
+s7301
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/.././core/func_common.hpp
+c000000004DEFAD5A0000000000003650
+t1307553114
+s13904
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/.././core/func_exponential.hpp
+c000000004DEFAD5A0000000000000C90
+t1307553114
+s3216
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/.././core/func_geometric.hpp
+c000000004DEFAD5A0000000000000F67
+t1307553114
+s3943
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/.././core/func_integer.hpp
+c000000004DEFAD5C0000000000001A86
+t1307553116
+s6790
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/.././core/func_matrix.hpp
+c000000004DEFAD5C0000000000001032
+t1307553116
+s4146
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/.././core/func_noise.hpp
+c000000004DEFAD5C0000000000000904
+t1307553116
+s2308
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/.././core/func_packing.hpp
+c000000004DEFAD5C0000000000001E4B
+t1307553116
+s7755
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/.././core/func_trigonometric.hpp
+c000000004DEFAD5C0000000000001865
+t1307553116
+s6245
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/.././core/func_vector_relational.hpp
+c000000004DEFAD5C000000000000224C
+t1307553116
+s8780
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/.././core/type.hpp
+c000000004DEFAD5C0000000000002DB8
+t1307553116
+s11704
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/_fixes.hpp
+c000000004DEFAD5A00000000000002B6
+t1307553114
+s694
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/_swizzle.hpp
+c000000004DB069FE000000000000D012
+t1303407102
+s53266
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/func_common.inl
+c000000004DEFAD5A0000000000009403
+t1307553114
+s37891
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/func_exponential.inl
+c000000004DEFAD5A0000000000001E9D
+t1307553114
+s7837
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/func_geometric.inl
+c000000004DEFAD5C0000000000001E21
+t1307553116
+s7713
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/func_integer.inl
+c000000004DEFAD5C00000000000039A6
+t1307553116
+s14758
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/func_matrix.inl
+c000000004DEFAD5C000000000000426D
+t1307553116
+s17005
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/func_noise.inl
+c000000004DEFAD5C00000000000002B0
+t1307553116
+s688
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/func_packing.inl
+c000000004DEFAD5C0000000000000D71
+t1307553116
+s3441
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/func_trigonometric.inl
+c000000004DEFAD5C0000000000003F62
+t1307553116
+s16226
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/func_vector_relational.inl
+c000000004DEFAD5C00000000000002D2
+t1307553116
+s722
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/setup.hpp
+c000000004DEFAD5C0000000000004272
+t1307553116
+s17010
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_float.hpp
+c000000004DEFAD5C0000000000000A71
+t1307553116
+s2673
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_gentype.hpp
+c000000004DB06A000000000000000FBE
+t1303407104
+s4030
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_half.hpp
+c000000004DEFAD5C000000000000085C
+t1307553116
+s2140
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_half.inl
+c000000004DDC059C0000000000001F43
+t1306264988
+s8003
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_int.hpp
+c000000004DEFAD5C00000000000010DF
+t1307553116
+s4319
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat.hpp
+c000000004DB06A000000000000000609
+t1303407104
+s1545
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat2x2.hpp
+c000000004DEFAD5C000000000000234E
+t1307553116
+s9038
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat2x2.inl
+c000000004DEFAD5C0000000000003699
+t1307553116
+s13977
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat2x3.hpp
+c000000004DEFAD5C0000000000001C70
+t1307553116
+s7280
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat2x3.inl
+c000000004DEFAD5C000000000000350B
+t1307553116
+s13579
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat2x4.hpp
+c000000004DEFAD5C0000000000001CA1
+t1307553116
+s7329
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat2x4.inl
+c000000004DEFAD5C00000000000039A0
+t1307553116
+s14752
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat3x2.hpp
+c000000004DEFAD5C0000000000001C8F
+t1307553116
+s7311
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat3x2.inl
+c000000004DEFAD5C0000000000003872
+t1307553116
+s14450
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat3x3.hpp
+c000000004DEFAD5C0000000000002475
+t1307553116
+s9333
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat3x3.inl
+c000000004DEFAD5C0000000000004890
+t1307553116
+s18576
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat3x4.hpp
+c000000004DEFAD5C0000000000001DAE
+t1307553116
+s7598
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat3x4.inl
+c000000004DEFAD5C00000000000041AC
+t1307553116
+s16812
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat4x2.hpp
+c000000004DEFAD5C0000000000001DC8
+t1307553116
+s7624
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat4x2.inl
+c000000004DEFAD5C00000000000040D7
+t1307553116
+s16599
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat4x3.hpp
+c000000004DEFAD5C0000000000001E90
+t1307553116
+s7824
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat4x3.inl
+c000000004DEFAD5C00000000000045CE
+t1307553116
+s17870
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat4x4.hpp
+c000000004DEFAD5C000000000000263F
+t1307553116
+s9791
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_mat4x4.inl
+c000000004DEFAD5C000000000000730A
+t1307553116
+s29450
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_size.hpp
+c000000004DB06A0000000000000002FD
+t1303407104
+s765
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_vec.hpp
+c000000004DB06A0000000000000002CA
+t1303407104
+s714
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_vec1.hpp
+c000000004DEFAD5C000000000000183D
+t1307553116
+s6205
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_vec1.inl
+c000000004DE7F08200000000000038A7
+t1307046018
+s14503
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_vec2.hpp
+c000000004DEFAD5C00000000000023B3
+t1307553116
+s9139
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_vec2.inl
+c000000004DE7F0820000000000003FA4
+t1307046018
+s16292
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_vec3.hpp
+c000000004DEFAD5C000000000000252B
+t1307553116
+s9515
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_vec3.inl
+c000000004DE7F0820000000000004633
+t1307046018
+s17971
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_vec4.hpp
+c000000004DEFAD5C000000000000289B
+t1307553116
+s10395
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../core/type_vec4.inl
+c000000004FAE65090000000000005041
+t1336829193
+s20545
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../glm.hpp
+c000000004DEFAD5C0000000000000E9C
+t1307553116
+s3740
+
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../gtc/../gtc/half_float.hpp
+c000000004DEFAD5C0000000000003529
+t1307553116
+s13609
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm/glm/gtx/../gtc/half_float.hpp
 c000000004DEFAD5C0000000000003529
 t1307553116
 s13609
@@ -4312,8 +4748,8 @@ t1324165646
 s2700
 
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Render/Vertex.h
-c0000000051969CA10000000000001D94
-t1368824993
+c000000005196A2BC0000000000001D94
+t1368826556
 s7572
 
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Scene/BaseScene.h
@@ -4342,42 +4778,56 @@ t1359138915
 s3049
 
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/common.h
-c0000000051969F6800000000000023BC
-t1368825704
-s9148
+c000000005196A2BC00000000000023BA
+t1368826556
+s9146
 
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/hconvert
-t1368825720
-s418220
+t1368828644
+s15060256
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/LoadAssimp.o
+t2
+s0
 
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/LoadMS3D.o
 t2
 s0
 
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/MilkShape3D.o
-t1368824993
+t1368827720
 s1035124
 
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/hconvert.LinkFileList
-c0000000051969CA100000000000000FB
-t1368824993
-s251
+c000000005196A98A000000000000017B
+t1368828298
+s379
 
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o
-t1368825720
-s1628836
+t1368828643
+s348312
 
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/../../../Dev/Tool/MilkShape3D.cpp
-c0000000051969CA1000000000000165E
-t1368824993
+c000000005196A2BC000000000000165E
+t1368826556
 s5726
 i<iostream>
 i"MilkShape3D.h"
 
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/../../../Dev/Tool/MilkShape3D.h
-c0000000051969CA10000000000001B8A
-t1368824993
+c000000005196A2BC0000000000001B8A
+t1368826556
 s7050
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.cpp
+c000000005196BADA0000000000000D2C
+t1368832730
+s3372
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.h
+c000000005196AAE00000000000000345
+t1368828640
+s837
 
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadMS3D.cpp
 c0000000051965E3D000000000000009A
@@ -4385,14 +4835,14 @@ t1368809021
 s154
 
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadMS3D.h
-c0000000051969F720000000000001B7F
-t1368825714
+c000000005196A2BC0000000000001B7F
+t1368826556
 s7039
 
 N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp
-c0000000051969FCD0000000000000D9E
-t1368825805
-s3486
+c000000005196AAD70000000000000E01
+t1368828631
+s3585
 i<map>
 i<vector>
 i<iostream>
@@ -4403,6 +4853,9 @@ i"LoadMS3D.h"
 CBuild AST from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/../../../Dev/Tool/MilkShape3D.cpp
 r0
 
+CBuild AST from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.cpp
+r0
+
 CBuild AST from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadMS3D.cpp
 r0
 
@@ -4411,14 +4864,37 @@ r0
 
 CCheck dependencies
 r0
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies855cb14dd746b741^0c93b14dd746b741^---0#1#0#--18"Check dependencies36"75A3C877-B5C4-457B-8996-D10F60FF0D13-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies0bb6155bf246b741^19591a5bf246b741^---0#1#0#--18"Check dependencies36"B73790B2-E46F-4A1E-8517-FBCE955FB5CA-
+
+CCompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/LoadAssimp.o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s390525531.117773
+e390525533.597709
+r1
+xCompileC
+xbuild/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/LoadAssimp.o
+x/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+oIn file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.cpp:9:
+oIn file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.h:17:
+oIn file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Helios.h:15:
+oIn file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Component/Components.h:12:
+oIn file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Component/IComponent.h:16:
+oIn file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost/boost/property_tree/ptree.hpp:21:
+o/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost/boost/multi_index_container.hpp:673:9: warning: implicit conversion loses integer precision: 'std::size_t' (aka 'unsigned long') to 'const unsigned int' [-Wshorten-64-to-32]
+o      s=sz;
+o      ~ ^~
+o1 warning generated.
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection82"Compile /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.cpp95441e5bf246b741^9b02995df246b741^-946"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.cpp:9:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.h:17:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Helios.h:15:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Component/Components.h:12:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Component/IComponent.h:16:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost/boost/property_tree/ptree.hpp:21:/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost/boost/multi_index_container.hpp:673:9: warning: implicit conversion loses integer precision: 'std::size_t' (aka 'unsigned long') to 'const unsigned int' [-Wshorten-64-to-32]      s=sz;      ~ ^~1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@104"Implicit conversion loses integer precision: 'std::size_t' (aka 'unsigned long') to 'const unsigned int'-390525533#18446744073709551615#0#6(2@99"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.cpp:9:-390525533#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@90"file://localhost/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.cpp0000000000000000^8#9#8#9#143#0#30"Apple LLVM compiler 4.2 Notice--2@98"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.h:17:-390525533#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@88"file://localhost/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.h0000000000000000^16#9#16#9#372#0#30"Apple LLVM compiler 4.2 Notice--2@96"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Helios.h:15:-390525533#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@62"file://localhost/Users/james/Dev/git/hack/Helios/Core/Helios.h0000000000000000^14#9#14#9#186#0#30"Apple LLVM compiler 4.2 Notice--2@110"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Component/Components.h:12:-390525533#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@76"file://localhost/Users/james/Dev/git/hack/Helios/Core/Component/Components.h0000000000000000^11#9#11#9#145#0#30"Apple LLVM compiler 4.2 Notice--2@110"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Component/IComponent.h:16:-390525533#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@76"file://localhost/Users/james/Dev/git/hack/Helios/Core/Component/IComponent.h0000000000000000^15#9#15#9#241#0#30"Apple LLVM compiler 4.2 Notice--2@132"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost/boost/property_tree/ptree.hpp:21:-390525533#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@95"file://localhost/Users/james/Dev/git/hack/Helios_lib/boost_1_46_1/boost/property_tree/ptree.hpp0000000000000000^20#9#20#9#800#0#30"Apple LLVM compiler 4.2 Notice--1#27"com.apple.dt.IDE.diagnostic3@97"file://localhost/Users/james/Dev/git/hack/Helios_lib/boost_1_46_1/boost/multi_index_container.hpp0000000000000000^672#8#672#8#18985#0#14"Semantic Issue2(3@97"file://localhost/Users/james/Dev/git/hack/Helios_lib/boost_1_46_1/boost/multi_index_container.hpp0000000000000000^672#8#672#10#18985#0#3@97"file://localhost/Users/james/Dev/git/hack/Helios_lib/boost_1_46_1/boost/multi_index_container.hpp0000000000000000^672#6#672#7#18983#0#-0#0#0#-19%DVTDocumentLocation4@90"file://localhost/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.cpp0000000000000000^3029"CompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/LoadAssimp.o hconvert/LoadAssimp.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/james/Dev/git/hack/Helios/HConvert/hconvert    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-generated-files.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-own-target-headers.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-all-target-headers.hmap -iquote /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-project-headers.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/include -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/SOIL/src -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/DerivedSources/x86_64 -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/DerivedSources -F/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug -MMD -MT dependencies -MF /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/LoadAssimp.d --serialize-diagnostics /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/LoadAssimp.dia -c /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadAssimp.cpp -o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/LoadAssimp.o36"76C067A8-5297-4925-A41D-67DA52E87048-
 
 CCompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/LoadMS3D.o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadMS3D.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
 r0
 
 CCompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/MilkShape3D.o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/../../../Dev/Tool/MilkShape3D.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s390507651.271530
-e390507652.524610
+s390520519.696366
+e390520520.852971
 r1
 xCompileC
 xbuild/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/MilkShape3D.o
@@ -4427,11 +4903,11 @@ xnormal
 xx86_64
 xc++
 xcom.apple.compilers.llvm.clang.1_0.compiler
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Compile /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/../../../Dev/Tool/MilkShape3D.cpp39984583ac46b741^624c8684ac46b741^---0#0#0#-19%DVTDocumentLocation2@109"file://localhost/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/../../../Dev/Tool/MilkShape3D.cpp0000000000000000^2983"CompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/MilkShape3D.o hconvert/../../../Dev/Tool/MilkShape3D.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/james/Dev/git/hack/Helios/HConvert/hconvert    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-generated-files.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-own-target-headers.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-all-target-headers.hmap -iquote /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-project-headers.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/include -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/SOIL/src -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/DerivedSources/x86_64 -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/DerivedSources -F/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug -MMD -MT dependencies -MF /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/MilkShape3D.d --serialize-diagnostics /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/MilkShape3D.dia -c /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/../../../Dev/Tool/MilkShape3D.cpp -o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/MilkShape3D.o36"0D3C3905-26A8-4854-8433-17348B66913D-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection101"Compile /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/../../../Dev/Tool/MilkShape3D.cppff5eb2c7de46b741^1c5cdac8de46b741^---0#0#0#-19%DVTDocumentLocation2@109"file://localhost/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/../../../Dev/Tool/MilkShape3D.cpp0000000000000000^3071"CompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/MilkShape3D.o hconvert/../../../Dev/Tool/MilkShape3D.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/james/Dev/git/hack/Helios/HConvert/hconvert    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-generated-files.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-own-target-headers.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-all-target-headers.hmap -iquote /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-project-headers.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/include -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/SOIL/src -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/DerivedSources/x86_64 -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/DerivedSources -F/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug -MMD -MT dependencies -MF /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/MilkShape3D.d --serialize-diagnostics /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/MilkShape3D.dia -c /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/../../../Dev/Tool/MilkShape3D.cpp -o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/MilkShape3D.o36"FAD1A116-BA82-42D3-B18F-AF85913B362C-
 
 CCompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
-s390518605.710585
-e390518608.541727
+s390521440.531267
+e390521443.704162
 r1
 xCompileC
 xbuild/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o
@@ -4450,15 +4926,15 @@ o/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost/bo
 o      s=sz;
 o      ~ ^~
 o1 warning generated.
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Compile /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp7216b64dd746b741^d6ad8a50d746b741^-938"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp:7:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadMS3D.h:13:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Helios.h:15:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Component/Components.h:12:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Component/IComponent.h:16:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost/boost/property_tree/ptree.hpp:21:/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost/boost/multi_index_container.hpp:673:9: warning: implicit conversion loses integer precision: 'std::size_t' (aka 'unsigned long') to 'const unsigned int' [-Wshorten-64-to-32]      s=sz;      ~ ^~1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@104"Implicit conversion loses integer precision: 'std::size_t' (aka 'unsigned long') to 'const unsigned int'-390518608#18446744073709551615#0#6(2@93"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp:7:-390518608#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@84"file://localhost/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp0000000000000000^6#9#6#9#119#0#30"Apple LLVM compiler 4.2 Notice--2@96"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadMS3D.h:13:-390518608#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@86"file://localhost/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadMS3D.h0000000000000000^12#9#12#9#222#0#30"Apple LLVM compiler 4.2 Notice--2@96"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Helios.h:15:-390518608#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@62"file://localhost/Users/james/Dev/git/hack/Helios/Core/Helios.h0000000000000000^14#9#14#9#186#0#30"Apple LLVM compiler 4.2 Notice--2@110"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Component/Components.h:12:-390518608#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@76"file://localhost/Users/james/Dev/git/hack/Helios/Core/Component/Components.h0000000000000000^11#9#11#9#145#0#30"Apple LLVM compiler 4.2 Notice--2@110"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Component/IComponent.h:16:-390518608#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@76"file://localhost/Users/james/Dev/git/hack/Helios/Core/Component/IComponent.h0000000000000000^15#9#15#9#241#0#30"Apple LLVM compiler 4.2 Notice--2@132"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost/boost/property_tree/ptree.hpp:21:-390518608#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@95"file://localhost/Users/james/Dev/git/hack/Helios_lib/boost_1_46_1/boost/property_tree/ptree.hpp0000000000000000^20#9#20#9#800#0#30"Apple LLVM compiler 4.2 Notice--1#27"com.apple.dt.IDE.diagnostic3@97"file://localhost/Users/james/Dev/git/hack/Helios_lib/boost_1_46_1/boost/multi_index_container.hpp0000000000000000^672#8#672#8#18985#0#14"Semantic Issue2(3@97"file://localhost/Users/james/Dev/git/hack/Helios_lib/boost_1_46_1/boost/multi_index_container.hpp0000000000000000^672#8#672#10#18985#0#3@97"file://localhost/Users/james/Dev/git/hack/Helios_lib/boost_1_46_1/boost/multi_index_container.hpp0000000000000000^672#6#672#7#18983#0#-0#0#0#-19%DVTDocumentLocation4@84"file://localhost/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp0000000000000000^2905"CompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o hconvert/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/james/Dev/git/hack/Helios/HConvert/hconvert    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-generated-files.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-own-target-headers.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-all-target-headers.hmap -iquote /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-project-headers.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/include -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/SOIL/src -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/DerivedSources/x86_64 -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/DerivedSources -F/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug -MMD -MT dependencies -MF /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.d --serialize-diagnostics /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.dia -c /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp -o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o36"006E8A2F-FE09-40FF-8CF4-FD35168A869D-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Compile /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp25228860e246b741^8143b463e246b741^-938"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp:7:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadMS3D.h:13:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Helios.h:15:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Component/Components.h:12:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Component/IComponent.h:16:In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost/boost/property_tree/ptree.hpp:21:/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost/boost/multi_index_container.hpp:673:9: warning: implicit conversion loses integer precision: 'std::size_t' (aka 'unsigned long') to 'const unsigned int' [-Wshorten-64-to-32]      s=sz;      ~ ^~1 warning generated.1(36%IDEClangDiagnosticActivityLogMessage2@104"Implicit conversion loses integer precision: 'std::size_t' (aka 'unsigned long') to 'const unsigned int'-390521443#18446744073709551615#0#6(2@93"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp:7:-390521443#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic23%DVTTextDocumentLocation3@84"file://localhost/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp0000000000000000^6#9#6#9#119#0#30"Apple LLVM compiler 4.2 Notice--2@96"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadMS3D.h:13:-390521443#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@86"file://localhost/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/LoadMS3D.h0000000000000000^12#9#12#9#222#0#30"Apple LLVM compiler 4.2 Notice--2@96"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Helios.h:15:-390521443#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@62"file://localhost/Users/james/Dev/git/hack/Helios/Core/Helios.h0000000000000000^14#9#14#9#186#0#30"Apple LLVM compiler 4.2 Notice--2@110"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Component/Components.h:12:-390521443#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@76"file://localhost/Users/james/Dev/git/hack/Helios/Core/Component/Components.h0000000000000000^11#9#11#9#145#0#30"Apple LLVM compiler 4.2 Notice--2@110"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core/Component/IComponent.h:16:-390521443#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@76"file://localhost/Users/james/Dev/git/hack/Helios/Core/Component/IComponent.h0000000000000000^15#9#15#9#241#0#30"Apple LLVM compiler 4.2 Notice--2@132"In file included from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost/boost/property_tree/ptree.hpp:21:-390521443#18446744073709551615#0#-0#27"com.apple.dt.IDE.diagnostic3@95"file://localhost/Users/james/Dev/git/hack/Helios_lib/boost_1_46_1/boost/property_tree/ptree.hpp0000000000000000^20#9#20#9#800#0#30"Apple LLVM compiler 4.2 Notice--1#27"com.apple.dt.IDE.diagnostic3@97"file://localhost/Users/james/Dev/git/hack/Helios_lib/boost_1_46_1/boost/multi_index_container.hpp0000000000000000^672#8#672#8#18985#0#14"Semantic Issue2(3@97"file://localhost/Users/james/Dev/git/hack/Helios_lib/boost_1_46_1/boost/multi_index_container.hpp0000000000000000^672#8#672#10#18985#0#3@97"file://localhost/Users/james/Dev/git/hack/Helios_lib/boost_1_46_1/boost/multi_index_container.hpp0000000000000000^672#6#672#7#18983#0#-0#0#0#-19%DVTDocumentLocation4@84"file://localhost/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp0000000000000000^2993"CompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o hconvert/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/james/Dev/git/hack/Helios/HConvert/hconvert    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++11 -stdlib=libc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-generated-files.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-own-target-headers.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-all-target-headers.hmap -iquote /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-project-headers.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/include -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../Core -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/glm -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/boost -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/SOIL/src -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/include -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/DerivedSources/x86_64 -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/DerivedSources -F/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug -MMD -MT dependencies -MF /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.d --serialize-diagnostics /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.dia -c /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp -o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o36"1EBEEB2C-5F05-4E1D-A242-26385DDED4DD-
 
 CLd /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/hconvert normal x86_64
-s390518608.548528
-e390518608.594053
+s390525533.604805
+e390525534.488296
 r1
 xLd
 x/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/hconvert
 xnormal
 xx86_64
-lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Link /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/hconvertaa7f8c50d746b741^51149850d746b741^---0#0#0#--865"Ld build/Debug/hconvert normal x86_64    cd /Users/james/Dev/git/hack/Helios/HConvert/hconvert    setenv MACOSX_DEPLOYMENT_TARGET 10.8    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -L/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug -L/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/bin/assimp_Debug_MacOSX -F/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug -filelist /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/hconvert.LinkFileList -mmacosx-version-min=10.8 -stdlib=libc++ -lassimpd -o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/hconvert36"ED27C993-01C4-4465-AAD6-0A4DBDF20B29-
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Link /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/hconvert9fe89a5df246b741^f7007d5ef246b741^---0#0#0#--874"Ld build/Debug/hconvert normal x86_64    cd /Users/james/Dev/git/hack/Helios/HConvert/hconvert    setenv MACOSX_DEPLOYMENT_TARGET 10.8    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -L/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug -L/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/bin/assimp_Debug_MacOSX -F/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug -filelist /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/hconvert.LinkFileList -mmacosx-version-min=10.8 -lstdc++ -stdlib=libc++ -lassimpd -o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/hconvert36"C0FBC8C4-EB03-4755-875E-6F5BEBC0D04D-
 

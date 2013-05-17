@@ -5,6 +5,8 @@
 #include <unistd.h>
 #include <string>
 #include "LoadMS3D.h"
+#include "LoadAssimp.h"
+
 
 int convert_mesh(std::string& filename, std::string& outfile);
 
@@ -53,15 +55,15 @@ int convert_mesh(std::string& filename, std::string& outfile)
 {
     int retval = 0;
     uint32_t size = 0;
-    
+  
     std::vector<helios::Vertex> vertices;
     std::vector<uint32_t> indices;
     std::vector<helios::s::Material> mats;
     std::vector<helios::s::Joint> joints;
     
     // For now we just loadms3d
-    int ret = LMS3D::LoadMS3D(filename, vertices, indices, mats, joints);
-
+    //int ret = LMS3D::LoadMS3D(filename, vertices, indices, mats, joints);
+    int ret = LoadAssimp::Load(filename, vertices, indices, mats, joints);
     if(ret < 0) {
         std::cerr << "Unable to open " << filename << " for input." << std::endl;
         return ret;
