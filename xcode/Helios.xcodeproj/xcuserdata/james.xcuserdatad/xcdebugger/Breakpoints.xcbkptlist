@@ -2,4 +2,19 @@
 <Bucket
    type = "1"
    version = "1.0">
+   <FileBreakpoints>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../Core/Loader/LoadH3DMESH.cpp"
+         timestampString = "390518333.737943"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "52"
+         endingLineNumber = "52"
+         landmarkName = "LoadH3DMESH::Load(std::string &amp; file, std::vector&lt;helios::Vertex&gt; &amp; vertices, std::vector&lt;uint32_t&gt;&amp; indices, std::vector&lt;s::Material&gt; &amp; mats, std::vector&lt;s::Joint&gt; joints)"
+         landmarkType = "5">
+      </FileBreakpoint>
+   </FileBreakpoints>
 </Bucket>

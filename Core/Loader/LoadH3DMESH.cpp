@@ -45,14 +45,26 @@ namespace helios
         {
             // joints
             fread(&size, sizeof(size), 1, fp);
-            joints.resize(size);
+            joints.reserve(size);
            
             for ( int i = 0 ; i < size ; ++i )
             {
-                fread(&joints[i], sizeof(s::JointBase), 1, fp);
-                joints[i].keyframes.resize(joints[i].frameCount);
+                s::JointBase jb;
                 
-                fread(&joints[i].keyframes[0], sizeof(s::Frame), joints[i].frameCount, fp);
+                fread(&jb, sizeof(s::JointBase), 1, fp);
+
+                s::Joint j(jb);
+                
+                j.keyframes.reserve(jb.frameCount);
+
+                for(int x = 0 ; x < jb.frameCount ; ++x )
+                {
+                    s::Frame f;
+                    fread(&f, sizeof(f), 1, fp);
+                    j.keyframes.push_back(f);
+                }
+                joints.push_back(j);
+                //fread(&joints[i].keyframes[0], sizeof(s::Frame), joints[i].frameCount, fp);
             }
         }
         {

@@ -99,9 +99,11 @@ int convert_mesh(std::string& filename, std::string& outfile)
         
         for ( size_t i = 0 ; i < joints.size() ; ++ i)
         {
-            std::cout << "Outputting " << joints[i].keyframes.size() << " frames" << std::endl;
+            helios::s::JointBase *jb = &joints[i];
+            
+            std::cout << "[ " << jb->jointid << "] Outputting " << joints[i].keyframes.size() << " frames" << std::endl;
             joints[i].frameCount = static_cast<uint32_t>(joints[i].keyframes.size());
-            fwrite(&joints[i], sizeof(helios::s::JointBase), 1, of);
+            fwrite(jb, sizeof(helios::s::JointBase), 1, of);
             fwrite(&joints[i].keyframes[0], sizeof(helios::s::Frame), joints[i].keyframes.size(), of);
         }
 

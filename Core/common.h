@@ -201,7 +201,8 @@ namespace helios
             glm::vec3 absTrans;
             glm::vec3 relTrans;
             std::vector<Frame> keyframes;
-            
+            Joint(JointBase& jb) : JointBase(jb), absTrans(0.f), relTrans(0.f) {};
+            Joint() : JointBase() {};
         };
         
         struct TexFrame
