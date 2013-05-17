@@ -2,6 +2,7 @@
 #ifndef Helios_Vertex_h
 #define Helios_Vertex_h
 #include <glm/glm.hpp>
+#include <map>
 namespace helios
 {
     struct Vertex
@@ -140,13 +141,13 @@ namespace helios
         }
         return 0;
     }
-    inline void generateDegenerateQuads(std::vector<Vertex>& vertices, std::vector<unsigned short>& indices)
+    inline void generateDegenerateQuads(std::vector<Vertex>& vertices, std::vector<uint32_t>& indices)
     {
-        size_t vsize = vertices.size();
-        size_t cur_idx = vsize;
+        uint32_t vsize = static_cast<uint32_t>(vertices.size());
+        uint32_t cur_idx = vsize;
         std::map<Edge,bool> seen;
         
-        for ( size_t i = 0 ; i < vsize ; i+=3 )
+        for ( uint32_t i = 0 ; i < vsize ; i+=3 )
         {
             Edge a,b,c;
             a.a = vertices[i];

@@ -153,8 +153,8 @@ namespace helios
         {
             com.tex[0] = (*it).tex;
             com.ibo = (*it).ibo;
-            com.iboOffset = (*it).iboRange.start;
-            com.iboSize   = (*it).iboRange.end - com.iboOffset;
+            com.iboOffset = (*it).index_start;
+            com.iboSize   = (*it).index_end - com.iboOffset;
             mCurrentEvent.GetData().push_back( com );
             
         }

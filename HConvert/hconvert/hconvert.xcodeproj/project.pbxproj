@@ -1,0 +1,257 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1A42CEE01746943D005D6FD7 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A42CEDF1746943D005D6FD7 /* main.cpp */; };
+		1A42CEE21746943D005D6FD7 /* hconvert.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 1A42CEE11746943D005D6FD7 /* hconvert.1 */; };
+		1A42CEE917469471005D6FD7 /* libassimpd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A42CEE817469471005D6FD7 /* libassimpd.a */; };
+		1A42CEEF1746A1B9005D6FD7 /* MilkShape3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1A42CEEA17469529005D6FD7 /* MilkShape3D.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1A42CEDA1746943D005D6FD7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				1A42CEE21746943D005D6FD7 /* hconvert.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1A42CEDC1746943D005D6FD7 /* hconvert */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = hconvert; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A42CEDF1746943D005D6FD7 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1A42CEE11746943D005D6FD7 /* hconvert.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = hconvert.1; sourceTree = "<group>"; };
+		1A42CEE817469471005D6FD7 /* libassimpd.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libassimpd.a; path = ../../../Helios_lib/assimp/bin/assimp_Debug_MacOSX/libassimpd.a; sourceTree = "<group>"; };
+		1A42CEEA17469529005D6FD7 /* MilkShape3D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MilkShape3D.cpp; path = ../../../Dev/Tool/MilkShape3D.cpp; sourceTree = "<group>"; };
+		1A42CEEB17469529005D6FD7 /* MilkShape3D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MilkShape3D.h; path = ../../../Dev/Tool/MilkShape3D.h; sourceTree = "<group>"; };
+		1A42CEED174695BD005D6FD7 /* LoadMS3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadMS3D.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1A42CED91746943D005D6FD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A42CEE917469471005D6FD7 /* libassimpd.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A42CED31746943D005D6FD7 = {
+			isa = PBXGroup;
+			children = (
+				1A42CEE817469471005D6FD7 /* libassimpd.a */,
+				1A42CEDE1746943D005D6FD7 /* hconvert */,
+				1A42CEDD1746943D005D6FD7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1A42CEDD1746943D005D6FD7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1A42CEDC1746943D005D6FD7 /* hconvert */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1A42CEDE1746943D005D6FD7 /* hconvert */ = {
+			isa = PBXGroup;
+			children = (
+				1A42CEEA17469529005D6FD7 /* MilkShape3D.cpp */,
+				1A42CEEB17469529005D6FD7 /* MilkShape3D.h */,
+				1A42CEDF1746943D005D6FD7 /* main.cpp */,
+				1A42CEE11746943D005D6FD7 /* hconvert.1 */,
+				1A42CEED174695BD005D6FD7 /* LoadMS3D.h */,
+			);
+			path = hconvert;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1A42CEDB1746943D005D6FD7 /* hconvert */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1A42CEE51746943D005D6FD7 /* Build configuration list for PBXNativeTarget "hconvert" */;
+			buildPhases = (
+				1A42CED81746943D005D6FD7 /* Sources */,
+				1A42CED91746943D005D6FD7 /* Frameworks */,
+				1A42CEDA1746943D005D6FD7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hconvert;
+			productName = hconvert;
+			productReference = 1A42CEDC1746943D005D6FD7 /* hconvert */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1A42CED41746943D005D6FD7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = helios;
+			};
+			buildConfigurationList = 1A42CED71746943D005D6FD7 /* Build configuration list for PBXProject "hconvert" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1A42CED31746943D005D6FD7;
+			productRefGroup = 1A42CEDD1746943D005D6FD7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1A42CEDB1746943D005D6FD7 /* hconvert */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1A42CED81746943D005D6FD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1A42CEEF1746A1B9005D6FD7 /* MilkShape3D.cpp in Sources */,
+				1A42CEE01746943D005D6FD7 /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1A42CEE31746943D005D6FD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		1A42CEE41746943D005D6FD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		1A42CEE61746943D005D6FD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../Core",
+					"$(SRCROOT)/../../../Helios_lib/glm/",
+					"$(SRCROOT)/../../../Helios_lib/boost/",
+					"$(SRCROOT)/../../../Helios_lib/SOIL/src",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Helios_lib/assimp/bin/assimp_Debug_MacOSX\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1A42CEE71746943D005D6FD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../../Core",
+					"$(SRCROOT)/../../../Helios_lib/glm/",
+					"$(SRCROOT)/../../../Helios_lib/boost/",
+					"$(SRCROOT)/../../../Helios_lib/SOIL/src",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Helios_lib/assimp/bin/assimp_Debug_MacOSX\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1A42CED71746943D005D6FD7 /* Build configuration list for PBXProject "hconvert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A42CEE31746943D005D6FD7 /* Debug */,
+				1A42CEE41746943D005D6FD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1A42CEE51746943D005D6FD7 /* Build configuration list for PBXNativeTarget "hconvert" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A42CEE61746943D005D6FD7 /* Debug */,
+				1A42CEE71746943D005D6FD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1A42CED41746943D005D6FD7 /* Project object */;
+}

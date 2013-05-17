@@ -1,0 +1,66 @@
+Thconvert
+v5
+r1
+cCheck dependencies
+cCompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/hconvert normal x86_64
+
+N/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk
+c000000005191020500000000000000AA
+t1368457733
+s170
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/bin/assimp_Debug_MacOSX/libassimpd.a
+c000000005195771A00000000030D31B8
+t1368749850
+s51196344
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/hconvert
+t2
+s0
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/hconvert.LinkFileList
+c0000000051965CFC000000000000007A
+t1368808700
+s122
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o
+t2
+s0
+
+N/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp
+c0000000051965CFB0000000000000091
+t1368808699
+s145
+i<iostream>
+
+CBuild AST from /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp
+r0
+
+CCheck dependencies
+r0
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection18"Check dependencies3b8b367c9446b741^80d6387c9446b741^---0#1#0#--18"Check dependencies36"90BBE032-AD76-4783-8F85-235F925C344C-
+
+CCompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler
+s390501500.228483
+e390501500.401695
+r1
+xCompileC
+xbuild/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o
+x/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp
+xnormal
+xx86_64
+xc++
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Compile /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp541c3b7c9446b741^39d5667c9446b741^---0#0#0#-19%DVTDocumentLocation2@84"file://localhost/Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp0000000000000000^2885"CompileC build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o hconvert/main.cpp normal x86_64 c++ com.apple.compilers.llvm.clang.1_0.compiler    cd /Users/james/Dev/git/hack/Helios/HConvert/hconvert    setenv LANG en_US.US-ASCII    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -x c++ -arch x86_64 -fmessage-length=0 -std=c++98 -stdlib=libstdc++ -Wno-trigraphs -fpascal-strings -O0 -Wno-missing-field-initializers -Wno-missing-prototypes -Wreturn-type -Wno-non-virtual-dtor -Wno-overloaded-virtual -Wno-exit-time-destructors -Wformat -Wno-missing-braces -Wparentheses -Wswitch -Wno-unused-function -Wno-unused-label -Wno-unused-parameter -Wunused-variable -Wunused-value -Wempty-body -Wuninitialized -Wno-unknown-pragmas -Wno-shadow -Wno-four-char-constants -Wno-conversion -Wconstant-conversion -Wint-conversion -Wenum-conversion -Wshorten-64-to-32 -Wno-newline-eof -Wno-c++11-extensions -DDEBUG=1 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -fasm-blocks -fstrict-aliasing -Wdeprecated-declarations -Winvalid-offsetof -mmacosx-version-min=10.8 -g -fvisibility-inlines-hidden -Wno-sign-conversion -iquote /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-generated-files.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-own-target-headers.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-all-target-headers.hmap -iquote /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/hconvert-project-headers.hmap -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/DerivedSources/x86_64 -I/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/DerivedSources -F/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug -MMD -MT dependencies -MF /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.d --serialize-diagnostics /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.dia -c /Users/james/Dev/git/hack/Helios/HConvert/hconvert/hconvert/main.cpp -o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/main.o36"E9C4C0F8-64C1-4D3B-A944-BAEA1D5653A3-
+
+CLd /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/hconvert normal x86_64
+s390501500.408667
+e390501500.524061
+r1
+xLd
+x/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/hconvert
+xnormal
+xx86_64
+lSLF05#21%IDEActivityLogSection1@2#32"com.apple.dt.IDE.BuildLogSection76"Link /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/hconverta3af687c9446b741^ed28867c9446b741^---0#0#0#--868"Ld build/Debug/hconvert normal x86_64    cd /Users/james/Dev/git/hack/Helios/HConvert/hconvert    setenv MACOSX_DEPLOYMENT_TARGET 10.8    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch x86_64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.8.sdk -L/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug -L/Users/james/Dev/git/hack/Helios/HConvert/hconvert/../../../Helios_lib/assimp/bin/assimp_Debug_MacOSX -F/Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug -filelist /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/hconvert.build/Debug/hconvert.build/Objects-normal/x86_64/hconvert.LinkFileList -mmacosx-version-min=10.8 -stdlib=libstdc++ -lassimpd -o /Users/james/Dev/git/hack/Helios/HConvert/hconvert/build/Debug/hconvert36"69A5685B-8336-4730-B174-072432086DDB-
+
