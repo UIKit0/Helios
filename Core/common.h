@@ -184,19 +184,23 @@ namespace helios
 #else
             glm::mat4 mat;
 #endif
-        }; 
-        struct Joint
+        };
+        struct JointBase
+        {
+
+            //   glm::quat absQuat;
+            //   glm::quat relQuat;
+            glm::mat4 absMat;
+            glm::mat4 relMat;
+            uint8_t   jointid;
+            int8_t   parent;
+        };
+        struct Joint : public JointBase
         {
             glm::vec3 absTrans;
             glm::vec3 relTrans;
-            glm::quat absQuat;
-            glm::quat relQuat;
-            glm::mat4 absMat;
-            glm::mat4 relMat;
             std::vector<Frame> keyframes;
-            //size_t keyframes_count = 0;
-            uint8_t   jointid;
-            int8_t   parent;
+            
         };
         
         struct TexFrame

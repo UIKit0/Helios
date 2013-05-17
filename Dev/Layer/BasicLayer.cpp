@@ -8,7 +8,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/matrix_inverse.hpp>
 #include <glm/gtx/euler_angles.hpp>
-#include <assimp/Importer.hpp>
 
 namespace helios_dev
 {
@@ -74,7 +73,6 @@ namespace helios_dev
         BasicLayer::onActive(uint64_t t)
     {
         BaseLayer::onActive(t);
-        Assimp::Importer importer;
         
         mPool.reset( new helios::Pool(10) );
         std::vector<helios::Vertex> verts;
@@ -283,7 +281,7 @@ namespace helios_dev
             float _x = (*it).rotation[0], _y = (*it).rotation[1], _z = (*it).rotation[2];
 
             j.relMat = glm::yawPitchRoll(_x,_y,_z);
-            quaternionFromEuler(j.relQuat,_x,_y,_z);
+    //        quaternionFromEuler(j.relQuat,_x,_y,_z);
             j.absTrans = j.relTrans = glm::vec3(pos[0], pos[1], pos[2]);
             j.relMat *= glm::translate(glm::mat4(1.0),j.relTrans);
 

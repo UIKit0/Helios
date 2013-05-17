@@ -5,3 +5,88 @@ Currently only works with OS X 10.7 and higher.
 
 Requires GLFW
 
+
+
+.h3dmesh fileformat
+===================
+
+// little endian
+// Future versions will allow multi-texturing and bone weights
+// All polygons must be triangulated.
+
+[4 bytes] - Header
+ {
+    [ushort] 0x4E05 fileformat
+    [ushort] 0x0001 version
+ }
+[uint32_t] - Vertex blob size n
+[n bytes] - Vertex blob of structs:
+
+// If there are bones, the vertices must be premultiplied by the
+// inverse of the absolute translation of the joint.  This way we
+// can directly use the vertices with the absolute matrix that's been
+// precomputed.
+struct Vertex
+{
+    float pos[4];
+    ushort tex_s;
+    ushort tex_t;
+    ushort joint_id;
+    ushort extrudable; // will cast shadow volumes
+    uchar  color[4];
+    uchar  normal[4];
+}
+[uint32_t] - Indices blob size n
+[n bytes] - Indices blob:
+
+struct Index
+{
+    uint32_t index;
+}
+
+[4 bytes] - Joints blob size n
+[n bytes] - Joint blob of structs:
+
+// the absolute matrix is the concatenation of all of the parent
+// matrices and the local matrix.
+// the relative matrix is the local matrix.
+
+struct Joint
+{
+    float[4][4] absolute_matrix;
+    float[4][4] relative_matrix; 
+    ushort      joint_id;
+    ushort      parent;
+}
+
+
+// Note: frames MUST be sorted by joint_id.
+[4 bytes] - Keyframes blob size n
+[n bytes] of frame groupings:
+
+struct FrameGroup
+{
+[4 bytes] - Frame Group Size x
+[2 bytes] - joint id.
+[x bytes] - blob of Keyframes:
+    struct Frame
+    {
+        float[4][4] matrix;
+        float time;
+    }
+}
+// Repeated until n is reached
+
+[4 bytes] - Materials blob size n
+[n bytes] of material blob structs:
+
+struct Material
+{
+    uchar emissive[4];
+    uchar specular[4];
+    uchar ambient[4];
+    float shininess;
+    uint32_t index_start;
+    uint32_t index_end;
+    uchar texturename[32];
+}

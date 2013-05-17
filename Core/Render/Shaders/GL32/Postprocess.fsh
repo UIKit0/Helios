@@ -45,7 +45,7 @@ void main()
         lightcolor += UNIFORM_LIGHT_COLOR[i] * max(0.0, dot(lightDir, norm));
     }
     vec4 shadow = texture(UNIFORM_SAMPLER2, coords);
-    vec4 shaded = vec4(texture(UNIFORM_SAMPLER0, coords).rgb * shadow.rgb * lightcolor.rgb , 1.0);
+    vec4 shaded = vec4(texture(UNIFORM_SAMPLER0, coords).rgb * shadow.rgb , 1.0);
     
     OUT_COLOR = shaded;
 
