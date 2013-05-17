@@ -36,10 +36,10 @@ public:
     };
 
     static int LoadMS3D(std::string &file,
-               std::vector<helios::Vertex>& vertices,
-               std::vector<uint32_t>& indices,
-               std::vector<helios::s::Material>& materials,
-               std::vector<helios::s::Joint>& joints)
+                        std::vector<helios::Vertex>& vertices,
+                        std::vector<uint32_t>& indices,
+                        std::vector<helios::s::Material>& materials,
+                        std::vector<helios::s::Joint>& joints)
     {
         MilkShape3D *ms3d = new MilkShape3D();
         std::string b_folder = helios::SceneManager::Inst().GetResourceFolder();
@@ -62,17 +62,17 @@ public:
                 size_t fn = tex.find_last_of("/");
                 tex = tex.substr(fn);
                 memcpy(mg.texturename, tex.c_str(), (tex.size() > 36 ? 36 : tex.size()));
-                       
+
                 //if(textures[tex] == 0L)
-               // {
+                // {
                 //    std::string l (b_folder + tex);
-               //     D_PRINT("Loading %s\n", l.c_str());
-                    //textures[tex] = new helios::Texture(l);
-               // }
-               // mg.tex = (*(textures[tex]))();
+                //     D_PRINT("Loading %s\n", l.c_str());
+                //textures[tex] = new helios::Texture(l);
+                // }
+                // mg.tex = (*(textures[tex]))();
             }
             mg.shininess = mat.shininess;
-            
+
             mg.index_start = static_cast<uint32_t>(indexStart);
 
             for(int i = 0 ; i < (*jt).numtriangles ; ++i)
@@ -192,7 +192,7 @@ public:
                 glm::quat q;
                 quaternionFromEuler(q, x,y,z);
                 glm::mat4 ypr = glm::mat4_cast(q) ;
-                
+
                 // Transform by the relative location and rotate.  Concatenation with parent occurs after frame interpolation.
                 m = ((*it).relMat * ypr) ;
                 
@@ -207,6 +207,6 @@ public:
         }
         return 0;
     }
-
-    };
+    
+};
 #endif /* defined(__hconvert__LoadMS3D__) */

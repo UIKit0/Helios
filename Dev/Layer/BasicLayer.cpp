@@ -65,7 +65,7 @@ namespace helios_dev
            
             mEntities.push_back(std::shared_ptr<helios::IEntity>(e));
         } 
-        /*{
+        {
             helios::Vertex v [4] ;
             unsigned short minS = 0;
             unsigned short maxS = 0xFFFF;
@@ -96,7 +96,7 @@ namespace helios_dev
             rc->AddMaterialGroup(mg);
             
             mEntities.push_back(std::shared_ptr<helios::IEntity>(e));
-        }*/
+        }
         {
             CameraEntity * e = new CameraEntity(this,glm::vec3(0.,25.,50.),  glm::vec3(0.,0.,5.), glm::vec3(0.,-0.5,-1.), glm::vec3(0.,1.,0.));
             mEntities.push_back(std::shared_ptr<helios::IEntity>(e));

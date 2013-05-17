@@ -198,7 +198,7 @@ namespace helios
             std::vector<helios::VAOObj> vaoobj;
              
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionPosition, helios::VAOObj::R_FLOAT, 4, sizeof(helios::Vertex), 0, 0 }));
-            vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionNormal, helios::VAOObj::R_UBYTE, 3, sizeof(helios::Vertex), offsetof(helios::Vertex,n[0]), 1 }));
+            vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionNormal, helios::VAOObj::R_UBYTE, 4, sizeof(helios::Vertex), offsetof(helios::Vertex,n[0]), 1 }));
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionTexCoord, helios::VAOObj::R_USHORT, 2, sizeof(helios::Vertex), 16, 1}));
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionBoneId, helios::VAOObj::R_SHORT, 1, sizeof(helios::Vertex), 20, 0 }));
             vaoobj.push_back ( helios::VAOObj({ e::kVertexAttribPositionExtrudes, helios::VAOObj::R_USHORT, 1, sizeof(helios::Vertex), 22, 0 }));
