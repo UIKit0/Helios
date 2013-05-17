@@ -224,6 +224,7 @@ namespace helios
                 IEvent_ptr p = (*(std::static_pointer_cast<RenderableComponent>(*it)))();
                 mRender->PushRenderCommand(helios::HEvent<std::vector<helios::RenderCommand> >::GetData(p));
             }
+            std::vector<LightCommand> lightCommands;
             for( auto it = lights.begin() ; it != lights.end() ; ++it)
             {
                 IEvent_ptr p = (*(std::static_pointer_cast<helios::LightComponent>(*it)))();

@@ -215,7 +215,9 @@ namespace helios
         };
         struct MaterialGroup
         {
-            
+            float emissive[4];
+            float specular[4];
+            float shininess;
             struct
             {
                 unsigned short start;
@@ -223,7 +225,7 @@ namespace helios
             } iboRange;
             unsigned short ibo;
             unsigned short tex;
-            
+
         };
         
         struct InputRemap

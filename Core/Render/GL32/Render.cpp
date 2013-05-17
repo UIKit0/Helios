@@ -448,11 +448,14 @@ namespace helios
                 if(lpos > -1 && lcolor > -1 && lcount > -1)
                 {
                     glUniform1i(lcount, static_cast<int>(mLights.size()));
-                    std::vector<glm::mat4> pos,colors;
+                    std::vector<glm::vec4> vpos, vcolors;
                     for(auto it = mLights.begin();it != mLights.end(); ++it)
                     {
-                        
+                        vpos.push_back((*it).pos);
+                        vcolors.push_back((*it).color);
                     }
+                    glUniform4fv(lcolor, static_cast<int>(mLights.size()), &vcolors[0][0]);
+                    glUniform4fv(lpos, static_cast<int>(mLights.size()), &vpos[0][0]);
                 }
             }
             

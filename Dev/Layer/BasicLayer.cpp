@@ -8,6 +8,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/matrix_inverse.hpp>
 #include <glm/gtx/euler_angles.hpp>
+#include <assimp/Importer.hpp>
 
 namespace helios_dev
 {
@@ -73,7 +74,8 @@ namespace helios_dev
         BasicLayer::onActive(uint64_t t)
     {
         BaseLayer::onActive(t);
-
+        Assimp::Importer importer;
+        
         mPool.reset( new helios::Pool(10) );
         std::vector<helios::Vertex> verts;
         std::vector<unsigned short> ind;
