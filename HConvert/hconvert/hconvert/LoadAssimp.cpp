@@ -98,7 +98,19 @@ LoadAssimp::Load(std::string &file,
                     bones[b.name] = b;
                 }
             }
+            // TODO:
+            // - Materials
+            // - Bone hierarchy
+            // - Animations
             
+        }
+        if(scene->HasAnimations())
+        {
+            for(int i = 0 ; i < scene->mNumAnimations ; ++i)
+            {
+                aiAnimation* anim = scene->mAnimations[i];
+                
+            }
         }
     }
 
